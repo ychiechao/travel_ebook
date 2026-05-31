@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首爾學術交流暨自由行｜2025年6月</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a3a5c;--teal:#0f6e56;--blue:#1761a8;--purple:#4a42a8;
+  --red:#b03030;--amber:#b07010;--gold:#d4a017;--coral:#993C1D;
+  --lt-teal:#e6f4f0;--lt-blue:#e8f1fb;--lt-purple:#eeedfe;
+  --lt-red:#fbeaea;--lt-amb:#fdf6e3;--lt-coral:#FAECE7;
+  --bg:#f7f6f2;--card:#fff;--border:#e0ddd5;
+  --text:#1c1b18;--muted:#6b6860;
+  --sans:'Noto Sans TC',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden}
+
+.hero{background:var(--navy);padding:48px 20px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 25% 60%,rgba(15,110,86,.3) 0%,transparent 55%),
+             radial-gradient(ellipse at 80% 20%,rgba(74,66,168,.25) 0%,transparent 50%)}
+.hero-tag{font:500 11px/1 var(--mono);letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative}
+.hero h1{font-size:clamp(20px,4.5vw,34px);font-weight:700;color:#fff;line-height:1.3;position:relative;margin-bottom:5px}
+.hero h2{font-size:clamp(12px,2.5vw,16px);font-weight:300;color:rgba(255,255,255,.65);position:relative;margin-bottom:24px}
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;position:relative}
+.hbadge{font:500 10.5px/1 var(--mono);padding:4px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);background:rgba(255,255,255,.07);letter-spacing:.04em}
+.hbadge.gold{border-color:var(--gold);color:var(--gold);background:rgba(212,160,23,.12)}
+
+.hotel-strip{background:linear-gradient(180deg,var(--navy) 0%,#152d49 100%);padding:0 16px 24px}
+.hotel-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.hcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;transition:background .2s}
+.hcard:hover{background:rgba(255,255,255,.13)}
+.hcard.confirmed{border-color:rgba(15,110,86,.6);background:rgba(15,110,86,.12)}
+.hdate{font:500 10px/1 var(--mono);color:var(--gold);letter-spacing:.05em;margin-bottom:5px}
+.hname{font-size:12px;font-weight:600;color:#fff;line-height:1.35;margin-bottom:3px}
+.hinfo{font-size:10.5px;color:rgba(255,255,255,.5)}
+.hbf{display:inline-block;font-size:9.5px;margin-top:5px;padding:2px 7px;border-radius:4px}
+.bf-y{background:rgba(15,110,86,.4);color:#7de0b5}
+.bf-n{background:rgba(176,48,48,.3);color:#f5a0a0}
+.bf-ok{background:rgba(15,110,86,.6);color:#b0ffde;font-weight:700}
+
+.nav-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.day-nav{max-width:900px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+.day-nav::-webkit-scrollbar{display:none}
+.dnbtn{flex-shrink:0;padding:12px 16px;border:none;background:none;cursor:pointer;font:500 12.5px/1 var(--sans);color:var(--muted);border-bottom:2.5px solid transparent;transition:all .2s;white-space:nowrap}
+.dnbtn .dnum{font:500 10px/1 var(--mono);display:block;color:inherit;opacity:.65;margin-bottom:2px}
+.dnbtn:hover{color:var(--text)}
+.dnbtn.on{color:var(--navy);border-bottom-color:var(--navy)}
+
+.main{max-width:900px;margin:0 auto;padding:24px 14px 60px}
+.dpanel{display:none;animation:fu .28s ease}.dpanel.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.day-hd{border-radius:12px;padding:18px 20px;margin-bottom:20px;position:relative;overflow:hidden}
+.day-hd::before{content:'';position:absolute;inset:0;opacity:.05;background:repeating-linear-gradient(45deg,currentColor 0,currentColor 1px,transparent 0,transparent 20px)}
+.dh-num{font-size:38px;font-weight:700;line-height:1;opacity:.9;flex-shrink:0}
+.dh-flex{display:flex;align-items:flex-start;gap:14px}
+.dh-date{font:500 10.5px/1 var(--mono);letter-spacing:.08em;opacity:.75;margin-bottom:4px}
+.dh-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.dh-hotel{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.32)}
+.dh-hotel::before{content:'🏨';font-size:11px}
+.day-hd.blue{background:linear-gradient(125deg,#daeaf8,#c0d8f0);color:var(--blue)}
+.day-hd.teal{background:linear-gradient(125deg,#d8f0e8,#bce0d4);color:var(--teal)}
+.day-hd.purple{background:linear-gradient(125deg,#e4e2f8,#d0cdf0);color:var(--purple)}
+.day-hd.red{background:linear-gradient(125deg,#f8dada,#f0c8c8);color:var(--red)}
+.day-hd.amber{background:linear-gradient(125deg,#fdf3d0,#f5e0a0);color:var(--amber)}
+.day-hd.coral{background:linear-gradient(125deg,#faeae4,#f0cfc0);color:var(--coral)}
+
+.route-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 12px 12px;margin-bottom:22px;overflow-x:auto}
+.route-title{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.route-wrap svg{min-width:400px;width:100%;height:auto}
+
+.map-overview{background:linear-gradient(180deg,#152d49 0%,#f7f6f2 100%);padding:0 14px 26px}
+.map-shell{max-width:900px;margin:0 auto;background:var(--card);border:1px solid rgba(224,221,213,.8);border-radius:12px;overflow:hidden;box-shadow:0 12px 34px rgba(26,58,92,.14)}
+.map-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:17px 18px 12px;background:#fff;border-bottom:1px solid var(--border)}
+.map-kicker{font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.map-head h3{font-size:18px;line-height:1.35;color:var(--navy);margin-bottom:4px}
+.map-head p{font-size:12px;line-height:1.55;color:var(--muted)}
+.map-legend{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px;min-width:180px}
+.lg{font:500 10px/1 var(--mono);padding:5px 8px;border-radius:5px;border:1px solid var(--border);background:#f8f7f3;color:var(--muted);white-space:nowrap}
+.lg.flight{color:var(--blue);background:var(--lt-blue);border-color:#c9dff3}
+.lg.hotel{color:var(--teal);background:var(--lt-teal);border-color:#bfded4}
+.lg.acad{color:var(--purple);background:var(--lt-purple);border-color:#d6d2f2}
+.metro-map{padding:14px 14px 10px;overflow-x:auto;background:linear-gradient(180deg,#fff 0%,#fbfaf7 100%)}
+.metro-map svg{min-width:820px;width:100%;height:auto;display:block}
+.map-table-wrap{padding:0 14px 14px;overflow-x:auto}
+.map-table{width:100%;min-width:760px;border-collapse:collapse;font-size:12px}
+.map-table th{font:600 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:left;color:#fff;background:var(--navy);padding:10px 9px}
+.map-table td{padding:10px 9px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.45}
+.map-table tr:last-child td{border-bottom:none}
+.day-chip{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:4px 8px;border-radius:999px;font:600 10px/1 var(--mono);color:#fff;background:var(--navy)}
+.day-chip.blue{background:var(--blue)}.day-chip.teal{background:var(--teal)}.day-chip.amber{background:var(--amber)}.day-chip.purple{background:var(--purple)}.day-chip.red{background:var(--red)}.day-chip.coral{background:var(--coral)}
+.jump-btn{border:1px solid rgba(23,97,168,.2);background:var(--lt-blue);color:var(--blue);border-radius:6px;padding:6px 9px;font:600 11px/1 var(--sans);cursor:pointer;white-space:nowrap}
+.jump-btn:hover{background:#d0e6f8}
+.day-map{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0 20px;overflow-x:auto}
+.day-map-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.day-map-title{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.day-map-note{font-size:11px;line-height:1.45;color:var(--muted);text-align:right;max-width:380px}
+.day-map svg{min-width:620px;width:100%;height:auto;display:block}
+.map-zone{fill:#f8f7f3;stroke:#e7e3d8;stroke-width:1}
+.map-line{fill:none;stroke:#b8c1c9;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 6}
+.map-line.blue{stroke:#9fc5ea}.map-line.teal{stroke:#8bcbbb}.map-line.amber{stroke:#e8c266}.map-line.purple{stroke:#beb8ef}.map-line.red{stroke:#e5a4a4}.map-line.coral{stroke:#e0a98f}
+.pin circle{stroke-width:2.5}.pin text{font-family:var(--sans);font-weight:700}
+.pin .lbl{font-size:11px}.pin .sub{font-size:9px;font-weight:500;fill:#777}
+
+.sec-lbl{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px;display:flex;align-items:center;gap:8px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.itable{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;font-size:12.5px}
+.itable thead tr{background:var(--navy)}
+.itable thead th{padding:10px 12px;text-align:left;font-size:11px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.04em}
+.itable tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+.itable tbody tr:last-child{border-bottom:none}
+.itable tbody tr:hover{background:var(--bg)}
+.itable tbody tr.hi{background:var(--lt-teal)}
+.itable tbody tr.hi:hover{background:#cce8df}
+.itable tbody tr.pu{background:var(--lt-purple)}
+.itable tbody tr.wa{background:var(--lt-red)}
+.itable tbody tr.am{background:var(--lt-amb)}
+.itable tbody tr.bl{background:var(--lt-blue)}
+.itable td{padding:9px 12px;vertical-align:top}
+.itable td:first-child{font:400 11px/1.4 var(--mono);color:var(--muted);white-space:nowrap}
+.ev-name{font-weight:600;color:var(--text)}
+.ev-note{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.45}
+.pill{display:inline-block;font:500 9.5px/1 var(--mono);padding:2px 6px;border-radius:3px;margin:2px 3px 0 0}
+.p-tr{background:var(--lt-blue);color:var(--blue)}
+.p-wk{background:#f0ede8;color:#666}
+.p-tx{background:var(--lt-purple);color:var(--purple)}
+.p-co{background:var(--lt-teal);color:var(--teal);font-weight:700}
+.p-bus{background:#fdf0ff;color:#7a22a8;font-weight:600}
+.p-food{background:var(--lt-amb);color:var(--amber);font-weight:600}
+.cost{font:500 11.5px/1 var(--mono);color:var(--teal);text-align:right;white-space:nowrap;vertical-align:middle}
+.cost.z{color:#bbb}
+
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:22px}
+.rc{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow .18s,transform .18s;text-decoration:none;display:block;color:inherit}
+.rc:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);transform:translateY(-2px)}
+.rc-hd{padding:12px 14px 9px;border-bottom:1px solid var(--border)}
+.rc-type{font:400 10px/1 var(--mono);color:var(--muted);letter-spacing:.05em;margin-bottom:4px}
+.rc-name{font-size:13.5px;font-weight:700;margin-bottom:4px}
+.rc-meta{display:flex;gap:10px;font-size:11px;color:var(--muted)}
+.rc-r::before{content:'⭐ ';color:var(--amber)}
+.rc-p::before{content:'💰 '}
+.rc-bd{padding:10px 14px}
+.rc-desc{font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.map-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--blue);background:var(--lt-blue);border:1px solid rgba(23,97,168,.2);border-radius:6px;padding:5px 10px;text-decoration:none;transition:background .14s}
+.map-btn:hover{background:#d0e6f8}
+.map-btn::before{content:'📍';font-size:11px}
+.rec-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--teal);background:var(--lt-teal);border:1px solid rgba(15,110,86,.2);border-radius:6px;padding:5px 10px;text-decoration:none;transition:background .14s;margin-left:4px}
+.rec-btn:hover{background:#cce8df}
+.rec-btn::before{content:'💬';font-size:11px}
+.rec-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+
+.ib{border-radius:9px;padding:10px 14px;font-size:12px;line-height:1.6;margin:8px 0}
+.ib-b{background:var(--lt-blue);border:1px solid rgba(23,97,168,.2);color:var(--blue)}
+.ib-g{background:var(--lt-teal);border:1px solid rgba(15,110,86,.2);color:var(--teal)}
+.ib-r{background:var(--lt-red);border:1px solid rgba(176,48,48,.2);color:var(--red)}
+.ib-p{background:var(--lt-purple);border:1px solid rgba(74,66,168,.2);color:var(--purple)}
+.ib-a{background:var(--lt-amb);border:1px solid rgba(176,112,16,.2);color:var(--amber)}
+
+.pass-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:22px}
+.pass-hd{background:var(--teal);padding:10px 16px;font-size:13px;font-weight:600;color:#fff}
+.pass-row{display:grid;grid-template-columns:2fr 1fr 1.5fr 1.2fr;gap:0;border-bottom:1px solid var(--border);font-size:11.5px}
+.pass-row:last-child{border-bottom:none}
+.pass-row.phd{background:#f5f3ee;font-size:10.5px;font-weight:600;color:var(--muted)}
+.pc{padding:8px 13px}.pw{color:var(--teal);font-weight:600}.pn{color:var(--red)}.pm{color:var(--amber)}
+
+@media(max-width:540px){
+  .pass-row{grid-template-columns:1.8fr 1fr 1.2fr}
+  .pc:nth-child(3){display:none}
+  .dh-num{font-size:28px}.dh-title{font-size:15px}
+  .map-overview{padding:0 10px 20px}
+  .map-head{display:block;padding:15px}
+  .map-legend{justify-content:flex-start;margin-top:10px;min-width:0}
+  .map-table{min-width:0}
+  .map-table thead{display:none}
+  .map-table,.map-table tbody,.map-table tr,.map-table td{display:block;width:100%}
+  .map-table tr{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;background:#fff}
+  .map-table td{border-bottom:1px solid var(--border);padding:8px 10px}
+  .map-table td:last-child{border-bottom:none}
+  .map-table td::before{content:attr(data-label);display:block;font:600 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .day-map-top{display:block}
+  .day-map-note{text-align:left;margin-top:6px}
+}
+
+.shop-sec{margin-top:28px}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:6px}
+.shop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 13px;position:relative}
+.shop-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.shop-emoji{font-size:22px;margin-bottom:6px}
+.shop-name{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:2px;line-height:1.35}
+.shop-where{font-size:10.5px;color:var(--teal);font-weight:600;margin-bottom:4px}
+.shop-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.shop-price{display:inline-block;font:500 10px/1 var(--mono);margin-top:6px;padding:2px 7px;border-radius:4px;background:var(--lt-amb);color:var(--amber)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">2025 首爾學術交流暨自由行 · 大韓航空</div>
+  <h1>首爾學術交流暨自由行</h1>
+  <h2>2025年6月12日（四）－ 6月19日（四）｜7晚8天 · 自由行 × 首爾大 × 高麗大研討會</h2>
+  <div class="hero-meta">
+    <span class="hbadge gold">KE 去程 13:20→16:50</span>
+    <span class="hbadge gold">KE 回程 16:10→17:50</span>
+    <span class="hbadge">8天 · 3飯店</span>
+    <span class="hbadge">首爾大學 × 高麗大學研討會</span>
+  </div>
+</div>
+
+<div class="hotel-strip">
+  <div class="hotel-grid">
+    <div class="hcard" style="border:1px solid rgba(212,160,23,.5);background:rgba(212,160,23,.08);grid-column:span 2">
+      <div class="hdate" style="margin-bottom:7px">6/12–6/15 DAY 1–4 ｜ 擇一入住（4晚）</div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:8px">
+        <div>
+          <div class="hname">Hotel Yaja Jongno</div>
+          <div class="hinfo" style="margin-top:3px">鐘路區 · 安國站旁</div>
+          <div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:4px">
+            <span class="hbf" style="background:rgba(15,110,86,.3);color:#7de0b5">⭐ 4.1</span>
+            <span class="hbf bf-n">早餐不含</span>
+            <span class="hbf" style="background:rgba(212,160,23,.2);color:#ffd580">24H零食🍿</span>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:5px">💰 超值 · 房間寬敞 · 近歷史景點</div>
+        </div>
+        <div style="font-size:11px;color:var(--gold);font-weight:700;text-align:center;padding-top:12px">or</div>
+        <div>
+          <div class="hname">Lotte City Hotel Myeongdong</div>
+          <div class="hinfo" style="margin-top:3px">明洞站旁 · 4星品牌</div>
+          <div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:4px">
+            <span class="hbf" style="background:rgba(15,110,86,.3);color:#7de0b5">⭐ 4.2</span>
+            <span class="hbf bf-y">早餐可加購</span>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:5px">💰💰 品牌保證 · 近明洞購物</div>
+        </div>
+      </div>
+    </div>
+    <div class="hcard confirmed">
+      <div class="hdate">6/16–6/19 DAY 5–7 ✅</div>
+      <div class="hname">Somerset Palace Seoul</div>
+      <div class="hinfo">安國站 4 分 · 昌德宮旁</div>
+      <span class="hbf bf-ok">✓ 已確認 · 含廚房</span>
+    </div>
+  </div>
+</div>
+
+<section class="map-overview" aria-label="八天地圖行程總覽">
+  <div class="map-shell">
+    <div class="map-head">
+      <div>
+        <div class="map-kicker">8-Day Map Itinerary</div>
+        <h3>首爾八天地圖行程表</h3>
+        <p>用一張概念地圖看懂全程方位：仁川進出、安國鐘路住宿為中心，往西到弘大、往南到首爾大、往東北到高麗大，最後回到仁川機場。</p>
+      </div>
+      <div class="map-legend" aria-label="圖例">
+        <span class="lg flight">機場 / AREX</span>
+        <span class="lg hotel">住宿基準點</span>
+        <span class="lg acad">大學 / 研討會</span>
+        <span class="lg">景點 / 購物</span>
+      </div>
+    </div>
+    <div class="metro-map">
+      <svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="首爾八天概念地圖">
+        <rect x="18" y="18" width="944" height="394" rx="18" fill="#fbfaf7" stroke="#e0ddd5"/>
+        <path d="M80 120 C150 72 238 58 312 96 C392 138 426 112 500 84 C620 38 758 70 880 150" fill="none" stroke="#d9d4c8" stroke-width="16" stroke-linecap="round" opacity=".42"/>
+        <path d="M96 310 C198 250 270 254 368 278 C468 304 550 270 642 220 C720 178 800 190 888 250" fill="none" stroke="#d9d4c8" stroke-width="16" stroke-linecap="round" opacity=".3"/>
+        <path d="M96 312 L232 248 L365 210 L480 188 L616 176 L760 134 L892 96" fill="none" stroke="#9fc5ea" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/>
+        <path d="M362 208 L470 105 L562 160 L648 112 L735 196 L612 300 L480 188" fill="none" stroke="#beb8ef" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M480 188 L338 168 L250 122" fill="none" stroke="#e8c266" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"/>
+        <g font-family="Noto Sans TC, sans-serif" font-weight="700">
+          <g transform="translate(94 312)">
+            <circle r="25" fill="#e8f1fb" stroke="#1761a8" stroke-width="3"/><text y="-2" text-anchor="middle" font-size="18">✈</text><text y="15" text-anchor="middle" font-size="10" fill="#1761a8">仁川</text>
+            <rect x="-26" y="34" width="52" height="20" rx="10" fill="#1761a8"/><text y="48" text-anchor="middle" font-size="10" fill="#fff">D1 / D8</text>
+          </g>
+          <g transform="translate(232 248)">
+            <circle r="23" fill="#e8f1fb" stroke="#1761a8" stroke-width="3"/><text y="1" text-anchor="middle" font-size="17">🚉</text><text y="17" text-anchor="middle" font-size="10" fill="#1761a8">首爾站</text>
+          </g>
+          <g transform="translate(480 188)">
+            <circle r="30" fill="#e6f4f0" stroke="#0f6e56" stroke-width="3"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text y="14" text-anchor="middle" font-size="10" fill="#0f6e56">安國/鐘路</text>
+            <rect x="-58" y="39" width="116" height="22" rx="11" fill="#0f6e56"/><text y="54" text-anchor="middle" font-size="10" fill="#fff">Yaja / Lotte / Somerset</text>
+          </g>
+          <g transform="translate(470 105)">
+            <circle r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🏯</text><text y="16" text-anchor="middle" font-size="10" fill="#0f6e56">景福宮</text>
+            <rect x="-19" y="-45" width="38" height="20" rx="10" fill="#0f6e56"/><text y="-31" text-anchor="middle" font-size="10" fill="#fff">D2</text>
+          </g>
+          <g transform="translate(562 160)">
+            <circle r="24" fill="#eeedfe" stroke="#4a42a8" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🏘</text><text y="16" text-anchor="middle" font-size="10" fill="#4a42a8">北村/仁寺洞</text>
+          </g>
+          <g transform="translate(250 122)">
+            <circle r="24" fill="#fdf6e3" stroke="#b07010" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🎤</text><text y="16" text-anchor="middle" font-size="10" fill="#b07010">弘大</text>
+            <rect x="-19" y="-45" width="38" height="20" rx="10" fill="#b07010"/><text y="-31" text-anchor="middle" font-size="10" fill="#fff">D3</text>
+          </g>
+          <g transform="translate(338 168)">
+            <circle r="24" fill="#fdf6e3" stroke="#b07010" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🛍</text><text y="16" text-anchor="middle" font-size="10" fill="#b07010">明洞</text>
+          </g>
+          <g transform="translate(376 78)">
+            <circle r="24" fill="#fbeaea" stroke="#b03030" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🗼</text><text y="16" text-anchor="middle" font-size="10" fill="#b03030">N首爾塔</text>
+          </g>
+          <g transform="translate(648 112)">
+            <circle r="24" fill="#faeae4" stroke="#993C1D" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🌊</text><text y="16" text-anchor="middle" font-size="10" fill="#993C1D">DDP</text>
+            <rect x="-19" y="-45" width="38" height="20" rx="10" fill="#993C1D"/><text y="-31" text-anchor="middle" font-size="10" fill="#fff">D4</text>
+          </g>
+          <g transform="translate(612 300)">
+            <circle r="25" fill="#eeedfe" stroke="#4a42a8" stroke-width="3"/><text y="-1" text-anchor="middle" font-size="17">🎓</text><text y="16" text-anchor="middle" font-size="10" fill="#4a42a8">首爾大</text>
+          </g>
+          <g transform="translate(760 134)">
+            <circle r="27" fill="#eeedfe" stroke="#4a42a8" stroke-width="3"/><text y="-2" text-anchor="middle" font-size="18">🎓</text><text y="16" text-anchor="middle" font-size="10" fill="#4a42a8">高麗大</text>
+            <rect x="-36" y="-48" width="72" height="20" rx="10" fill="#4a42a8"/><text y="-34" text-anchor="middle" font-size="10" fill="#fff">D5-D7</text>
+          </g>
+          <g transform="translate(892 96)">
+            <circle r="23" fill="#fffae8" stroke="#b07010" stroke-width="3"/><text y="1" text-anchor="middle" font-size="17">🥘</text><text y="17" text-anchor="middle" font-size="10" fill="#b07010">廣藏</text>
+          </g>
+          <g transform="translate(735 196)">
+            <circle r="23" fill="#fbeaea" stroke="#b03030" stroke-width="3"/><text y="1" text-anchor="middle" font-size="17">🍗</text><text y="17" text-anchor="middle" font-size="10" fill="#b03030">梨泰院</text>
+          </g>
+        </g>
+        <g font-family="DM Mono, monospace" font-size="11" fill="#6b6860">
+          <text x="68" y="58">West / Airport</text><text x="430" y="58">Jongno Core</text><text x="733" y="58">University East</text><text x="574" y="352">South: Seoul National University</text>
+        </g>
+      </svg>
+    </div>
+    <div class="map-table-wrap">
+      <table class="map-table">
+        <thead><tr><th>日期</th><th>Day</th><th>區域路線</th><th>主要景點 / 活動</th><th>住宿</th><th>交通提醒</th><th>詳細</th></tr></thead>
+        <tbody>
+          <tr><td data-label="日期">6/12 四</td><td data-label="Day"><span class="day-chip blue">Day 1</span></td><td data-label="區域路線">仁川 → 首爾站 → 安國/鐘路</td><td data-label="主要景點 / 活動">抵達、入住、益善洞夜間散策</td><td data-label="住宿">Yaja 或 Lotte</td><td data-label="交通提醒">AREX 直達快線＋地鐵</td><td data-label="詳細"><button class="jump-btn" onclick="sd(1)">查看</button></td></tr>
+          <tr><td data-label="日期">6/13 五</td><td data-label="Day"><span class="day-chip teal">Day 2</span></td><td data-label="區域路線">景福宮 → 北村 → 廣藏市場</td><td data-label="主要景點 / 活動">歷史核心區、韓屋村、市場小吃</td><td data-label="住宿">Yaja 或 Lotte</td><td data-label="交通提醒">多數步行，少量地鐵</td><td data-label="詳細"><button class="jump-btn" onclick="sd(2)">查看</button></td></tr>
+          <tr><td data-label="日期">6/14 六</td><td data-label="Day"><span class="day-chip amber">Day 3</span></td><td data-label="區域路線">弘大 → 明洞 → N首爾塔</td><td data-label="主要景點 / 活動">購物、燒烤、南山夜景</td><td data-label="住宿">Yaja 或 Lotte</td><td data-label="交通提醒">跨區移動，以地鐵為主</td><td data-label="詳細"><button class="jump-btn" onclick="sd(3)">查看</button></td></tr>
+          <tr><td data-label="日期">6/15 日</td><td data-label="Day"><span class="day-chip coral">Day 4</span></td><td data-label="區域路線">仁寺洞 → 首爾大 → DDP</td><td data-label="主要景點 / 活動">首爾大參訪、東大門夜景</td><td data-label="住宿">Yaja 或 Lotte</td><td data-label="交通提醒">南北移動較長，預留轉乘</td><td data-label="詳細"><button class="jump-btn" onclick="sd(4)">查看</button></td></tr>
+          <tr><td data-label="日期">6/16 一</td><td data-label="Day"><span class="day-chip purple">Day 5</span></td><td data-label="區域路線">換飯店 → 昌德宮 → 高麗大</td><td data-label="主要景點 / 活動">入住 Somerset、高麗大參訪</td><td data-label="住宿">Somerset</td><td data-label="交通提醒">先寄放行李再前往安岩</td><td data-label="詳細"><button class="jump-btn" onclick="sd(5)">查看</button></td></tr>
+          <tr><td data-label="日期">6/17 二</td><td data-label="Day"><span class="day-chip purple">Day 6</span></td><td data-label="區域路線">Somerset → 高麗大 → 景福宮/梨泰院</td><td data-label="主要景點 / 活動">研討會、夜間開放或炸雞</td><td data-label="住宿">Somerset</td><td data-label="交通提醒">通勤固定，晚間依體力調整</td><td data-label="詳細"><button class="jump-btn" onclick="sd(6)">查看</button></td></tr>
+          <tr><td data-label="日期">6/18 三</td><td data-label="Day"><span class="day-chip purple">Day 7</span></td><td data-label="區域路線">Somerset → 高麗大 → 明洞/東大門</td><td data-label="主要景點 / 活動">研討會、最後採購</td><td data-label="住宿">Somerset</td><td data-label="交通提醒">購物後回飯店整理行李</td><td data-label="詳細"><button class="jump-btn" onclick="sd(6)">查看</button></td></tr>
+          <tr><td data-label="日期">6/19 四</td><td data-label="Day"><span class="day-chip red">Day 8</span></td><td data-label="區域路線">昌德宮 → 首爾站 → 仁川</td><td data-label="主要景點 / 活動">晨走、退房、返台</td><td data-label="住宿">退房日</td><td data-label="交通提醒">AREX 回機場，預留退稅時間</td><td data-label="詳細"><button class="jump-btn" onclick="sd(7)">查看</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="nav-wrap">
+  <nav class="day-nav">
+    <button class="dnbtn on" onclick="sd(0)"><span class="dnum">行前準備</span>出發前必讀</button>
+    <button class="dnbtn" onclick="sd(1)"><span class="dnum">Day 1</span>6/12 抵達首爾</button>
+    <button class="dnbtn" onclick="sd(2)"><span class="dnum">Day 2</span>6/13 歷史景點</button>
+    <button class="dnbtn" onclick="sd(3)"><span class="dnum">Day 3</span>6/14 弘大·夜景</button>
+    <button class="dnbtn" onclick="sd(4)"><span class="dnum">Day 4</span>6/15 首爾大參訪</button>
+    <button class="dnbtn" onclick="sd(5)"><span class="dnum">Day 5</span>6/16 高麗大參訪</button>
+    <button class="dnbtn" onclick="sd(6)"><span class="dnum">Day 6–7</span>6/17–18 研討會</button>
+    <button class="dnbtn" onclick="sd(7)"><span class="dnum">Day 8</span>6/19 返台</button>
+    <button class="dnbtn" onclick="sd(8)"><span class="dnum">附錄</span>交通 & 餐廳</button>
+  </nav>
+</div>
+
+<div class="main">
+
+<!-- ═══ 行前準備 ═══ -->
+<div class="dpanel on" id="p-prep">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num" style="font-size:28px">📋</div><div>
+    <div class="dh-date">PRE-TRIP CHECKLIST</div>
+    <div class="dh-title">行前準備 · 出發前必讀</div>
+    <div class="dh-hotel">建議出發前 1–2 週完成以下準備</div>
+  </div></div></div>
+
+  <div class="sec-lbl">📱 必裝 APP</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">地圖導航 · 韓國最準</div><div class="rc-name">Naver Map 네이버 지도</div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國必裝地圖，比 Google Maps 準確數倍。支援大眾運輸換乘、步行、開車導航，中文介面可切換。出發前先下載離線地圖。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://apps.apple.com/tw/app/naver-map-navigation/id311867728" target="_blank">iOS 下載</a>
+        <a class="map-btn" href="https://play.google.com/store/apps/details?id=com.nhn.android.nmap" target="_blank">Android 下載</a>
+      </div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">計程車叫車 · 官方認證</div><div class="rc-name">Kakao T 카카오T</div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國最大叫車 APP，類似台灣的 Line Taxi。可用信用卡付款，深夜或行李多時超方便。需先用手機號碼註冊。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://apps.apple.com/tw/app/kakao-t/id981110422" target="_blank">iOS 下載</a>
+        <a class="map-btn" href="https://play.google.com/store/apps/details?id=com.kakao.taxi" target="_blank">Android 下載</a>
+      </div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">即時翻譯 · 相機翻拍</div><div class="rc-name">Papago 파파고</div></div>
+      <div class="rc-bd"><p class="rc-desc">Naver 出品的翻譯 APP，韓中翻譯精準度遠超 Google 翻譯。相機翻拍菜單功能超實用，點餐必備。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://apps.apple.com/tw/app/naver-papago-ai-translator/id1147874819" target="_blank">iOS 下載</a>
+        <a class="map-btn" href="https://play.google.com/store/apps/details?id=com.naver.labs.translator" target="_blank">Android 下載</a>
+      </div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">餐廳訂位 · 韓國本地</div><div class="rc-name">Naver 예약 / Catch Table</div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國熱門餐廳可用 Naver 預約或 Catch Table APP 訂位。Kyochon Pilbang 等人氣店強烈建議提前訂位，現場排隊等很久。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://apps.apple.com/kr/app/catch-table/id1534626784" target="_blank">Catch Table iOS</a>
+      </div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">匯率查詢 · 即時換算</div><div class="rc-name">XE Currency / 韓元換算</div></div>
+      <div class="rc-bd"><p class="rc-desc">購物前快速換算台幣與韓元匯率。韓元（KRW）以萬為單位，消費金額大，建議隨時換算避免花超預算。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://apps.apple.com/tw/app/xe-currency/id315241195" target="_blank">XE App</a>
+        <a class="rec-btn" href="https://www.google.com/search?q=台幣+韓元+匯率" target="_blank">即時匯率查詢</a>
+      </div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">景點票券 · 省錢必備</div><div class="rc-name">Klook / KKday</div></div>
+      <div class="rc-bd"><p class="rc-desc">提前在 Klook 或 KKday 購買景福宮夜間開放、N首爾塔纜車、南山纜車等票券，比現場便宜且不用排隊。</p>
+      <div class="rec-wrap">
+        <a class="map-btn" href="https://www.klook.com/zh-TW/city/3-seoul-things-to-do/" target="_blank">Klook 首爾</a>
+        <a class="map-btn" href="https://www.kkday.com/zh-tw/city/16974" target="_blank">KKday 首爾</a>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">💱 換錢策略</div>
+  <table class="itable">
+    <thead><tr><th>方式</th><th>說明</th><th>建議</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>韓國當地換錢所</td><td><span class="ev-name">明洞換錢街 匯率最優</span><div class="ev-note">明洞地鐵站出口附近有多家換錢所，匯率比台灣銀行好 2–5%。「율도국 환전소」口碑最好</div></td><td class="cost pw">✅ 強烈推薦</td></tr>
+      <tr class="hi"><td>機場換錢</td><td><span class="ev-name">仁川機場入境大廳 KEB 銀行</span><div class="ev-note">匯率略差於市區，但建議先換少量（₩50,000–100,000）應急，買T-money卡用</div></td><td class="cost pw">✅ 先換少量</td></tr>
+      <tr><td>台灣銀行預約</td><td><span class="ev-name">台灣銀行 / 兆豐銀行 提前預約</span><div class="ev-note">大額可提前預約，匯率尚可，需攜帶護照，出發前 2–3 天辦理</div></td><td class="cost pm">△ 備用方案</td></tr>
+      <tr class="wa"><td>機場 ATM 提款</td><td><span class="ev-name">使用國際金融卡提韓元</span><div class="ev-note">手續費高（每次 ₩3,000–5,000），匯率差，不建議作為主要換錢方式</div></td><td class="cost pn">✗ 不建議</td></tr>
+      <tr><td>信用卡</td><td><span class="ev-name">Visa / Mastercard 大部分可刷</span><div class="ev-note">景點、餐廳、便利商店、百貨均可刷。建議備有免手續費的海外刷卡信用卡（如玉山 Wask、台新 Richi）</div></td><td class="cost pw">✅ 搭配使用</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">🌐 網路方案</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">最推薦 · 個人使用</div><div class="rc-name">韓國 SIM 卡（預付上網卡）</div></div>
+      <div class="rc-bd"><p class="rc-desc">建議提前在台灣網站（Klook、KKday、樂天）訂好，機場取卡即插即用。7天吃到飽約 NT$300–500，最划算。插卡後記得重啟飛航模式。</p>
+        <div class="rec-wrap">
+          <a class="map-btn" href="https://www.klook.com/zh-TW/activity/6812-korea-sim-card-incheon-airport/" target="_blank">Klook SIM 卡</a>
+          <a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=SIM+網路" target="_blank">PTT 推薦文</a>
+        </div>
+      </div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">多人共用 · 懶人方案</div><div class="rc-name">Pocket WiFi 隨身分享器</div></div>
+      <div class="rc-bd"><p class="rc-desc">2–3 人同行可考慮，仁川機場入境大廳取還機。速度穩定，但需隨身攜帶充電，電量是缺點。每日約 NT$80–150。</p>
+        <div class="rec-wrap">
+          <a class="map-btn" href="https://www.kkday.com/zh-tw/product/1695" target="_blank">KKday WiFi</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">✅ 出發前確認清單</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>說明</th><th>狀態</th></tr></thead>
+    <tbody>
+      <tr><td>🛂 護照</td><td><span class="ev-name">有效期需剩餘 6 個月以上</span><div class="ev-note">台灣護照入境韓國免簽，無需事先申請 K-ETA（2024年起恢復免簽）</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="hi"><td>🏨 訂房</td><td><span class="ev-name">Hotel Yaja 或 Lotte City（擇一）+ Somerset Palace</span><div class="ev-note">6月韓國旅遊旺季，建議提前 1–2 個月在 Booking.com / Agoda 訂房</div></td><td class="cost z">□ 確認</td></tr>
+      <tr><td>✈ 機票</td><td><span class="ev-name">大韓航空 KE · 去程 13:20 / 回程 16:10</span><div class="ev-note">行李額度確認、網路 Check-in（起飛前 24H 開放）</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="am"><td>🎟 景福宮夜間</td><td><span class="ev-name">6月夜間開放需提前線上預約</span><div class="ev-note">官網搶票，名額有限，建議出發前 1 個月開始關注開票日期</div></td><td class="cost z">□ 確認</td></tr>
+      <tr><td>📱 APP 安裝</td><td><span class="ev-name">Naver Map · Kakao T · Papago</span><div class="ev-note">在台灣先下載，並登入帳號測試，避免到韓國才慌亂設定</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="hi"><td>💳 信用卡</td><td><span class="ev-name">備妥海外免手續費信用卡</span><div class="ev-note">玉山 Wask / 台新 Richi / 國泰 Cube 等，海外消費回饋高且免手續費</div></td><td class="cost z">□ 確認</td></tr>
+      <tr><td>☂ 天氣準備</td><td><span class="ev-name">6月首爾 25–32°C · 梅雨季</span><div class="ev-note">帶輕便折疊雨傘或薄雨衣，防曬乳必備，UV 指數高</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="bl"><td>🌐 網路方案</td><td><span class="ev-name">提前訂好 SIM 卡或 Pocket WiFi</span><div class="ev-note">仁川機場入境大廳取卡，插卡重啟即用，確認手機是否支援韓國頻段</div></td><td class="cost z">□ 確認</td></tr>
+      <tr><td>💱 換錢</td><td><span class="ev-name">先備少量韓元（₩100,000 左右）</span><div class="ev-note">機場換少量應急，大額換錢到明洞換錢街匯率更好</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="am"><td>🎓 研討會</td><td><span class="ev-name">高麗大學研討會 6/16–18 相關資料確認</span><div class="ev-note">確認參訪邀請函、議程、聯絡人、場地地址（6號線安岩站）</div></td><td class="cost z">□ 確認</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ib ib-g">💡 小提醒：韓國便利商店（GS25、CU、7-Eleven）24H 營業，販售熱食、ATM、充電線等，是旅途中的最佳補給站。T-money 卡可在便利商店購買並充值，建議一入境就買！</div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">防曬乳 SPF50+</div><div class="shop-where">📍 台灣出發前買</div><div class="shop-desc">6月首爾紫外線強，韓國購買較貴，建議台灣帶足</div><span class="shop-price">NT$150–400</span></div><div class="shop-card"><div class="shop-emoji">🌂</div><div class="shop-name">折疊晴雨傘</div><div class="shop-where">📍 台灣出發前買</div><div class="shop-desc">梅雨季必備，輕薄折疊款最方便</div><span class="shop-price">NT$100–300</span></div><div class="shop-card"><div class="shop-emoji">💊</div><div class="shop-name">常備藥品</div><div class="shop-where">📍 台灣藥局</div><div class="shop-desc">腸胃藥、感冒藥、暈車藥，韓國藥局語言不通較麻煩</div><span class="shop-price">自備</span></div><div class="shop-card"><div class="shop-emoji">👟</div><div class="shop-name">舒適走路鞋</div><div class="shop-where">📍 台灣出發前買</div><div class="shop-desc">首爾景點多需走路，每天步行 8,000–15,000 步，鞋要緊！</div><span class="shop-price">依品牌</span></div><div class="shop-card"><div class="shop-emoji">🔌</div><div class="shop-name">萬用轉接頭</div><div class="shop-where">📍 台灣3C店</div><div class="shop-desc">韓國插頭為圓形雙孔（C型），需帶轉接頭</div><span class="shop-price">NT$50–150</span></div><div class="shop-card"><div class="shop-emoji">💳</div><div class="shop-name">海外無手續費信用卡</div><div class="shop-where">📍 台灣銀行申辦</div><div class="shop-desc">玉山Wask、台新Richi、國泰Cube 回饋高又免手續費</div><span class="shop-price">提前申辦</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 1 ═══ -->
+<div class="dpanel" id="p0">
+  <div class="day-hd blue"><div class="dh-flex"><div class="dh-num">01</div><div>
+    <div class="dh-date">JUN 12 (THU) 2025</div>
+    <div class="dh-title">台灣 → 仁川機場 → 首爾 · 傍晚抵達</div>
+    <div class="dh-hotel">擇一：Hotel Yaja Jongno 或 Lotte City Myeongdong</div>
+  </div></div></div>
+
+  <div class="ib ib-b">✈ 大韓航空 KE · 台灣桃園 13:20 起飛 → 仁川 ICN 16:50 抵達 · 飛行約 2 小時 30 分</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 1 本日方位圖</div><div class="day-map-note">今天是由西側仁川機場進首爾市中心，先到首爾站，再往北側安國/鐘路住宿區移動。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="54" y="55" fill="#8a867d" font-size="11">西側機場圈</text><text x="294" y="55" fill="#8a867d" font-size="11">市中心轉乘</text><text x="498" y="55" fill="#8a867d" font-size="11">鐘路住宿圈</text>
+      <path class="map-line blue" d="M92 194 C190 190 248 160 318 150 S462 132 555 100"/>
+      <g class="pin" transform="translate(92 194)"><circle r="27" fill="#e8f1fb" stroke="#1761a8"/><text y="-3" text-anchor="middle" font-size="18">✈</text><text class="lbl" y="15" text-anchor="middle" fill="#1761a8">仁川</text><text class="sub" y="42" text-anchor="middle">16:50</text></g>
+      <g class="pin" transform="translate(318 150)"><circle r="25" fill="#e8f1fb" stroke="#1761a8"/><text y="-2" text-anchor="middle" font-size="17">🚉</text><text class="lbl" y="15" text-anchor="middle" fill="#1761a8">首爾站</text><text class="sub" y="40" text-anchor="middle">AREX 43分</text></g>
+      <g class="pin" transform="translate(555 100)"><circle r="28" fill="#e6f4f0" stroke="#0f6e56"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">安國住宿</text><text class="sub" y="43" text-anchor="middle">Yaja / Lotte</text></g>
+      <g class="pin" transform="translate(610 168)"><circle r="24" fill="#eeedfe" stroke="#4a42a8"/><text y="-2" text-anchor="middle" font-size="17">🏮</text><text class="lbl" y="15" text-anchor="middle" fill="#4a42a8">益善洞</text><text class="sub" y="40" text-anchor="middle">步行散策</text></g>
+    </svg>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-title">Day 1 移動路線</div>
+    <svg viewBox="0 0 740 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="55" cy="52" r="26" fill="#e8f1fb" stroke="#1761a8" stroke-width="2"/>
+      <text x="55" y="47" text-anchor="middle" font-size="17">✈</text>
+      <text x="55" y="62" text-anchor="middle" font-size="8.5" fill="#1761a8" font-weight="600">仁川機場</text>
+      <text x="55" y="88" text-anchor="middle" font-size="8" fill="#888">16:50 抵達</text>
+      <line x1="83" y1="52" x2="178" y2="52" stroke="#b5d4f4" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="178,48 186,52 178,56" fill="#b5d4f4"/>
+      <text x="133" y="41" text-anchor="middle" font-size="8.5" fill="#1761a8" font-weight="500">AREX 直達快線</text>
+      <text x="133" y="52" text-anchor="middle" font-size="8" fill="#888">約 43 分</text>
+      <text x="133" y="62" text-anchor="middle" font-size="8" fill="#0a6644">₩9,500</text>
+      <circle cx="215" cy="52" r="26" fill="#e8f1fb" stroke="#1761a8" stroke-width="2"/>
+      <text x="215" y="47" text-anchor="middle" font-size="17">🚉</text>
+      <text x="215" y="62" text-anchor="middle" font-size="8.5" fill="#1761a8" font-weight="600">首爾站</text>
+      <text x="215" y="88" text-anchor="middle" font-size="8" fill="#888">換地鐵1號線</text>
+      <line x1="243" y1="52" x2="338" y2="52" stroke="#b5d4f4" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="338,48 346,52 338,56" fill="#b5d4f4"/>
+      <text x="293" y="41" text-anchor="middle" font-size="8.5" fill="#888">地鐵1號線</text>
+      <text x="293" y="52" text-anchor="middle" font-size="8" fill="#888">約 10 分</text>
+      <circle cx="375" cy="52" r="26" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="375" y="47" text-anchor="middle" font-size="17">🏨</text>
+      <text x="375" y="62" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">Hotel Yaja</text>
+      <text x="375" y="88" text-anchor="middle" font-size="8" fill="#888">安國站附近</text>
+      <line x1="403" y1="52" x2="498" y2="52" stroke="#a0d4be" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="498,48 506,52 498,56" fill="#a0d4be"/>
+      <text x="452" y="46" text-anchor="middle" font-size="8.5" fill="#888">步行 10 分</text>
+      <circle cx="535" cy="52" r="26" fill="#eeedfe" stroke="#4a42a8" stroke-width="2"/>
+      <text x="535" y="47" text-anchor="middle" font-size="17">🏮</text>
+      <text x="535" y="62" text-anchor="middle" font-size="8.5" fill="#4a42a8" font-weight="600">益善洞胡同</text>
+      <text x="535" y="88" text-anchor="middle" font-size="8" fill="#888">夜晚散策</text>
+      <line x1="563" y1="52" x2="648" y2="52" stroke="#c8c4e8" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="648,48 656,52 648,56" fill="#c8c4e8"/>
+      <circle cx="680" cy="52" r="26" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="680" y="47" text-anchor="middle" font-size="17">🍜</text>
+      <text x="680" y="62" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">街頭晚餐</text>
+      <text x="680" y="88" text-anchor="middle" font-size="8" fill="#888">韓式定食</text>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 1 行程時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="bl"><td>13:20</td><td><span class="ev-name">✈ 台灣桃園機場起飛</span><div class="ev-note"><span class="pill p-tr">大韓航空 KE</span> 建議提前 2 小時到機場</div></td><td>桃園 TPE</td><td class="cost z">—</td></tr>
+      <tr class="wa"><td>16:50</td><td><span class="ev-name">抵達仁川國際機場</span><div class="ev-note">入境 → 購買 T-money 交通卡（便利商店）→ 取行李</div></td><td>仁川 ICN T2</td><td class="cost z">免費</td></tr>
+      <tr><td>17:30</td><td><span class="ev-name">AREX 直達快線 → 首爾站</span><div class="ev-note"><span class="pill p-tr">機場快線</span> 仁川→首爾站 直達約 43 分，班次頻繁</div></td><td>AREX 快線</td><td class="cost">₩9,500</td></tr>
+      <tr><td>18:30</td><td><span class="ev-name">首爾站換地鐵 → 安國站</span><div class="ev-note"><span class="pill p-tr">1號線→3號線</span> 到安國站，步行至 Hotel Yaja Jongno</div></td><td>地鐵 3號線</td><td class="cost">₩1,500</td></tr>
+      <tr class="hi"><td>19:00</td><td><span class="ev-name">入住 Hotel Yaja Jongno</span><div class="ev-note">放行李、稍作休息，飯店備有 24H 免費零食飲料</div></td><td>鐘路區</td><td class="cost z">—</td></tr>
+      <tr><td>20:00</td><td><span class="ev-name">益善洞胡同夜間散策</span><div class="ev-note"><span class="pill p-wk">步行</span> 安國站附近，韓屋改裝咖啡廳、復古小店，夜晚氛圍迷人</div></td><td>益善洞 Ikseon-dong</td><td class="cost z">自由</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">晚餐推薦（益善洞周邊）</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">KOREAN · 韓式定食【輕鬆入門】</div><div class="rc-name">益善洞 韓屋餐廳</div><div class="rc-meta"><span class="rc-r">4.3</span><span class="rc-p">₩12,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">韓屋改裝的傳統餐廳，白飯定食附多種小菜，旅行第一頓就從正統韓食開始。</p></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">CONVENIENCE · 便利商店【省時省力】</div><div class="rc-name">GS25 / CU 便利商店</div><div class="rc-meta"><span class="rc-r">4.0</span><span class="rc-p">₩5,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國便利商店超強大！熱食泡麵、飯糰、炸物、啤酒應有盡有，第一天行李多可省事在此解決。</p></div>
+    </div>
+  </div>
+  <div class="ib ib-g">💡 T-money 交通卡購買地點：仁川機場入境大廳便利商店（GS25、CU、7-Eleven 皆有），購卡費 ₩2,500，儲值後可搭地鐵、公車、甚至在便利商店消費。建議一入境就買！</div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🍜</div><div class="shop-name">農心辛拉麵／짜파게티</div><div class="shop-where">📍 GS25 / CU 便利商店</div><div class="shop-desc">韓國元祖級泡麵，台灣價格貴 3 倍，多買幾包帶回</div><span class="shop-price">₩600–800/包</span></div><div class="shop-card"><div class="shop-emoji">🧃</div><div class="shop-name">乳酸菌飲料 닥터캡슐</div><div class="shop-where">📍 GS25 / CU 便利商店</div><div class="shop-desc">韓國熱賣腸胃益生菌飲料，口感像養樂多但更濃</div><span class="shop-price">₩800</span></div><div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">꼬깔콘 可樂果玉米脆片</div><div class="shop-where">📍 GS25 / CU 便利商店</div><div class="shop-desc">韓國版可樂果，多種口味，甜辣口最受台灣人歡迎</div><span class="shop-price">₩1,500</span></div><div class="shop-card"><div class="shop-emoji">🕯</div><div class="shop-name">益善洞 手工蠟燭 / 香氛</div><div class="shop-where">📍 益善洞咖啡街小店</div><div class="shop-desc">韓屋街獨立品牌，設計感強，自用送禮皆宜</div><span class="shop-price">₩12,000–30,000</span></div><div class="shop-card"><div class="shop-emoji">📮</div><div class="shop-name">益善洞 手繪明信片</div><div class="shop-where">📍 益善洞文創小店</div><div class="shop-desc">首爾在地插畫家作品，獨一無二的旅行紀念</div><span class="shop-price">₩2,000–5,000</span></div><div class="shop-card"><div class="shop-emoji">🫧</div><div class="shop-name">韓國 燒酒 참이슬 / 하이트</div><div class="shop-where">📍 便利商店</div><div class="shop-desc">初露（참이슬）、真露等，便利商店最便宜，帶一瓶回台嚐嚐</div><span class="shop-price">₩1,800–2,500</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 2 ═══ -->
+<div class="dpanel" id="p1">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num">02</div><div>
+    <div class="dh-date">JUN 13 (FRI) 2025</div>
+    <div class="dh-title">景福宮 · 北村韓屋 · 廣藏市場</div>
+    <div class="dh-hotel">擇一飯店 · 連住</div>
+  </div></div></div>
+
+  <div class="ib ib-g">⭐ 今日重點 — 首爾歷史核心區，景福宮→北村韓屋村→廣藏市場，全部步行或一站地鐵可達！</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 2 本日方位圖</div><div class="day-map-note">活動集中在安國/鐘路北側，景福宮、北村和益善洞都很近，最後往東到廣藏市場。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="70" y="55" fill="#8a867d" font-size="11">北側宮殿區</text><text x="290" y="55" fill="#8a867d" font-size="11">安國韓屋區</text><text x="555" y="55" fill="#8a867d" font-size="11">東側市場區</text>
+      <path class="map-line teal" d="M135 100 C222 88 262 120 312 145 S414 170 520 180"/>
+      <g class="pin" transform="translate(135 100)"><circle r="27" fill="#e6f4f0" stroke="#0f6e56"/><text y="-3" text-anchor="middle" font-size="18">🏯</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">景福宮</text><text class="sub" y="42" text-anchor="middle">09:00</text></g>
+      <g class="pin" transform="translate(312 145)"><circle r="26" fill="#e6f4f0" stroke="#0f6e56"/><text y="-3" text-anchor="middle" font-size="18">🏘</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">北村</text><text class="sub" y="41" text-anchor="middle">步行</text></g>
+      <g class="pin" transform="translate(245 210)"><circle r="24" fill="#fdf6e3" stroke="#b07010"/><text y="-2" text-anchor="middle" font-size="17">🍲</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">土俗村</text><text class="sub" y="40" text-anchor="middle">午餐</text></g>
+      <g class="pin" transform="translate(410 114)"><circle r="24" fill="#eeedfe" stroke="#4a42a8"/><text y="-2" text-anchor="middle" font-size="17">🏮</text><text class="lbl" y="15" text-anchor="middle" fill="#4a42a8">益善洞</text></g>
+      <g class="pin" transform="translate(520 180)"><circle r="27" fill="#fdf6e3" stroke="#b07010"/><text y="-3" text-anchor="middle" font-size="18">🥘</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">廣藏市場</text><text class="sub" y="42" text-anchor="middle">16:00</text></g>
+      <g class="pin" transform="translate(348 82)"><circle r="20" fill="#e6f4f0" stroke="#0f6e56"/><text y="2" text-anchor="middle" font-size="15">🏨</text><text class="sub" y="-28" text-anchor="middle">住宿基準點</text></g>
+    </svg>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-title">Day 2 移動路線</div>
+    <svg viewBox="0 0 800 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="48" cy="52" r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="48" y="47" text-anchor="middle" font-size="16">🏯</text>
+      <text x="48" y="61" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">景福宮</text>
+      <text x="48" y="88" text-anchor="middle" font-size="8" fill="#888">09:00 · 3號線</text>
+      <line x1="74" y1="52" x2="158" y2="52" stroke="#a0d4be" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="158,48 166,52 158,56" fill="#a0d4be"/>
+      <text x="117" y="44" text-anchor="middle" font-size="8.5" fill="#888">步行 15 分</text>
+      <circle cx="196" cy="52" r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="196" y="47" text-anchor="middle" font-size="16">🏘</text>
+      <text x="196" y="61" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">北村韓屋</text>
+      <text x="196" y="88" text-anchor="middle" font-size="8" fill="#888">11:00</text>
+      <line x1="222" y1="52" x2="306" y2="52" stroke="#a0d4be" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="306,48 314,52 306,56" fill="#a0d4be"/>
+      <text x="265" y="44" text-anchor="middle" font-size="8.5" fill="#888">步行 5 分</text>
+      <circle cx="344" cy="52" r="24" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="344" y="47" text-anchor="middle" font-size="16">🍲</text>
+      <text x="344" y="61" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">土俗村蔘雞湯</text>
+      <text x="344" y="88" text-anchor="middle" font-size="8" fill="#888">13:00 午餐</text>
+      <line x1="370" y1="52" x2="454" y2="52" stroke="#f0c060" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="454,48 462,52 454,56" fill="#f0c060"/>
+      <text x="413" y="44" text-anchor="middle" font-size="8.5" fill="#888">步行 10 分</text>
+      <circle cx="490" cy="52" r="24" fill="#eeedfe" stroke="#4a42a8" stroke-width="2"/>
+      <text x="490" y="47" text-anchor="middle" font-size="16">🏮</text>
+      <text x="490" y="61" text-anchor="middle" font-size="8.5" fill="#4a42a8" font-weight="600">益善洞胡同</text>
+      <text x="490" y="88" text-anchor="middle" font-size="8" fill="#888">14:30 咖啡</text>
+      <line x1="516" y1="52" x2="600" y2="52" stroke="#c8c4e8" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="600,48 608,52 600,56" fill="#c8c4e8"/>
+      <text x="559" y="44" text-anchor="middle" font-size="8.5" fill="#888">地鐵 1 站</text>
+      <circle cx="636" cy="52" r="24" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="636" y="47" text-anchor="middle" font-size="16">🥘</text>
+      <text x="636" y="61" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">廣藏市場</text>
+      <text x="636" y="88" text-anchor="middle" font-size="8" fill="#888">16:00 晚餐</text>
+      <circle cx="756" cy="52" r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="756" y="47" text-anchor="middle" font-size="16">🏨</text>
+      <text x="756" y="61" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">返回 Yaja</text>
+      <text x="756" y="88" text-anchor="middle" font-size="8" fill="#888">20:00</text>
+      <line x1="662" y1="52" x2="730" y2="52" stroke="#a0d4be" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="730,48 738,52 730,56" fill="#a0d4be"/>
+      <text x="697" y="44" text-anchor="middle" font-size="8.5" fill="#888">地鐵 10 分</text>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 2 行程時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>09:00</td><td><span class="ev-name">🏯 景福宮 參觀</span><div class="ev-note"><span class="pill p-tr">3號線 景福宮站</span> 週二休 · 建議早去人少 · 穿韓服免費入場</div></td><td>景福宮站步行 5 分</td><td class="cost">₩3,000</td></tr>
+      <tr><td>11:00</td><td><span class="ev-name">🏘 北村韓屋村 散策</span><div class="ev-note"><span class="pill p-wk">步行</span> 保留完整的朝鮮時代韓屋聚落 · 住宅區請保持安靜</div></td><td>安國站步行 5 分</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>13:00</td><td><span class="ev-name">🍲 午餐：土俗村蔘雞湯 Tosokchon</span><div class="ev-note"><span class="pill p-food">百年老店</span> ⭐4.2 · 人參雞湯補元氣 · 可能需要排隊，建議早到</div></td><td>景福宮旁</td><td class="cost">₩18,000</td></tr>
+      <tr><td>14:30</td><td><span class="ev-name">🏮 益善洞胡同 咖啡廳</span><div class="ev-note"><span class="pill p-wk">步行</span> 韓屋改裝的精品咖啡廳 · 拍照聖地 · 下午最美</div></td><td>鐘路3街站</td><td class="cost">₩7,000</td></tr>
+      <tr class="hi"><td>16:00</td><td><span class="ev-name">🥘 廣藏市場 掃攤</span><div class="ev-note"><span class="pill p-tr">1號線 鐘路5街站</span> Netflix 介紹名店 · 綠豆煎餅、生牛肉拌飯必吃</div></td><td>廣藏市場</td><td class="cost">₩10,000</td></tr>
+      <tr><td>19:00</td><td><span class="ev-name">返回飯店休息</span><div class="ev-note">飯店備有 24H 免費零食，輕鬆收尾</div></td><td>Hotel Yaja Jongno</td><td class="cost z">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">景點 & 餐廳</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">PALACE · 朝鮮王朝宮殿</div><div class="rc-name">景福宮 Gyeongbokgung</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">₩3,000</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">15世紀朝鮮王朝的正宮，穿著韓服可免費入場。週二公休，建議 09:00 前到避開人潮。守衛換班儀式時間值得等待。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EA%B2%BD%EB%B3%B5%EA%B6%81" target="_blank">Naver Map · 경복궁</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E6%99%AF%E7%A6%8F%E5%AE%AE" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E6%99%AF%E7%A6%8F%E5%AE%AE%20%E9%A6%96%E7%88%BE" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">VILLAGE · UNESCO世界遺產區</div><div class="rc-name">北村韓屋村 Bukchon</div><div class="rc-meta"><span class="rc-r">4.4</span><span class="rc-p">免費</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">600年歷史的韓屋聚落，保留完整的朝鮮時代建築。最佳拍照時間為早上10:00前。住宅區，請安靜參觀。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EB%B6%81%EC%B4%8C%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84" target="_blank">Naver Map · 북촌한옥마을</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E5%8C%97%E6%9D%91%20%E9%9F%93%E5%B1%8B" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%8C%97%E6%9D%91%E9%9F%93%E5%B1%8B%E6%9D%91" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">RESTAURANT · 百年蔘雞湯</div><div class="rc-name">土俗村蔘雞湯 Tosokchon</div><div class="rc-meta"><span class="rc-r">4.2</span><span class="rc-p">₩18,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">首爾最著名的蔘雞湯老店，整隻雞燉入糯米、人參、紅棗，湯頭濃郁。排隊快、翻桌快，不用太擔心等太久。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%EC%82%BC%EA%B3%84%ED%83%95" target="_blank">Naver Map · 토속촌삼계탕</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%ED%86%A0%EC%86%8D%EC%B4%8C%20%E8%94%98%E9%9B%9E%E6%B9%AF" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%9C%9F%E4%BF%97%E6%9D%91%20%E8%94%98%E9%9B%9E%E6%B9%AF" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">MARKET · Netflix 介紹名場</div><div class="rc-name">廣藏市場 Gwangjang</div><div class="rc-meta"><span class="rc-r">4.2</span><span class="rc-p">₩5,000–10,000</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">首爾最古老的市集，必吃：綠豆煎餅（녹두전）、生牛肉拌飯（육회비빔밥）。Netflix 紀錄片介紹加持，下午較旺。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank">Naver Map · 광장시장</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E5%BB%A3%E8%97%8F%E5%B8%82%E5%A0%B4" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%BB%A3%E8%97%8F%E5%B8%82%E5%A0%B4" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🏮</div><div class="shop-name">韓紙 & 韓紙文具</div><div class="shop-where">📍 仁寺洞 쌈지길</div><div class="shop-desc">傳統韓紙製成的筆記本、信封袋，輕薄好攜帶，超美的文化伴手禮</div><span class="shop-price">₩3,000–15,000</span></div><div class="shop-card"><div class="shop-emoji">🫙</div><div class="shop-name">韓國傳統茶 & 茶禮盒</div><div class="shop-where">📍 仁寺洞茶館</div><div class="shop-desc">玄米茶、五味子茶、柚子茶等，精美禮盒包裝，送長輩最適合</div><span class="shop-price">₩8,000–25,000</span></div><div class="shop-card"><div class="shop-emoji">🥢</div><div class="shop-name">高級陶瓷餐具</div><div class="shop-where">📍 仁寺洞精品店</div><div class="shop-desc">韓式白瓷碗盤、茶杯，設計質感高，比台灣便宜許多</div><span class="shop-price">₩15,000–50,000</span></div><div class="shop-card"><div class="shop-emoji">🧣</div><div class="shop-name">廣藏市場 絲綢布料</div><div class="shop-where">📍 廣藏市場布料區</div><div class="shop-desc">頂樓有大量布料販售，品質好價格實惠，買布回台製作衣服</div><span class="shop-price">₩5,000/m起</span></div><div class="shop-card"><div class="shop-emoji">🎎</div><div class="shop-name">景福宮 宮廷紀念品</div><div class="shop-where">📍 景福宮紀念品店</div><div class="shop-desc">韓服娃娃、宮廷圖案馬克杯、傳統扇子，獨特且具有文化意涵</div><span class="shop-price">₩3,000–20,000</span></div><div class="shop-card"><div class="shop-emoji">🌿</div><div class="shop-name">韓國蜂蜜 & 人參</div><div class="shop-where">📍 仁寺洞 / 市場</div><div class="shop-desc">野花蜂蜜、6年根人參、紅蔘茶包，保健養生伴手禮首選</div><span class="shop-price">₩15,000–80,000</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 3 ═══ -->
+<div class="dpanel" id="p2">
+  <div class="day-hd amber"><div class="dh-flex"><div class="dh-num">03</div><div>
+    <div class="dh-date">JUN 14 (SAT) 2025</div>
+    <div class="dh-title">弘大 · 明洞購物 · N首爾塔夜景</div>
+    <div class="dh-hotel">擇一飯店 · 連住</div>
+  </div></div></div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 3 本日方位圖</div><div class="day-map-note">今天跨區較明顯：先往西到弘大，再回中區明洞，傍晚往南山上看夜景。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="82" y="55" fill="#8a867d" font-size="11">西側潮流區</text><text x="365" y="55" fill="#8a867d" font-size="11">中區購物</text><text x="510" y="238" fill="#8a867d" font-size="11">南山夜景</text>
+      <path class="map-line amber" d="M132 140 C250 112 340 128 442 142 S552 170 572 220"/>
+      <g class="pin" transform="translate(132 140)"><circle r="28" fill="#fdf6e3" stroke="#b07010"/><text y="-4" text-anchor="middle" font-size="18">🎤</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">弘大</text><text class="sub" y="43" text-anchor="middle">11:00</text></g>
+      <g class="pin" transform="translate(442 142)"><circle r="28" fill="#fdf6e3" stroke="#b07010"/><text y="-4" text-anchor="middle" font-size="18">🛍</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">明洞</text><text class="sub" y="43" text-anchor="middle">14:00</text></g>
+      <g class="pin" transform="translate(572 220)"><circle r="28" fill="#fbeaea" stroke="#b03030"/><text y="-4" text-anchor="middle" font-size="18">🗼</text><text class="lbl" y="15" text-anchor="middle" fill="#b03030">N首爾塔</text><text class="sub" y="43" text-anchor="middle">18:30</text></g>
+      <g class="pin" transform="translate(315 85)"><circle r="22" fill="#e6f4f0" stroke="#0f6e56"/><text y="2" text-anchor="middle" font-size="15">🏨</text><text class="sub" y="-30" text-anchor="middle">住宿：安國/明洞</text></g>
+      <g class="pin" transform="translate(180 205)"><circle r="22" fill="#fbeaea" stroke="#b03030"/><text y="2" text-anchor="middle" font-size="15">🥩</text><text class="sub" y="36" text-anchor="middle">弘大午餐</text></g>
+    </svg>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-title">Day 3 移動路線</div>
+    <svg viewBox="0 0 640 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="55" cy="52" r="24" fill="#faeae4" stroke="#993C1D" stroke-width="2"/>
+      <text x="55" y="47" text-anchor="middle" font-size="16">🎤</text>
+      <text x="55" y="61" text-anchor="middle" font-size="8.5" fill="#993C1D" font-weight="600">弘大</text>
+      <text x="55" y="88" text-anchor="middle" font-size="8" fill="#888">11:00 購物</text>
+      <line x1="81" y1="52" x2="168" y2="52" stroke="#f0c4a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="168,48 176,52 168,56" fill="#f0c4a0"/>
+      <text x="125" y="42" text-anchor="middle" font-size="8.5" fill="#888">地鐵</text>
+      <text x="125" y="54" text-anchor="middle" font-size="8" fill="#0a6644">₩1,500</text>
+      <circle cx="204" cy="52" r="24" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="204" y="47" text-anchor="middle" font-size="16">🛍</text>
+      <text x="204" y="61" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">明洞</text>
+      <text x="204" y="88" text-anchor="middle" font-size="8" fill="#888">14:00 購物</text>
+      <line x1="230" y1="52" x2="314" y2="52" stroke="#f0c060" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="314,48 322,52 314,56" fill="#f0c060"/>
+      <text x="274" y="42" text-anchor="middle" font-size="8.5" fill="#888">步行</text>
+      <text x="274" y="54" text-anchor="middle" font-size="8" fill="#888">或纜車</text>
+      <circle cx="350" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="350" y="47" text-anchor="middle" font-size="16">🗼</text>
+      <text x="350" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">N首爾塔</text>
+      <text x="350" y="88" text-anchor="middle" font-size="8" fill="#888">18:30 夕陽</text>
+      <line x1="376" y1="52" x2="460" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="460,48 468,52 460,56" fill="#f0a0a0"/>
+      <circle cx="496" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="496" y="47" text-anchor="middle" font-size="16">🍗</text>
+      <text x="496" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">燒烤晚餐</text>
+      <text x="496" y="88" text-anchor="middle" font-size="8" fill="#888">21:00</text>
+      <line x1="522" y1="52" x2="596" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="596,48 604,52 596,56" fill="#f0a0a0"/>
+      <circle cx="624" cy="52" r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="624" y="47" text-anchor="middle" font-size="14">🏨</text>
+      <text x="624" y="61" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">返回飯店</text>
+      <text x="624" y="88" text-anchor="middle" font-size="8" fill="#888">22:00</text>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 3 行程時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>11:00</td><td><span class="ev-name">🎤 弘大街 Hongdae 逛街</span><div class="ev-note"><span class="pill p-tr">2號線 弘大入口站</span> 街頭表演、特色小店、韓流潮品</div></td><td>弘大站 9號出口</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">🥩 午餐：Hongdae Korean BBQ Jeju Special</span><div class="ev-note"><span class="pill p-food">超推</span> ⭐4.9 · 濟州島豬五花，服務員幫你烤，超貼心</div></td><td>弘大步行 5 分</td><td class="cost">₩20,000</td></tr>
+      <tr><td>14:00</td><td><span class="ev-name">🛍 明洞購物</span><div class="ev-note"><span class="pill p-wk">地鐵</span> Olive Young 旗艦店、明洞夜市、藥妝掃貨</div></td><td>明洞站 5/6號出口</td><td class="cost z">自由</td></tr>
+      <tr class="wa"><td>18:30</td><td><span class="ev-name">🗼 N首爾塔 南山</span><div class="ev-note"><span class="pill p-bus">南山纜車</span> 或步行上山 · 夕陽+夜景絕佳 · 戀人鎖牆超浪漫</div></td><td>南山公園</td><td class="cost">₩17,000</td></tr>
+      <tr><td>21:00</td><td><span class="ev-name">🍗 晚餐：韓式燒烤</span><div class="ev-note"><span class="pill p-food">推薦</span> 返回明洞周邊燒烤店，或嘗試在地 포차（路邊攤小酒館）</div></td><td>明洞周邊</td><td class="cost">₩25,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">餐廳推薦</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">KBBQ · 濟州豬五花【超強推】</div><div class="rc-name">Hongdae Korean BBQ Jeju Special</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩20,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">濟州島直送豬五花，服務員全程幫你烤，附鳳尾魚醬超特別。服務態度超好，旅客口碑極佳。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%ED%99%8D%EB%8C%80%EC%A0%9C%EC%A3%BC%ED%95%98%EC%9A%B0%EC%8A%A4" target="_blank">Naver Map · 홍대제주하우스</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%ED%99%8D%EB%8C%80%20%E8%B1%AC%E4%BA%94%E8%8A%B1%20%E7%87%92%E8%82%89" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%BC%98%E5%A4%A7%20%E7%87%92%E7%83%A4%20%E6%8E%A8%E8%96%A6" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">TOWER · 首爾地標夜景</div><div class="rc-name">N首爾塔 N Seoul Tower</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">纜車₩9,500</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">首爾最標誌性的夜景地。建議傍晚搭纜車上山，等待夕陽後看夜景。戀人鎖牆是打卡必到。週末提早去避免排隊。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/N%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C" target="_blank">Naver Map · N서울타워</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E5%8D%97%E5%B1%B1%20N%E9%A6%96%E7%88%BE%E5%A1%94" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=N%E9%A6%96%E7%88%BE%E5%A1%94" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🐯</div><div class="shop-name">VT x BT21 老虎面膜</div><div class="shop-where">📍 Olive Young 明洞</div><div class="shop-desc">台灣人最愛必買！BT21聯名虎虎面膜，保濕效果佳，買 10 片以上更划算</div><span class="shop-price">₩2,500/片</span></div><div class="shop-card"><div class="shop-emoji">🌞</div><div class="shop-name">DR.G 物理防曬 SPF50+</div><div class="shop-where">📍 Olive Young 明洞</div><div class="shop-desc">韓國皮膚科推薦款，清爽不泛白，台灣 Olive Young 有但韓國便宜30%</div><span class="shop-price">₩18,000</span></div><div class="shop-card"><div class="shop-emoji">🐌</div><div class="shop-name">COSRX 蝸牛修護精華</div><div class="shop-where">📍 Olive Young 明洞</div><div class="shop-desc">全球爆款，韓國購買約台灣售價的6折，買2送1活動常有</div><span class="shop-price">₩23,000</span></div><div class="shop-card"><div class="shop-emoji">🎨</div><div class="shop-name">KAKAO Friends 周邊</div><div class="shop-where">📍 弘大 KAKAO 旗艦店</div><div class="shop-desc">Ryan、Apeach 公仔、文具、抱枕，旗艦店獨賣款只有韓國有</div><span class="shop-price">₩5,000–60,000</span></div><div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">innisfree 濟州火山泥</div><div class="shop-where">📍 innisfree 明洞</div><div class="shop-desc">毛孔清潔泥膜，韓國購買比台灣便宜，還有限定禮盒</div><span class="shop-price">₩13,000</span></div><div class="shop-card"><div class="shop-emoji">🍬</div><div class="shop-name">明洞 零食伴手禮</div><div class="shop-where">📍 明洞街頭攤販</div><div class="shop-desc">海苔脆片、辣炒年糕乾、辣醬包，整袋裝超划算，同事送禮必備</div><span class="shop-price">₩5,000–15,000/袋</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 4 ═══ -->
+<div class="dpanel" id="p3">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num">04</div><div>
+    <div class="dh-date">JUN 15 (SUN) 2025</div>
+    <div class="dh-title">仁寺洞 · DDP東大門 · 首爾大學參訪</div>
+    <div class="dh-hotel">擇一飯店 · 連住</div>
+  </div></div></div>
+
+  <div class="ib ib-p">⭐ 今日重點 — 下午首爾大學參訪（2號線首爾大入口站），建議上午先逛仁寺洞，參訪後再前往 DDP</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 4 本日方位圖</div><div class="day-map-note">上午留在安國旁的仁寺洞，下午往南到首爾大，晚上再回東側 DDP。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="88" y="55" fill="#8a867d" font-size="11">鐘路傳統區</text><text x="286" y="250" fill="#8a867d" font-size="11">南側大學區</text><text x="535" y="55" fill="#8a867d" font-size="11">東大門設計區</text>
+      <path class="map-line coral" d="M142 112 C210 140 270 194 330 220 C422 188 488 132 582 104"/>
+      <g class="pin" transform="translate(142 112)"><circle r="27" fill="#e6f4f0" stroke="#0f6e56"/><text y="-3" text-anchor="middle" font-size="18">🎨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">仁寺洞</text><text class="sub" y="42" text-anchor="middle">09:30</text></g>
+      <g class="pin" transform="translate(330 220)"><circle r="29" fill="#eeedfe" stroke="#4a42a8"/><text y="-4" text-anchor="middle" font-size="18">🎓</text><text class="lbl" y="15" text-anchor="middle" fill="#4a42a8">首爾大</text><text class="sub" y="43" text-anchor="middle">14:00</text></g>
+      <g class="pin" transform="translate(582 104)"><circle r="28" fill="#faeae4" stroke="#993C1D"/><text y="-4" text-anchor="middle" font-size="18">🌊</text><text class="lbl" y="15" text-anchor="middle" fill="#993C1D">DDP</text><text class="sub" y="43" text-anchor="middle">18:00</text></g>
+      <g class="pin" transform="translate(555 182)"><circle r="23" fill="#fbeaea" stroke="#b03030"/><text y="-1" text-anchor="middle" font-size="16">🍗</text><text class="sub" y="37" text-anchor="middle">晚餐</text></g>
+      <g class="pin" transform="translate(210 84)"><circle r="22" fill="#e6f4f0" stroke="#0f6e56"/><text y="2" text-anchor="middle" font-size="15">🏨</text><text class="sub" y="-30" text-anchor="middle">住宿基準點</text></g>
+    </svg>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-title">Day 4 移動路線</div>
+    <svg viewBox="0 0 800 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="52" r="24" fill="#e6f4f0" stroke="#0f6e56" stroke-width="2"/>
+      <text x="50" y="47" text-anchor="middle" font-size="16">🎨</text>
+      <text x="50" y="61" text-anchor="middle" font-size="8.5" fill="#0f6e56" font-weight="600">仁寺洞</text>
+      <text x="50" y="88" text-anchor="middle" font-size="8" fill="#888">09:30 · 3號線</text>
+      <line x1="76" y1="52" x2="150" y2="52" stroke="#a0d4be" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="150,48 158,52 150,56" fill="#a0d4be"/>
+      <text x="115" y="44" text-anchor="middle" font-size="8" fill="#888">步行</text>
+      <circle cx="186" cy="52" r="24" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="186" y="47" text-anchor="middle" font-size="16">🍱</text>
+      <text x="186" y="61" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">午餐 拌飯</text>
+      <text x="186" y="88" text-anchor="middle" font-size="8" fill="#888">12:00</text>
+      <line x1="212" y1="52" x2="296" y2="52" stroke="#f0c060" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="296,48 304,52 296,56" fill="#f0c060"/>
+      <text x="255" y="44" text-anchor="middle" font-size="8.5" fill="#888">2號線</text>
+      <text x="255" y="55" text-anchor="middle" font-size="8" fill="#888">約 30 分</text>
+      <circle cx="332" cy="52" r="24" fill="#eeedfe" stroke="#4a42a8" stroke-width="2"/>
+      <text x="332" y="47" text-anchor="middle" font-size="16">🎓</text>
+      <text x="332" y="61" text-anchor="middle" font-size="8.5" fill="#4a42a8" font-weight="600">首爾大學</text>
+      <text x="332" y="88" text-anchor="middle" font-size="8" fill="#888">14:00 參訪</text>
+      <line x1="358" y1="52" x2="432" y2="52" stroke="#c8c4e8" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="432,48 440,52 432,56" fill="#c8c4e8"/>
+      <text x="397" y="44" text-anchor="middle" font-size="8.5" fill="#888">地鐵 2號線</text>
+      <circle cx="468" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="468" y="47" text-anchor="middle" font-size="16">🌊</text>
+      <text x="468" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">DDP</text>
+      <text x="468" y="88" text-anchor="middle" font-size="8" fill="#888">18:00 夜景</text>
+      <line x1="494" y1="52" x2="568" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="568,48 576,52 568,56" fill="#f0a0a0"/>
+      <circle cx="612" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="612" y="47" text-anchor="middle" font-size="16">🍗</text>
+      <text x="612" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">炸雞晚餐</text>
+      <text x="612" y="88" text-anchor="middle" font-size="8" fill="#888">20:00</text>
+      <line x1="638" y1="52" x2="712" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="712,48 720,52 712,56" fill="#f0a0a0"/>
+      <circle cx="748" cy="52" r="24" fill="#fffae8" stroke="#b07010" stroke-width="2"/>
+      <text x="748" y="47" text-anchor="middle" font-size="14">🏨</text>
+      <text x="748" y="61" text-anchor="middle" font-size="8.5" fill="#b07010" font-weight="600">返回樂天</text>
+      <text x="748" y="88" text-anchor="middle" font-size="8" fill="#888">22:00</text>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 4 行程時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>09:30</td><td><span class="ev-name">🎨 仁寺洞 Insadong 散策</span><div class="ev-note"><span class="pill p-tr">3號線 安國站</span> 傳統工藝、陶藝、畫廊街，茶館也很有氛圍</div></td><td>安國站 6號出口</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>12:00</td><td><span class="ev-name">🍱 午餐：Bebab Bibimbap</span><div class="ev-note"><span class="pill p-food">⭐4.9</span> 可客製化拌飯，素食友善，快速好吃</div></td><td>仁寺洞周邊</td><td class="cost">₩12,000</td></tr>
+      <tr class="pu"><td>14:00</td><td><span class="ev-name">🎓 首爾大學參訪</span><div class="ev-note"><span class="pill p-tr">2號線 首爾大入口站</span> 韓國最高學府，校園廣大、氛圍好</div></td><td>首爾大學 관악구</td><td class="cost z">—</td></tr>
+      <tr class="wa"><td>18:00</td><td><span class="ev-name">🌊 東大門設計廣場 DDP</span><div class="ev-note"><span class="pill p-tr">2/4/5號線 東大門歷史文化公園站</span> 扎哈哈蒂設計，夜間LED燈光秀最美</div></td><td>DDP</td><td class="cost z">免費</td></tr>
+      <tr class="hi"><td>20:00</td><td><span class="ev-name">🍗 晚餐：Dae Wang Tong Dak 大王炸雞</span><div class="ev-note"><span class="pill p-food">⭐4.9</span> Reddit 爆款推薦 · 復古포차氛圍 · 皮脆肉嫩，週日公休注意</div></td><td>DDP 附近</td><td class="cost">₩25,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">景點 & 餐廳</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">DESIGN · 扎哈哈蒂建築</div><div class="rc-name">東大門設計廣場 DDP</div><div class="rc-meta"><span class="rc-r">4.4</span><span class="rc-p">免費入場</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">由建築大師 Zaha Hadid 設計的未來感地標。白天看設計展，夜間LED燈光投影超美。附近有東大門市場可逛到深夜。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EB%8F%99%EB%8C%80%EB%AC%B8%EB%94%94%EC%9E%90%EC%9D%B8%ED%94%8C%EB%9D%BC%EC%9E%90" target="_blank">Naver Map · 동대문디자인플라자</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=DDP%20%E6%9D%B1%E5%A4%A7%E9%96%80" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E6%9D%B1%E5%A4%A7%E9%96%80%E8%A8%AD%E8%A8%88%E5%BB%A3%E5%A0%B4" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">CHICKEN · Reddit 網友瘋狂推</div><div class="rc-name">Dae Wang Tong Dak 大王炸雞</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩25,000/2人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">復古韓式路邊攤（포차）風格，整隻炸雞皮脆多汁，配年糕辣炒超搭。週日公休，其餘 16:00 開始營業。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EB%8C%80%EC%99%95%ED%86%B5%EB%8B%AD" target="_blank">Naver Map · 대왕통닭</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%EB%8C%80%EC%99%95%ED%86%B5%EB%8B%AD%20%E7%82%B8%E9%9B%9E" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%A4%A7%E7%8E%8B%E7%82%B8%E9%9B%9E%20%E9%A6%96%E7%88%BE" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">BIBIMBAP · 可客製化拌飯</div><div class="rc-name">Bebab Bibimbap 弘大店</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩12,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">可自選食材的客製化石鍋拌飯，素食友善，食材新鮮，份量充足。快速翻桌，午餐首選。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EB%B2%A0%EB%B0%A5%EB%B9%84%EB%B9%94%EB%B0%A5%ED%99%8D%EB%8C%80" target="_blank">Naver Map · 베밥비빔밥</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%EB%B2%A0%EB%B0%A5%20%ED%99%8D%EB%8C%80%20%E6%8B%8C%E9%A3%AF" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E5%BC%98%E5%A4%A7%20%E6%8B%8C%E9%A3%AF%20%E6%8E%A8%E8%96%A6" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🎁</div><div class="shop-name">DDP 設計師商品</div><div class="shop-where">📍 DDP 設計商店</div><div class="shop-desc">東大門設計廣場限定商品，首爾主題設計明信片、托特包、文具，獨家限定</div><span class="shop-price">₩5,000–30,000</span></div><div class="shop-card"><div class="shop-emoji">📚</div><div class="shop-name">韓文學習書 & 文具</div><div class="shop-where">📍 仁寺洞書局</div><div class="shop-desc">韓文自學教材、韓國語字典，加上韓式美感文具，帶一套回台學韓文</div><span class="shop-price">₩8,000–20,000</span></div><div class="shop-card"><div class="shop-emoji">🖼</div><div class="shop-name">韓國插畫海報</div><div class="shop-where">📍 仁寺洞畫廊街</div><div class="shop-desc">在地插畫家限量海報，A4~A2 多尺寸，裝框後超有質感的房間裝飾</div><span class="shop-price">₩8,000–20,000</span></div><div class="shop-card"><div class="shop-emoji">🫖</div><div class="shop-name">韓國傳統清酒 막걸利</div><div class="shop-where">📍 仁寺洞傳統酒館</div><div class="shop-desc">舜天牌生막걸리（韓國米酒），冷藏款在台灣買不到，好喝推薦帶一瓶</div><span class="shop-price">₩3,000–5,000</span></div><div class="shop-card"><div class="shop-emoji">👜</div><div class="shop-name">東大門 布料 & 飾品</div><div class="shop-where">📍 東大門市場</div><div class="shop-desc">DDP 旁的東大門市場，批發布料、韓系飾品，價格極優，可大量採購</div><span class="shop-price">₩1,000起</span></div><div class="shop-card"><div class="shop-emoji">💄</div><div class="shop-name">3CE 多色唇釉</div><div class="shop-where">📍 Olive Young 東大門</div><div class="shop-desc">韓系彩妝品牌，唇釉顏色超多，韓國購買比台灣便宜，顏色最齊全</div><span class="shop-price">₩16,000</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 5 ═══ -->
+<div class="dpanel" id="p4">
+  <div class="day-hd purple"><div class="dh-flex"><div class="dh-num">05</div><div>
+    <div class="dh-date">JUN 16 (MON) 2025</div>
+    <div class="dh-title">換飯店 → 昌德宮 · 高麗大學參訪</div>
+    <div class="dh-hotel">Somerset Palace Seoul ｜ 安國站步行 4 分</div>
+  </div></div></div>
+
+  <div class="ib ib-r">🔄 今日需換飯店：退房 Lotte City Myeongdong → 入住 Somerset Palace Seoul。Somerset 步行即達昌德宮！</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 5 本日方位圖</div><div class="day-map-note">先完成換飯店，活動核心改為 Somerset；午後往東北到高麗大，晚上回安國休息。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="92" y="55" fill="#8a867d" font-size="11">明洞 / 原住宿</text><text x="312" y="55" fill="#8a867d" font-size="11">安國新住宿</text><text x="535" y="55" fill="#8a867d" font-size="11">高麗大學區</text>
+      <path class="map-line purple" d="M128 172 C230 122 308 112 390 118 S520 128 590 150"/>
+      <g class="pin" transform="translate(128 172)"><circle r="25" fill="#fdf6e3" stroke="#b07010"/><text y="-2" text-anchor="middle" font-size="17">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">退房</text><text class="sub" y="40" text-anchor="middle">10:00</text></g>
+      <g class="pin" transform="translate(390 118)"><circle r="29" fill="#e6f4f0" stroke="#0f6e56"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">Somerset</text><text class="sub" y="43" text-anchor="middle">10:30 寄放</text></g>
+      <g class="pin" transform="translate(402 190)"><circle r="24" fill="#fbeaea" stroke="#b03030"/><text y="-2" text-anchor="middle" font-size="17">🏛</text><text class="lbl" y="15" text-anchor="middle" fill="#b03030">昌德宮</text></g>
+      <g class="pin" transform="translate(590 150)"><circle r="29" fill="#eeedfe" stroke="#4a42a8"/><text y="-4" text-anchor="middle" font-size="18">🎓</text><text class="lbl" y="15" text-anchor="middle" fill="#4a42a8">高麗大</text><text class="sub" y="43" text-anchor="middle">14:00</text></g>
+      <g class="pin" transform="translate(560 214)"><circle r="22" fill="#fdf6e3" stroke="#b07010"/><text y="2" text-anchor="middle" font-size="15">☕</text><text class="sub" y="36" text-anchor="middle">安岩咖啡</text></g>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 5 行程時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>10:00</td><td><span class="ev-name">退房樂天城市 · 前往 Somerset</span><div class="ev-note"><span class="pill p-tr">地鐵</span> 搭到安國站步行 4 分至 Somerset Palace</div></td><td>鐘路區 Jongno</td><td class="cost">₩1,500</td></tr>
+      <tr class="hi"><td>10:30</td><td><span class="ev-name">入住 Somerset Palace Seoul ✅</span><div class="ev-note">可先寄放行李，房間含廚房，適合長住</div></td><td>Somerset Palace</td><td class="cost z">—</td></tr>
+      <tr><td>11:00</td><td><span class="ev-name">🏛 昌德宮 Changdeokgung（可選）</span><div class="ev-note"><span class="pill p-wk">步行可達</span> UNESCO世界遺產 · 週一公休 · 秘苑需另購票</div></td><td>Somerset 步行 5 分</td><td class="cost">₩3,000</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">午餐：安岩洞學區餐廳</span><div class="ev-note">前往高麗大學周邊吃午餐，在地學生聚集區，平價又好吃</div></td><td>安岩洞 Anam-dong</td><td class="cost">₩10,000</td></tr>
+      <tr class="pu"><td>14:00</td><td><span class="ev-name">🎓 高麗大學參訪 Korea University</span><div class="ev-note"><span class="pill p-tr">6號線 安岩站</span> 首爾頂尖私立大學，校園建築精美</div></td><td>高麗大學 성북구</td><td class="cost z">—</td></tr>
+      <tr><td>17:00</td><td><span class="ev-name">安岩洞咖啡街散策</span><div class="ev-note">大學周邊特色咖啡廳，學生文化氛圍濃厚</div></td><td>安岩洞</td><td class="cost">₩7,000</td></tr>
+      <tr class="hi"><td>19:00</td><td><span class="ev-name">返回 Somerset 休息</span><div class="ev-note">明日研討會，建議早點休息</div></td><td>Somerset Palace</td><td class="cost z">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">景點介紹</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">PALACE · UNESCO世界遺產</div><div class="rc-name">昌德宮 Changdeokgung</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">₩3,000</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">朝鮮五大宮殿中保存最完整的一座，依山而建的自然式佈局獨具一格。週一公休。「秘苑」需另購票加入導覽團。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EC%B0%BD%EB%8D%95%EA%B6%81" target="_blank">Naver Map · 창덕궁</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E6%98%8C%E5%BE%B7%E5%AE%AE%20%E9%A6%96%E7%88%BE" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E6%98%8C%E5%BE%B7%E5%AE%AE%20%E9%A6%96%E7%88%BE" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">UNIVERSITY · 韓國頂尖私大</div><div class="rc-name">高麗大學 Korea University</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">免費</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國最古老私立大學之一，仿哈利波特的哥德式建築是拍照勝地。秋天楓葉極美，此行6月也值得一逛。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90" target="_blank">Naver Map · 고려대학교</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%EA%B3%A0%EB%A0%A4%EB%8C%80%20%E8%A7%80%E5%85%89" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E9%AB%98%E9%BA%97%E5%A4%A7%E5%AD%B8%20%E8%A7%80%E5%85%89" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🎓</div><div class="shop-name">高麗大學 紀念商品</div><div class="shop-where">📍 高麗大學校園商店</div><div class="shop-desc">高麗大學（KU）LOGO T恤、帽子、文具，限校內販售，有紀念意義</div><span class="shop-price">₩15,000–40,000</span></div><div class="shop-card"><div class="shop-emoji">📖</div><div class="shop-name">韓國大學生必備手帳</div><div class="shop-where">📍 安岩洞文具店</div><div class="shop-desc">韓國大學生最愛的手帳品牌，設計感強，年度限定款</div><span class="shop-price">₩12,000–20,000</span></div><div class="shop-card"><div class="shop-emoji">☕</div><div class="shop-name">安岩洞咖啡廳 特色杯</div><div class="shop-where">📍 安岩洞獨立咖啡廳</div><div class="shop-desc">大學城的獨立咖啡廳常有自家品牌馬克杯或托特袋，便宜又有設計感</div><span class="shop-price">₩8,000–15,000</span></div><div class="shop-card"><div class="shop-emoji">🏛</div><div class="shop-name">昌德宮 宮廷文化商品</div><div class="shop-where">📍 昌德宮紀念品店</div><div class="shop-desc">朝鮮宮廷圖案的扇子、手帕、陶瓷，文青質感伴手禮</div><span class="shop-price">₩5,000–25,000</span></div><div class="shop-card"><div class="shop-emoji">🌸</div><div class="shop-name">韓方草藥 & 養生茶包</div><div class="shop-where">📍 安國站周邊藥材行</div><div class="shop-desc">昌德宮附近有傳統韓方藥材店，大棗茶、薑茶、桂皮茶禮盒，超有韓風</div><span class="shop-price">₩8,000–30,000</span></div><div class="shop-card"><div class="shop-emoji">🍵</div><div class="shop-name">雙和茶 & 宮廷茶</div><div class="shop-where">📍 仁寺洞茶房</div><div class="shop-desc">景福宮、昌德宮周邊的傳統茶屋，可買包裝茶包回台，保存方便</div><span class="shop-price">₩10,000–20,000</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 6-7 研討會 ═══ -->
+<div class="dpanel" id="p5">
+  <div class="day-hd purple"><div class="dh-flex"><div class="dh-num">06<span style="font-size:22px">–07</span></div><div>
+    <div class="dh-date">JUN 17–18 (TUE–WED) 2025</div>
+    <div class="dh-title">高麗大學 研討會 全天</div>
+    <div class="dh-hotel">Somerset Palace Seoul ｜ 連住第 2–3 晚</div>
+  </div></div></div>
+
+  <div class="ib ib-p">🎓 核心目的 — 高麗大學研討會（全天），餐食通常由主辦方安排。傍晚時間可自由活動。</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 6 本日方位圖</div><div class="day-map-note">白天固定從 Somerset 通勤高麗大；傍晚若有體力，可回到景福宮夜間場或轉往梨泰院晚餐。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="110" y="55" fill="#8a867d" font-size="11">鐘路住宿 / 宮殿</text><text x="520" y="55" fill="#8a867d" font-size="11">高麗大研討會</text><text x="250" y="250" fill="#8a867d" font-size="11">晚餐替代路線</text>
+      <path class="map-line purple" d="M180 132 C300 96 440 106 560 128"/>
+      <path class="map-line red" d="M180 132 C190 190 238 218 318 220"/>
+      <g class="pin" transform="translate(180 132)"><circle r="29" fill="#e6f4f0" stroke="#0f6e56"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">Somerset</text><text class="sub" y="43" text-anchor="middle">出發/返回</text></g>
+      <g class="pin" transform="translate(560 128)"><circle r="30" fill="#eeedfe" stroke="#4a42a8"/><text y="-5" text-anchor="middle" font-size="18">🎓</text><text class="lbl" y="14" text-anchor="middle" fill="#4a42a8">高麗大</text><text class="sub" y="43" text-anchor="middle">全天研討會</text></g>
+      <g class="pin" transform="translate(150 70)"><circle r="24" fill="#e6f4f0" stroke="#0f6e56"/><text y="-2" text-anchor="middle" font-size="17">🏯</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">景福宮夜間</text></g>
+      <g class="pin" transform="translate(318 220)"><circle r="25" fill="#fbeaea" stroke="#b03030"/><text y="-2" text-anchor="middle" font-size="17">🍗</text><text class="lbl" y="15" text-anchor="middle" fill="#b03030">梨泰院</text><text class="sub" y="40" text-anchor="middle">Kyochon</text></g>
+    </svg>
+  </div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 7 本日方位圖</div><div class="day-map-note">第二天研討會仍以高麗大為主；晚上建議往明洞或東大門做最後採購，再回 Somerset 整理行李。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="108" y="55" fill="#8a867d" font-size="11">Somerset</text><text x="520" y="55" fill="#8a867d" font-size="11">高麗大</text><text x="335" y="250" fill="#8a867d" font-size="11">最後採購帶</text>
+      <path class="map-line purple" d="M180 132 C300 96 440 106 560 128"/>
+      <path class="map-line amber" d="M560 128 C470 162 370 190 284 212 S200 194 180 132"/>
+      <g class="pin" transform="translate(180 132)"><circle r="29" fill="#e6f4f0" stroke="#0f6e56"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">Somerset</text><text class="sub" y="43" text-anchor="middle">回房整理</text></g>
+      <g class="pin" transform="translate(560 128)"><circle r="30" fill="#eeedfe" stroke="#4a42a8"/><text y="-5" text-anchor="middle" font-size="18">🎓</text><text class="lbl" y="14" text-anchor="middle" fill="#4a42a8">高麗大</text><text class="sub" y="43" text-anchor="middle">全天研討會</text></g>
+      <g class="pin" transform="translate(284 212)"><circle r="27" fill="#fdf6e3" stroke="#b07010"/><text y="-3" text-anchor="middle" font-size="18">🛍</text><text class="lbl" y="15" text-anchor="middle" fill="#b07010">明洞採購</text></g>
+      <g class="pin" transform="translate(420 206)"><circle r="24" fill="#faeae4" stroke="#993C1D"/><text y="-2" text-anchor="middle" font-size="17">🌃</text><text class="lbl" y="15" text-anchor="middle" fill="#993C1D">東大門</text></g>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">研討會期間行程安排</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>6/17 週二</th><th>6/18 週三</th></tr></thead>
+    <tbody>
+      <tr class="pu"><td>全天</td><td><span class="ev-name">🎓 高麗大學研討會</span><div class="ev-note">中餐通常主辦提供</div></td><td><span class="ev-name">🎓 高麗大學研討會</span><div class="ev-note">中餐通常主辦提供</div></td></tr>
+      <tr><td>早餐</td><td><span class="ev-name">Somerset 自理</span><div class="ev-note">飯店有廚房，可購買食材自煮，或附近便利商店</div></td><td><span class="ev-name">Somerset 自理</span></td></tr>
+      <tr class="hi"><td>傍晚後</td><td><span class="ev-name">🏯 景福宮夜間特別開放</span><div class="ev-note">6月有夜間開放場次（需提前預約），Somerset 步行可達</div></td><td><span class="ev-name">🛍 最後採購</span><div class="ev-note">明洞 Olive Young、東大門夜市，打包伴手禮</div></td></tr>
+      <tr class="am"><td>晚餐</td><td><span class="ev-name">Kyochon Pilbang 炸雞</span><div class="ev-note">⭐4.8 · 隱藏版 Speakeasy 炸雞，梨泰院 Itaewon</div></td><td><span class="ev-name">最後一頓：自由選擇</span><div class="ev-note">推薦回到弘大或明洞吃一頓感謝首爾的晚餐</div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">傍晚自由時間推薦</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">CHICKEN · 隱藏版 Speakeasy</div><div class="rc-name">Kyochon Pilbang 교촌필방</div><div class="rc-meta"><span class="rc-r">4.8</span><span class="rc-p">₩30,000/2人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國第一隱藏版炸雞餐廳，外觀像書店，有暗門進入。炸雞超脆多汁，搭配 Moon Bear 精釀啤酒。強烈建議提前訂位。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EA%B5%90%EC%B4%8C%ED%95%84%EB%B0%A9" target="_blank">Naver Map · 교촌필방</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%EA%B5%90%EC%B4%8C%ED%95%84%EB%B0%A9%20%E7%82%B8%E9%9B%9E" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%EA%B5%90%EC%B4%8C%ED%95%84%EB%B0%A9%20%E6%8E%A8%E8%96%A6" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">PALACE · 夏季夜間特別開放</div><div class="rc-name">景福宮 夜間開放</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">₩3,000</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">6月夏季有夜間特別開放，宮殿燈火通明，氛圍截然不同。需提前在官網預約，名額有限，建議出發前搶票。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EA%B2%BD%EB%B3%B5%EA%B6%81" target="_blank">Naver Map · 경복궁 야간개장</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=%E6%99%AF%E7%A6%8F%E5%AE%AE%20%E5%A4%9C%E9%96%93%E9%96%8B%E6%94%BE" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=%E6%99%AF%E7%A6%8F%E5%AE%AE%20%E5%A4%9C%E9%96%93%20%E9%96%8B%E6%94%BE" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">SHOPPING · 最後採購</div><div class="rc-name">明洞 Olive Young 旗艦</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">自由</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">韓國最大美妝連鎖，明洞旗艦店品項最齊全。護膚品、面膜、美妝工具應有盡有，伴手禮在這裡一次掃完。</p><div class="rec-wrap"><a class="map-btn" href="https://map.naver.com/p/search/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%98%81%EB%AA%85%EB%8F%99" target="_blank">Naver Map · 올리브영명동</a><a class="rec-btn" href="https://www.ptt.cc/bbs/Korea/search?q=Olive%20Young%20%E6%98%8E%E6%B4%9E" target="_blank">PTT 討論</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Olive%20Young%20%E9%A6%96%E7%88%BE" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🏬</div><div class="shop-name">樂天免稅店 線上預購</div><div class="shop-where">📍 樂天免稅 App</div><div class="shop-desc">提前在 App 下訂，研討會結束後到樂天百貨或仁川機場提貨，價格比外面便宜</div><span class="shop-price">依品牌</span></div><div class="shop-card"><div class="shop-emoji">💊</div><div class="shop-name">韓國 正官庄 紅蔘精</div><div class="shop-where">📍 明洞樂天百貨</div><div class="shop-desc">正官庄6年根紅蔘精，台灣代購搶手貨，韓國買最便宜最正品</div><span class="shop-price">₩30,000–200,000</span></div><div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">樂天 Pepero 巧克力棒</div><div class="shop-where">📍 便利商店 / 超市</div><div class="shop-desc">大盒裝掃貨，多種口味，台灣超市也有但韓國更便宜更多樣</div><span class="shop-price">₩3,000–8,000/盒</span></div><div class="shop-card"><div class="shop-emoji">🫙</div><div class="shop-name">Dongwon 鮪魚罐頭禮盒</div><div class="shop-where">📍 大型超市 Emart</div><div class="shop-desc">韓國家庭必備，鮪魚醬油口味台灣人超愛，禮盒裝CP值高</div><span class="shop-price">₩15,000–25,000/盒</span></div><div class="shop-card"><div class="shop-emoji">🧖</div><div class="shop-name">韓國 Dr.Young 蒸氣眼罩</div><div class="shop-where">📍 Olive Young</div><div class="shop-desc">研討會睡眠不足必備！薰衣草香型最受歡迎，一盒14片超划算</div><span class="shop-price">₩8,000</span></div><div class="shop-card"><div class="shop-emoji">📦</div><div class="shop-name">Olive Young 最後衝刺</div><div class="shop-where">📍 Olive Young 明洞</div><div class="shop-desc">旅程最後兩天大量採購：面膜、精華、護手霜、身體乳，贈品活動常有</div><span class="shop-price">依商品</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ DAY 8 ═══ -->
+<div class="dpanel" id="p6">
+  <div class="day-hd red"><div class="dh-flex"><div class="dh-num">08</div><div>
+    <div class="dh-date">JUN 19 (THU) 2025</div>
+    <div class="dh-title">昌德宮晨走 → 仁川機場 → 返台</div>
+    <div class="dh-hotel">Somerset Palace Seoul ｜ 退房日</div>
+  </div></div></div>
+
+  <div class="ib ib-r">✈ 大韓航空 KE · 仁川 16:10 起飛 → 台灣桃園 17:50 抵達 · 建議 13:30 前抵達仁川機場</div>
+
+  <div class="day-map">
+    <div class="day-map-top"><div class="day-map-title">Day 8 本日方位圖</div><div class="day-map-note">最後一天由安國出發，若時間允許先走昌德宮，再經首爾站搭 AREX 往西回仁川機場。</div></div>
+    <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg">
+      <rect class="map-zone" x="25" y="24" width="670" height="240" rx="16"/>
+      <text x="86" y="55" fill="#8a867d" font-size="11">鐘路退房區</text><text x="330" y="55" fill="#8a867d" font-size="11">首爾站</text><text x="535" y="55" fill="#8a867d" font-size="11">西側機場</text>
+      <path class="map-line red" d="M150 126 C210 150 260 170 330 174 S500 180 598 196"/>
+      <g class="pin" transform="translate(122 82)"><circle r="24" fill="#fbeaea" stroke="#b03030"/><text y="-2" text-anchor="middle" font-size="17">🏯</text><text class="lbl" y="15" text-anchor="middle" fill="#b03030">昌德宮</text><text class="sub" y="40" text-anchor="middle">可選晨走</text></g>
+      <g class="pin" transform="translate(150 126)"><circle r="28" fill="#e6f4f0" stroke="#0f6e56"/><text y="-4" text-anchor="middle" font-size="18">🏨</text><text class="lbl" y="15" text-anchor="middle" fill="#0f6e56">Somerset</text><text class="sub" y="43" text-anchor="middle">11:00 退房</text></g>
+      <g class="pin" transform="translate(330 174)"><circle r="27" fill="#e8f1fb" stroke="#1761a8"/><text y="-3" text-anchor="middle" font-size="18">🚉</text><text class="lbl" y="15" text-anchor="middle" fill="#1761a8">首爾站</text><text class="sub" y="42" text-anchor="middle">AREX</text></g>
+      <g class="pin" transform="translate(598 196)"><circle r="29" fill="#fbeaea" stroke="#b03030"/><text y="-4" text-anchor="middle" font-size="18">✈</text><text class="lbl" y="15" text-anchor="middle" fill="#b03030">仁川機場</text><text class="sub" y="43" text-anchor="middle">13:30</text></g>
+      <g class="pin" transform="translate(626 98)"><circle r="23" fill="#fdf6e3" stroke="#b07010"/><text y="1" text-anchor="middle" font-size="16">🧾</text><text class="sub" y="37" text-anchor="middle">退稅/免稅</text></g>
+    </svg>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-title">Day 8 返台路線</div>
+    <svg viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="48" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="48" y="47" text-anchor="middle" font-size="16">🏯</text>
+      <text x="48" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">昌德宮晨走</text>
+      <text x="48" y="88" text-anchor="middle" font-size="8" fill="#888">09:00 步行</text>
+      <line x1="74" y1="52" x2="148" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="148,48 156,52 148,56" fill="#f0a0a0"/>
+      <text x="113" y="44" text-anchor="middle" font-size="8.5" fill="#888">退房</text>
+      <circle cx="184" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="184" y="47" text-anchor="middle" font-size="14">🏨</text>
+      <text x="184" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">Somerset 退房</text>
+      <text x="184" y="88" text-anchor="middle" font-size="8" fill="#888">11:00</text>
+      <line x1="210" y1="52" x2="294" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="294,48 302,52 294,56" fill="#f0a0a0"/>
+      <text x="253" y="41" text-anchor="middle" font-size="8.5" fill="#888">地鐵3→1號線</text>
+      <text x="253" y="52" text-anchor="middle" font-size="8" fill="#888">→ 首爾站</text>
+      <circle cx="330" cy="52" r="24" fill="#e8f1fb" stroke="#1761a8" stroke-width="2"/>
+      <text x="330" y="47" text-anchor="middle" font-size="16">🚉</text>
+      <text x="330" y="61" text-anchor="middle" font-size="8.5" fill="#1761a8" font-weight="600">首爾站</text>
+      <text x="330" y="88" text-anchor="middle" font-size="8" fill="#888">11:40 搭 AREX</text>
+      <line x1="356" y1="52" x2="460" y2="52" stroke="#b5d4f4" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="460,48 468,52 460,56" fill="#b5d4f4"/>
+      <text x="413" y="41" text-anchor="middle" font-size="8.5" fill="#1761a8" font-weight="500">AREX 直達快線</text>
+      <text x="413" y="52" text-anchor="middle" font-size="8" fill="#888">約 43 分</text>
+      <text x="413" y="62" text-anchor="middle" font-size="8" fill="#0a6644">₩9,500</text>
+      <circle cx="497" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="497" y="47" text-anchor="middle" font-size="16">✈</text>
+      <text x="497" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">仁川機場</text>
+      <text x="497" y="88" text-anchor="middle" font-size="8" fill="#888">13:30 抵達</text>
+      <line x1="523" y1="52" x2="607" y2="52" stroke="#f0a0a0" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="607,48 615,52 607,56" fill="#f0a0a0"/>
+      <text x="567" y="44" text-anchor="middle" font-size="8.5" fill="#888">出境・退稅</text>
+      <circle cx="643" cy="52" r="24" fill="#fbeaea" stroke="#b03030" stroke-width="2"/>
+      <text x="643" y="47" text-anchor="middle" font-size="16">🇹🇼</text>
+      <text x="643" y="61" text-anchor="middle" font-size="8.5" fill="#b03030" font-weight="600">16:10 起飛</text>
+      <text x="643" y="88" text-anchor="middle" font-size="8" fill="#888">17:50 抵台</text>
+    </svg>
+  </div>
+
+  <div class="sec-lbl">Day 8 返台時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>09:00</td><td><span class="ev-name">🏯 昌德宮 晨間散步（可選）</span><div class="ev-note"><span class="pill p-wk">步行</span> Somerset 步行 5 分即達，告別首爾的最後一眼</div></td><td>昌德宮</td><td class="cost">₩3,000</td></tr>
+      <tr class="wa"><td>11:00</td><td><span class="ev-name">退房 Somerset Palace Seoul</span><div class="ev-note">行李整理，確認護照、T-money 卡餘額退款</div></td><td>Somerset</td><td class="cost z">—</td></tr>
+      <tr><td>11:30</td><td><span class="ev-name">地鐵 → 首爾站</span><div class="ev-note"><span class="pill p-tr">3號線→1號線</span> 安國站出發，換乘至首爾站</div></td><td>地鐵</td><td class="cost">₩1,500</td></tr>
+      <tr class="bl"><td>11:50</td><td><span class="ev-name">AREX 直達快線 → 仁川機場</span><div class="ev-note"><span class="pill p-tr">AREX 直達</span> 首爾站出發，約 43 分抵達仁川 T2</div></td><td>AREX 快線</td><td class="cost">₩9,500</td></tr>
+      <tr><td>13:30</td><td><span class="ev-name">仁川機場 Check-in · 退稅</span><div class="ev-note">辦理登機、購物退稅（VAT Refund）· 免稅區最後採購</div></td><td>仁川 ICN T2</td><td class="cost z">—</td></tr>
+      <tr class="wa"><td>16:10</td><td><span class="ev-name">✈ 大韓航空 KE 起飛 → 台灣</span></td><td>仁川 ICN</td><td class="cost z">—</td></tr>
+      <tr class="hi"><td>17:50</td><td><span class="ev-name">🇹🇼 抵達台灣桃園機場</span></td><td>桃園 TPE</td><td class="cost z">回家！</td></tr>
+    </tbody>
+  </table>
+  <div class="ib ib-r">⚠️ 退稅提醒：在韓國消費滿 ₩30,000（單一發票）可申請退稅。出境前到機場「退稅辦理處」辦理，退稅機或人工均可，護照和收據必備！</div>
+
+  <div class="shop-sec">
+  <div class="sec-lbl">🛍 必買購物推薦</div>
+  <div class="shop-grid"><div class="shop-card"><div class="shop-emoji">🥃</div><div class="shop-name">韓國傳統燒酒 安東燒酒</div><div class="shop-where">📍 仁川機場免稅區</div><div class="shop-desc">安東燒酒（45度）是韓國最高級傳統燒酒，機場購買可帶上機（托運）</div><span class="shop-price">₩15,000–20,000</span></div><div class="shop-card"><div class="shop-emoji">🌿</div><div class="shop-name">雪花秀 / 后 頂級韓方</div><div class="shop-where">📍 仁川機場免稅 Fa-So-La</div><div class="shop-desc">頂級韓方護膚品牌，機場免稅比市區便宜10–20%，是購買最後機會</div><span class="shop-price">₩50,000起</span></div><div class="shop-card"><div class="shop-emoji">🍬</div><div class="shop-name">韓國傳統糖果 & 点心</div><div class="shop-where">📍 仁川機場伴手禮區</div><div class="shop-desc">藥果、八珍糕、韓國傳統點心，精美包裝適合帶回送禮</div><span class="shop-price">₩5,000–15,000</span></div><div class="shop-card"><div class="shop-emoji">🫐</div><div class="shop-name">韓國 JEJU 農場果乾</div><div class="shop-where">📍 仁川機場</div><div class="shop-desc">濟州橘子乾、藍莓乾、草莓乾，天然無添加，限量款只有機場有</div><span class="shop-price">₩8,000–15,000</span></div><div class="shop-card"><div class="shop-emoji">💧</div><div class="shop-name">護膚精華 最後補買</div><div class="shop-where">📍 仁川機場免稅</div><div class="shop-desc">忘記買的護膚品最後補救，Sulwhasoo、IOPE、Laneige 款式齊全</div><span class="shop-price">依品牌</span></div><div class="shop-card"><div class="shop-emoji">✈️</div><div class="shop-name">出境後便利商店</div><div class="shop-where">📍 仁川機場出境後</div><div class="shop-desc">辦理登機牌後記得去買：韓國辣醬包（小包裝）、海苔片、泡麵，液體可托運</div><span class="shop-price">₩1,000–5,000</span></div></div>
+  </div>
+
+</div>
+
+<!-- ═══ 附錄 ═══ -->
+<div class="dpanel" id="p7">
+  <div class="sec-lbl">交通票券建議</div>
+  <div class="pass-wrap">
+    <div class="pass-hd">首爾交通票券分析</div>
+    <div class="pass-row phd"><div class="pc">票種</div><div class="pc">費用</div><div class="pc">本次適用</div><div class="pc">建議</div></div>
+    <div class="pass-row"><div class="pc"><b>T-money 交通卡</b></div><div class="pc">₩2,500 押金＋儲值</div><div class="pc pw">✅ 全程通用</div><div class="pc pw">必備・一入境就買</div></div>
+    <div class="pass-row"><div class="pc"><b>AREX 直達快線（去程）</b></div><div class="pc">₩9,500/趟</div><div class="pc pw">✅ 仁川→首爾站</div><div class="pc pw">最快最方便</div></div>
+    <div class="pass-row"><div class="pc">Discover Seoul Pass</div><div class="pc">₩39,900（24H）</div><div class="pc pm">△ 視景點而定</div><div class="pc pm">若要逛多景點可考慮</div></div>
+    <div class="pass-row"><div class="pc"><b>AREX 直達快線（回程）</b></div><div class="pc">₩9,500/趟</div><div class="pc pw">✅ 首爾站→仁川</div><div class="pc pw">行李多時最方便</div></div>
+    <div class="pass-row"><div class="pc">機場巴士（利木津）</div><div class="pc">₩17,000–₩20,000</div><div class="pc">可替代 AREX</div><div class="pc">時間較長但直達飯店</div></div>
+    <div class="pass-row"><div class="pc">Kakao 計程車</div><div class="pc">₩15,000–₩25,000</div><div class="pc pm">△ 深夜/行李多時</div><div class="pc pm">深夜或多人分攤划算</div></div>
+  </div>
+
+  <div class="sec-lbl">全程精選餐廳一覽</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">SAMGYETANG · 百年老店</div><div class="rc-name">土俗村蔘雞湯 Tosokchon</div><div class="rc-meta"><span class="rc-r">4.2</span><span class="rc-p">₩18,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">首爾最知名的人參雞湯，整隻雞燉入糯米、人參、紅棗。景福宮旁，開門 10:00，建議避開午餐尖峰。</p><a class="map-btn" href="https://map.naver.com/p/search/%ED%86%A0%EC%86%8D%EC%B4%8C%EC%82%BC%EA%B3%84%ED%83%95" target="_blank">Naver Map · 토속촌삼계탕</a></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">KBBQ · 濟州特選豬五花</div><div class="rc-name">Hongdae BBQ Jeju Special</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩20,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">弘大必吃燒烤，濟州島豬五花超鮮嫩，服務員全程代烤。下午 3 點開始營業。</p><a class="map-btn" href="https://map.naver.com/p/search/%ED%99%8D%EB%8C%80%EC%A0%9C%EC%A3%BC%ED%95%98%EC%9A%B0%EC%8A%A4" target="_blank">Naver Map · 홍대제주하우스</a></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">BIBIMBAP · 客製化拌飯</div><div class="rc-name">Bebab Bibimbap 弘大</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩12,000/人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">自選配料的石鍋拌飯，素食友善。料多實在，上菜快，適合午餐。</p><a class="map-btn" href="https://map.naver.com/p/search/%EB%B2%A0%EB%B0%A5%EB%B9%84%EB%B9%94%EB%B0%A5%ED%99%8D%EB%8C%80" target="_blank">Naver Map · 베밥비빔밥</a></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">CHICKEN · 復古포차 炸雞</div><div class="rc-name">Dae Wang Tong Dak 大王炸雞</div><div class="rc-meta"><span class="rc-r">4.9</span><span class="rc-p">₩25,000/2人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">DDP附近的炸雞名店，整隻炸雞配年糕辣炒超搭。週日公休，其餘 16:00 開始。</p><a class="map-btn" href="https://map.naver.com/p/search/%EB%8C%80%EC%99%95%ED%86%B5%EB%8B%AD" target="_blank">Naver Map · 대왕통닭</a></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">CHICKEN · 隱藏版 Speakeasy</div><div class="rc-name">Kyochon Pilbang 교촌필방</div><div class="rc-meta"><span class="rc-r">4.8</span><span class="rc-p">₩30,000/2人</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">外觀像書店，有暗門的隱藏炸雞餐廳。炸雞超脆配精釀啤酒，梨泰院高質感夜晚首選，強烈建議提前訂位。</p><a class="map-btn" href="https://map.naver.com/p/search/%EA%B5%90%EC%B4%8C%ED%95%84%EB%B0%A9" target="_blank">Naver Map · 교촌필방</a></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">MARKET · 百年傳統市集</div><div class="rc-name">廣藏市場 Gwangjang</div><div class="rc-meta"><span class="rc-r">4.2</span><span class="rc-p">₩5,000–10,000</span></div></div>
+      <div class="rc-bd"><p class="rc-desc">首爾最古老市集，必吃綠豆煎餅、生牛肉拌飯。Netflix 紀錄片介紹加持，下午人較多，建議早去。</p><a class="map-btn" href="https://map.naver.com/p/search/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5" target="_blank">Naver Map · 광장시장</a></div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">實用資訊</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>說明</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr><td>📱 網路</td><td><span class="ev-name">韓國 SIM 卡 或 Pocket WiFi</span><div class="ev-note">機場入境大廳可取 SIM 卡，建議提前在台灣網站訂好</div></td><td class="cost">₩15,000–₩25,000</td></tr>
+      <tr><td>🗺 導航</td><td><span class="ev-name">Naver Map（最準）或 Kakao Map</span><div class="ev-note">Google Maps 在韓國導航功能受限，請改用 Naver Map</div></td><td class="cost z">免費</td></tr>
+      <tr><td>💳 付款</td><td><span class="ev-name">信用卡 + T-money + 少量現金</span><div class="ev-note">多數地方可刷卡，建議備 ₩50,000 現金應急</div></td><td class="cost z">—</td></tr>
+      <tr><td>🧾 退稅</td><td><span class="ev-name">VAT 退稅（單筆 ₩30,000 以上）</span><div class="ev-note">出境前在機場退稅處辦理，攜帶護照及購買收據</div></td><td class="cost pw">7–10% 退回</td></tr>
+      <tr><td>🚨 緊急</td><td><span class="ev-name">110 警察 · 119 救護車</span><div class="ev-note">駐韓台北代表部緊急：+82-2-399-2780（24H）</div></td><td class="cost z">—</td></tr>
+      <tr><td>🌡 6月天氣</td><td><span class="ev-name">25–32°C，梅雨季</span><div class="ev-note">6月首爾進入梅雨，帶輕便雨傘或雨衣</div></td><td class="cost z">帶傘</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- .main -->
+
+<script>
+function sd(i){
+  document.querySelectorAll('.dnbtn').forEach((b,j)=>b.classList.toggle('on',i===j));
+  document.querySelectorAll('.dpanel').forEach((p,j)=>p.classList.toggle('on',i===j));
+  window.scrollTo({top:document.querySelector('.nav-wrap').offsetTop-4,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

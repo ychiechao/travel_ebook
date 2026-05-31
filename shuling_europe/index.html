@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歐洲五國學術交流暨自由行｜2026年7–8月</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a3a5c;--teal:#0f6e56;--blue:#1761a8;--purple:#4a42a8;
+  --red:#b03030;--amber:#b07010;--gold:#d4a017;--coral:#993C1D;
+  --lt-teal:#e6f4f0;--lt-blue:#e8f1fb;--lt-purple:#eeedfe;
+  --lt-red:#fbeaea;--lt-amb:#fdf6e3;--lt-coral:#FAECE7;
+  --bg:#f7f6f2;--card:#fff;--border:#e0ddd5;
+  --text:#1c1b18;--muted:#6b6860;
+  --sans:'Noto Sans TC',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden}
+
+.hero{background:linear-gradient(135deg,#1a2a4a 0%,#1a3a5c 50%,#2a3a50 100%);padding:48px 20px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 70%,rgba(212,160,23,.18) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(74,66,168,.2) 0%,transparent 50%),
+             radial-gradient(ellipse at 55% 90%,rgba(15,110,86,.15) 0%,transparent 40%)}
+.hero-tag{font:500 11px/1 var(--mono);letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;position:relative}
+.hero h1{font-size:clamp(20px,4.5vw,34px);font-weight:700;color:#fff;line-height:1.3;position:relative;margin-bottom:5px}
+.hero h2{font-size:clamp(12px,2.5vw,16px);font-weight:300;color:rgba(255,255,255,.65);position:relative;margin-bottom:18px}
+.city-flags{display:flex;justify-content:center;gap:6px;margin-bottom:18px;position:relative;flex-wrap:wrap}
+.cflag{font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85)}
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;position:relative}
+.hbadge{font:500 10.5px/1 var(--mono);padding:4px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);background:rgba(255,255,255,.07);letter-spacing:.04em}
+.hbadge.gold{border-color:var(--gold);color:var(--gold);background:rgba(212,160,23,.12)}
+
+.hotel-strip{background:linear-gradient(180deg,#1a2a4a 0%,#152d49 100%);padding:0 16px 24px}
+.hotel-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.hcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;transition:background .2s}
+.hcard:hover{background:rgba(255,255,255,.13)}
+.hcard.conf{border-color:rgba(15,110,86,.6);background:rgba(15,110,86,.12)}
+.hdate{font:500 10px/1 var(--mono);color:var(--gold);letter-spacing:.05em;margin-bottom:5px}
+.hname{font-size:11.5px;font-weight:600;color:#fff;line-height:1.35;margin-bottom:3px}
+.hinfo{font-size:10px;color:rgba(255,255,255,.5)}
+.hbf{display:inline-block;font-size:9px;margin-top:5px;padding:2px 7px;border-radius:4px}
+.bf-y{background:rgba(15,110,86,.4);color:#7de0b5}
+.bf-n{background:rgba(176,48,48,.3);color:#f5a0a0}
+.bf-ok{background:rgba(15,110,86,.6);color:#b0ffde;font-weight:700}
+
+.nav-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.day-nav{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;padding:2px 4px 0}
+.dnbtn{flex-shrink:0;padding:8px 11px;border:none;background:none;cursor:pointer;font:500 11px/1 var(--sans);color:var(--muted);border-bottom:2.5px solid transparent;transition:all .2s;white-space:nowrap}
+.dnbtn .dnum{font:500 8.5px/1 var(--mono);display:block;color:inherit;opacity:.65;margin-bottom:2px}
+.dnbtn:hover{color:var(--text)}
+.dnbtn.on{color:var(--navy);border-bottom-color:var(--navy)}
+.nav-divider{width:100%;height:1px;background:var(--border);margin:0}
+
+.main{max-width:960px;margin:0 auto;padding:24px 14px 60px}
+.dpanel{display:none;animation:fu .28s ease}.dpanel.on{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.day-hd{border-radius:12px;padding:18px 20px;margin-bottom:20px;position:relative;overflow:hidden}
+.day-hd::before{content:'';position:absolute;inset:0;opacity:.05;background:repeating-linear-gradient(45deg,currentColor 0,currentColor 1px,transparent 0,transparent 20px)}
+.dh-num{font-size:36px;font-weight:700;line-height:1;opacity:.9;flex-shrink:0}
+.dh-flex{display:flex;align-items:flex-start;gap:14px}
+.dh-date{font:500 10.5px/1 var(--mono);letter-spacing:.08em;opacity:.75;margin-bottom:4px}
+.dh-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.dh-city{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.32);margin-right:6px}
+.day-hd.blue{background:linear-gradient(125deg,#daeaf8,#c0d8f0);color:var(--blue)}
+.day-hd.teal{background:linear-gradient(125deg,#d8f0e8,#bce0d4);color:var(--teal)}
+.day-hd.purple{background:linear-gradient(125deg,#e4e2f8,#d0cdf0);color:var(--purple)}
+.day-hd.red{background:linear-gradient(125deg,#f8dada,#f0c8c8);color:var(--red)}
+.day-hd.amber{background:linear-gradient(125deg,#fdf3d0,#f5e0a0);color:var(--amber)}
+.day-hd.coral{background:linear-gradient(125deg,#faeae4,#f0cfc0);color:var(--coral)}
+.day-hd.slate{background:linear-gradient(125deg,#e8eaf2,#d4d8ea);color:#3a4870}
+.day-hd.rose{background:linear-gradient(125deg,#fde8ee,#f8ccd8);color:#8a2040}
+
+.sec-lbl{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px;display:flex;align-items:center;gap:8px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.itable{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;font-size:12.5px}
+.itable thead tr{background:var(--navy)}
+.itable thead th{padding:10px 12px;text-align:left;font-size:11px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:.04em}
+.itable tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+.itable tbody tr:last-child{border-bottom:none}
+.itable tbody tr:hover{background:var(--bg)}
+.itable tbody tr.hi{background:var(--lt-teal)}
+.itable tbody tr.hi:hover{background:#cce8df}
+.itable tbody tr.pu{background:var(--lt-purple)}
+.itable tbody tr.wa{background:var(--lt-red)}
+.itable tbody tr.am{background:var(--lt-amb)}
+.itable tbody tr.bl{background:var(--lt-blue)}
+.itable td{padding:9px 12px;vertical-align:top}
+.itable td:first-child{font:400 11px/1.4 var(--mono);color:var(--muted);white-space:nowrap}
+.ev-name{font-weight:600;color:var(--text)}
+.ev-note{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.45}
+.pill{display:inline-block;font:500 9.5px/1 var(--mono);padding:2px 6px;border-radius:3px;margin:2px 3px 0 0}
+.p-tr{background:var(--lt-blue);color:var(--blue)}
+.p-wk{background:#f0ede8;color:#666}
+.p-food{background:var(--lt-amb);color:var(--amber);font-weight:600}
+.p-conf{background:var(--lt-purple);color:var(--purple);font-weight:700}
+.cost{font:500 11.5px/1 var(--mono);color:var(--teal);text-align:right;white-space:nowrap;vertical-align:middle}
+.cost.z{color:#bbb}.pw{color:var(--teal);font-weight:600}.pn{color:var(--red)}.pm{color:var(--amber)}
+
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:22px}
+.rc{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow .18s,transform .18s;text-decoration:none;display:block;color:inherit}
+.rc:hover{box-shadow:0 6px 24px rgba(0,0,0,.09);transform:translateY(-2px)}
+.rc-hd{padding:12px 14px 9px;border-bottom:1px solid var(--border)}
+.rc-type{font:400 10px/1 var(--mono);color:var(--muted);letter-spacing:.05em;margin-bottom:4px}
+.rc-name{font-size:13.5px;font-weight:700;margin-bottom:4px}
+.rc-meta{display:flex;gap:10px;font-size:11px;color:var(--muted)}
+.rc-r::before{content:'⭐ ';color:var(--amber)}
+.rc-p::before{content:'💰 '}
+.rc-bd{padding:10px 14px}
+.rc-desc{font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.map-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--blue);background:var(--lt-blue);border:1px solid rgba(23,97,168,.2);border-radius:6px;padding:5px 10px;text-decoration:none;transition:background .14s}
+.map-btn:hover{background:#d0e6f8}
+.map-btn::before{content:'📍';font-size:11px}
+.rec-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--teal);background:var(--lt-teal);border:1px solid rgba(15,110,86,.2);border-radius:6px;padding:5px 10px;text-decoration:none;transition:background .14s}
+.rec-btn:hover{background:#cce8df}
+.rec-btn::before{content:'💬';font-size:11px}
+.rec-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.blog-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:#8a3a00;background:#fff3e8;border:1px solid rgba(180,80,0,.2);border-radius:6px;padding:5px 10px;text-decoration:none;transition:background .14s}
+.blog-btn:hover{background:#ffe0c0}
+.blog-btn::before{content:'✍️';font-size:11px}
+
+.ib{border-radius:9px;padding:10px 14px;font-size:12px;line-height:1.6;margin:8px 0}
+.ib-b{background:var(--lt-blue);border:1px solid rgba(23,97,168,.2);color:var(--blue)}
+.ib-g{background:var(--lt-teal);border:1px solid rgba(15,110,86,.2);color:var(--teal)}
+.ib-r{background:var(--lt-red);border:1px solid rgba(176,48,48,.2);color:var(--red)}
+.ib-p{background:var(--lt-purple);border:1px solid rgba(74,66,168,.2);color:var(--purple)}
+.ib-a{background:var(--lt-amb);border:1px solid rgba(176,112,16,.2);color:var(--amber)}
+
+.shop-sec{margin-top:28px}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin-bottom:6px}
+.shop-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 13px}
+.shop-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.shop-emoji{font-size:22px;margin-bottom:6px}
+.shop-name{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:2px;line-height:1.35}
+.shop-where{font-size:10.5px;color:var(--teal);font-weight:600;margin-bottom:4px}
+.shop-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.shop-price{display:inline-block;font:500 10px/1 var(--mono);margin-top:6px;padding:2px 7px;border-radius:4px;background:var(--lt-amb);color:var(--amber)}
+
+.ticket-warn{background:#fff8e8;border:1px solid #f0c060;border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:#7a4f00;line-height:1.7}
+.ticket-warn strong{color:#5a3800}
+
+@media(max-width:540px){
+  .dh-num{font-size:26px}.dh-title{font-size:15px}
+  .hotel-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">2026 歐洲學術交流暨自由行</div>
+  <h1>倫敦 · 盧布亞納 · 威尼斯 · 佛羅倫斯 · 米蘭</h1>
+  <h2>2026年7月27日（日）－ 8月12日（二）｜17天 16夜</h2>
+  <div class="city-flags">
+    <span class="cflag">🇬🇧 英國 倫敦 + 劍橋</span>
+    <span class="cflag">🇸🇮 斯洛維尼亞 盧布亞納</span>
+    <span class="cflag">🇮🇹 義大利 威尼斯 · 佛羅倫斯 · 米蘭</span>
+  </div>
+  <div class="hero-meta">
+    <span class="hbadge gold">去程 國泰 7/27 19:30 台北出發 → 7/28 06:20 倫敦抵達</span>
+    <span class="hbadge gold">回程 國泰 8/12 12:45 米蘭出發（香港轉機）→ 8/13 早上抵台</span>
+    <span class="hbadge">ICITL 研討會 盧布亞納 8/4–8/5</span>
+    <span class="hbadge">論文發表 8/5</span>
+    <span class="hbadge">17天 · 5城市</span>
+  </div>
+</div>
+
+<!-- ═══ HOTEL STRIP ═══ -->
+<div class="hotel-strip">
+  <div class="hotel-grid">
+    <div class="hcard">
+      <div class="hdate">7/28–8/2 · 5晚</div>
+      <div class="hname">倫敦市區飯店</div>
+      <div class="hinfo">King's Cross / Farringdon 區</div>
+      <span class="hbf bf-n">待訂</span>
+    </div>
+    <div class="hcard">
+      <div class="hdate">8/2–8/6 · 4晚</div>
+      <div class="hname">盧布亞納市區飯店</div>
+      <div class="hinfo">舊城區 / Prešeren Square 旁</div>
+      <span class="hbf bf-n">待訂</span>
+    </div>
+    <div class="hcard">
+      <div class="hdate">8/6–8/8 · 2晚</div>
+      <div class="hname">威尼斯飯店</div>
+      <div class="hinfo">Cannaregio / Santa Lucia 區</div>
+      <span class="hbf bf-n">待訂 · 早訂省很多</span>
+    </div>
+    <div class="hcard">
+      <div class="hdate">8/8–8/10 · 2晚</div>
+      <div class="hname">佛羅倫斯飯店</div>
+      <div class="hinfo">Duomo / Santa Croce 周邊</div>
+      <span class="hbf bf-n">待訂</span>
+    </div>
+    <div class="hcard">
+      <div class="hdate">8/11–8/12 · 1晚</div>
+      <div class="hname">米蘭飯店</div>
+      <div class="hinfo">Centrale / Navigli 區</div>
+      <span class="hbf bf-n">待訂</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<div class="nav-wrap">
+  <nav class="day-nav">
+    <button class="dnbtn on" onclick="sd(0)"><span class="dnum">行前準備</span>出發前必讀</button>
+    <button class="dnbtn" onclick="sd(1)"><span class="dnum">D1 7/27</span>台灣 出發</button>
+    <button class="dnbtn" onclick="sd(2)"><span class="dnum">D2 7/28</span>抵達+劍橋</button>
+    <button class="dnbtn" onclick="sd(3)"><span class="dnum">D3 7/29</span>倫敦 博物館</button>
+    <button class="dnbtn" onclick="sd(4)"><span class="dnum">D4 7/30</span>倫敦 下午茶</button>
+    <button class="dnbtn" onclick="sd(5)"><span class="dnum">D5 7/31</span>倫敦 Borough</button>
+    <button class="dnbtn" onclick="sd(6)"><span class="dnum">D6 8/1</span>倫敦 自由</button>
+    <button class="dnbtn" onclick="sd(7)"><span class="dnum">D7 8/2</span>→盧布亞納</button>
+    <button class="dnbtn" onclick="sd(8)"><span class="dnum">D8 8/3</span>盧布亞納 探索</button>
+    <button class="dnbtn" onclick="sd(9)"><span class="dnum">D9 8/4</span>城堡+研討準備</button>
+    <div class="nav-divider"></div>
+    <button class="dnbtn" onclick="sd(10)"><span class="dnum">D10 8/5</span>論文發表</button>
+    <button class="dnbtn" onclick="sd(11)"><span class="dnum">D11 8/6</span>→威尼斯</button>
+    <button class="dnbtn" onclick="sd(12)"><span class="dnum">D12 8/7</span>威尼斯 全天</button>
+    <button class="dnbtn" onclick="sd(13)"><span class="dnum">D13 8/8</span>→佛羅倫斯</button>
+    <button class="dnbtn" onclick="sd(14)"><span class="dnum">D14 8/9</span>Uffizi 烏菲茲</button>
+    <button class="dnbtn" onclick="sd(15)"><span class="dnum">D15 8/10</span>Accademia→米蘭</button>
+    <button class="dnbtn" onclick="sd(16)"><span class="dnum">D16 8/11</span>米蘭 全天</button>
+    <button class="dnbtn" onclick="sd(17)"><span class="dnum">D17 8/12</span>12:45 返台</button>
+    <button class="dnbtn" onclick="sd(18)"><span class="dnum">附錄</span>交通 & 總覽</button>
+  </nav>
+</div>
+
+<div class="main">
+
+<!-- ═══ 行前準備 ═══ -->
+<div class="dpanel on" id="p0">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num" style="font-size:26px">📋</div><div>
+    <div class="dh-date">PRE-TRIP CHECKLIST · 出發前 2–4 週完成</div>
+    <div class="dh-title">行前準備 · 必讀清單</div>
+    <div class="dh-city">5國 · 17天 · 研討會 + 自由行</div>
+  </div></div></div>
+
+  <div class="ticket-warn">
+    ⚠️ <strong>門票搶訂警告（8月旺季）：</strong>佛羅倫斯 Uffizi 烏菲茲美術館、Accademia 學院美術館（大衛像）8月現場幾乎買不到票，<strong>務必出發前 1–2 個月在官網預訂</strong>。威尼斯 Doge's Palace、St Mark's Basilica 也建議提前訂。倫敦 Tower of London、熱門下午茶餐廳需提前 2–4 週訂位。
+  </div>
+
+  <div class="sec-lbl">🎫 門票 & 訂位優先清單</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>地點</th><th>建議訂購時間</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr class="wa"><td>Uffizi 烏菲茲美術館</td><td><span class="ev-name">佛羅倫斯 8/9 (D14)</span></td><td>出發前 6–8 週</td><td class="cost pn">必訂！現場無票</td></tr>
+      <tr class="wa"><td>Accademia 大衛像</td><td><span class="ev-name">佛羅倫斯 8/10 (D15 上午)</span></td><td>出發前 6–8 週</td><td class="cost pn">必訂！現場無票</td></tr>
+      <tr class="am"><td>Doge's Palace 總督府</td><td><span class="ev-name">威尼斯 8/7</span></td><td>出發前 3–4 週</td><td class="cost pm">強烈建議</td></tr>
+      <tr class="am"><td>倫敦下午茶（The Ritz / Fortnum）</td><td><span class="ev-name">倫敦 7/30</span></td><td>出發前 4–6 週</td><td class="cost pm">熱門需提前</td></tr>
+      <tr class="am"><td>Tower of London</td><td><span class="ev-name">倫敦 7/31</span></td><td>出發前 2–3 週</td><td class="cost pm">線上訂省€</td></tr>
+      <tr class="hi"><td>Dishoom 倫敦訂位</td><td><span class="ev-name">倫敦 7/29 或 7/31</span></td><td>出發前 2–3 週</td><td class="cost pw">熱門 排隊超長</td></tr>
+      <tr class="hi"><td>Gostilna na Gradu 盧布亞納</td><td><span class="ev-name">盧布亞納 8/3</span></td><td>出發前 2 週</td><td class="cost pw">Michelin Bib</td></tr>
+      <tr><td>King's College Chapel 劍橋</td><td><span class="ev-name">劍橋 7/28</span></td><td>出發前 1–2 週</td><td class="cost z">建議線上訂</td></tr>
+      <tr><td>Punting 划船 劍橋</td><td><span class="ev-name">劍橋 7/28</span></td><td>出發前 1 週</td><td class="cost z">現場也可訂</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">📱 必裝 APP</div>
+  <div class="rg">
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">地圖導航 · 歐洲最準</div><div class="rc-name">Google Maps</div></div>
+      <div class="rc-bd"><p class="rc-desc">歐洲交通、步行、大眾運輸全部靠它。建議出發前下載各城市離線地圖（倫敦、盧布亞納、威尼斯、佛羅倫斯、米蘭），省流量。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://apps.apple.com/tw/app/google-maps/id585027354" target="_blank">iOS 下載</a><a class="map-btn" href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank">Android</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">歐洲鐵路訂票</div><div class="rc-name">Trainline / Omio</div></div>
+      <div class="rc-bd"><p class="rc-desc">義大利高鐵（Trenitalia / Italo）、歐洲城際鐵路一站搞定。Florence→Milan 高鐵約 1hr 45min，建議出發前 1 個月訂好早鳥票。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://www.thetrainline.com" target="_blank">Trainline 訂票</a><a class="map-btn" href="https://www.omio.com" target="_blank">Omio</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">翻譯 · 歐洲多語</div><div class="rc-name">Google 翻譯（相機功能）</div></div>
+      <div class="rc-bd"><p class="rc-desc">斯洛維尼亞語、義大利語菜單相機翻拍功能超實用。建議出發前下載斯洛維尼亞語、義大利語離線語言包。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://translate.google.com" target="_blank">Google 翻譯</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">機票 & 巴士訂票</div><div class="rc-name">FlixBus（盧布亞納→威尼斯）</div></div>
+      <div class="rc-bd"><p class="rc-desc">盧布亞納→威尼斯無直達火車，需搭 FlixBus 或 Arriva 巴士，約 4–5 小時。8月旺季一定要提前 3–4 週訂票，常常售完。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://www.flixbus.com" target="_blank">FlixBus 訂票</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=盧布亞納+威尼斯" target="_blank">PTT 心得</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">景點票券 · 省時省錢</div><div class="rc-name">Klook / KKday · Tiqets</div></div>
+      <div class="rc-bd"><p class="rc-desc">Tiqets 在歐洲很方便，Uffizi、Accademia、威尼斯景點都可訂。Klook 也有倫敦 Oyster 卡、London Pass 等套票，根據行程決定是否划算。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://www.tiqets.com" target="_blank">Tiqets</a><a class="map-btn" href="https://www.klook.com/zh-TW/city/1-london-things-to-do/" target="_blank">Klook 倫敦</a></div></div>
+    </div>
+    <div class="rc">
+      <div class="rc-hd"><div class="rc-type">住宿比價</div><div class="rc-name">Booking.com / Airbnb</div></div>
+      <div class="rc-bd"><p class="rc-desc">歐洲 8 月是旺季高峰，尤其威尼斯、佛羅倫斯飯店奇貴。<strong>建議現在立刻訂房</strong>，晚訂一週差距可達 NT$3,000–8,000/晚。</p>
+      <div class="rec-wrap"><a class="map-btn" href="https://www.booking.com" target="_blank">Booking.com</a><a class="rec-btn" href="https://www.dcard.tw/search?query=歐洲自由行+飯店+推薦" target="_blank">Dcard 推薦</a></div></div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">💱 換錢 & 網路策略</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>說明</th><th>建議</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>信用卡（主力）</td><td><span class="ev-name">Visa / Mastercard 歐洲通行</span><div class="ev-note">絕大多數景點、餐廳、超市皆可刷。建議備玉山 Wask、台新 Richi 等海外免手續費卡</div></td><td class="cost pw">✅ 首選方式</td></tr>
+      <tr><td>歐元現金</td><td><span class="ev-name">義大利、斯洛維尼亞均用歐元</span><div class="ev-note">英國用英鎊（GBP），盧布亞納至米蘭全程歐元。建議台灣換好 €200–300 + £100 應急</div></td><td class="cost pw">✅ 備少量</td></tr>
+      <tr><td>英鎊現金</td><td><span class="ev-name">倫敦 5 天用英鎊</span><div class="ev-note">台灣外匯銀行提前預約，Heathrow/Gatwick 機場換匯率差不建議</div></td><td class="cost pw">✅ 台灣先換</td></tr>
+      <tr class="am"><td>Wise / Revolut 卡</td><td><span class="ev-name">跨幣別轉換超划算</span><div class="ev-note">多幣種帳戶，英鎊換歐元超方便，手續費幾乎為零，強烈推薦長途旅行帶一張</div></td><td class="cost pw">✅ 強力推薦</td></tr>
+      <tr class="wa"><td>機場 ATM</td><td><span class="ev-name">手續費高、匯率差</span></td><td class="cost pn">✗ 不建議</td></tr>
+      <tr class="bl"><td>網路 SIM 卡</td><td><span class="ev-name">歐洲漫遊 SIM（含英國+歐盟）</span><div class="ev-note">建議買「歐洲全境」SIM 卡，英國脫歐後需含英國的方案。Klook 有售 15–30 天方案</div></td><td class="cost pw">✅ 出發前買</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">✅ 出發前確認清單</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>說明</th><th>狀態</th></tr></thead>
+    <tbody>
+      <tr><td>🛂 護照</td><td><span class="ev-name">有效期需剩餘 6 個月以上</span><div class="ev-note">台灣護照免簽英國、申根區（含斯洛維尼亞、義大利），無需申請簽證</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="wa"><td>🎫 Uffizi 門票</td><td><span class="ev-name">佛羅倫斯 8/9 · 官網預訂</span><div class="ev-note">uffizi.it 官網，€20，8月旺季必提前 6–8 週！</div></td><td class="cost z">□ 已訂</td></tr>
+      <tr class="wa"><td>🎫 Accademia 門票</td><td><span class="ev-name">佛羅倫斯 8/10 · 官網預訂</span><div class="ev-note">galleriaaccademiafirenze.it，€20，與 Uffizi 同樣急迫！</div></td><td class="cost z">□ 已訂</td></tr>
+      <tr class="am"><td>🚌 盧布亞納→威尼斯 巴士</td><td><span class="ev-name">FlixBus / Arriva · 8/6</span><div class="ev-note">約 4–5 小時，8 月旺季提前 3–4 週訂</div></td><td class="cost z">□ 已訂</td></tr>
+      <tr class="am"><td>🚄 佛羅倫斯→米蘭 高鐵</td><td><span class="ev-name">Trenitalia / Italo · 8/11</span><div class="ev-note">約 1hr 45min，早鳥票 €19–39，出發前 1 個月訂</div></td><td class="cost z">□ 已訂</td></tr>
+      <tr class="hi"><td>🏨 所有住宿</td><td><span class="ev-name">5 城市 · 8 月旺季儘速訂</span><div class="ev-note">威尼斯、佛羅倫斯最緊張，晚訂費用暴增</div></td><td class="cost z">□ 確認</td></tr>
+      <tr><td>✈️ 機票</td><td><span class="ev-name">去程 台北→倫敦 / 回程 米蘭→台北</span><div class="ev-note">確認行李額度（歐洲購物多，建議一件 23kg 托運）</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="bl"><td>🌐 網路 SIM 卡</td><td><span class="ev-name">歐洲全境含英國方案</span><div class="ev-note">Klook 或機場取卡，確認支援英國 + 申根區</div></td><td class="cost z">□ 已訂</td></tr>
+      <tr><td>💳 Wise / Revolut</td><td><span class="ev-name">多幣種卡片申辦</span><div class="ev-note">需 1–2 週寄到台灣，提前申辦</div></td><td class="cost z">□ 申辦</td></tr>
+      <tr><td>☂ 天氣準備</td><td><span class="ev-name">7–8 月歐洲 25–35°C · 偶有雨</span><div class="ev-note">倫敦多雨帶薄外套；義大利豔陽防曬必備；盧布亞納較涼爽</div></td><td class="cost z">□ 確認</td></tr>
+      <tr class="am"><td>🎓 研討會資料</td><td><span class="ev-name">ICITL · 8/4–8/5 · 論文發表 8/5</span><div class="ev-note">確認論文簡報、邀請函、研討會地址、聯絡人</div></td><td class="cost z">□ 確認</td></tr>
+    </tbody>
+  </table>
+
+  <div class="shop-sec"><div class="sec-lbl">🛍 台灣出發前先備</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">防曬乳 SPF50+</div><div class="shop-where">台灣藥妝出發前</div><div class="shop-desc">義大利夏季紫外線極強，歐洲購買貴且不好找同品牌</div><span class="shop-price">NT$150–400</span></div>
+    <div class="shop-card"><div class="shop-emoji">🌂</div><div class="shop-name">折疊晴雨傘</div><div class="shop-where">台灣出發前</div><div class="shop-desc">倫敦多雨，輕薄折疊款最方便，不佔行李空間</div><span class="shop-price">NT$100–300</span></div>
+    <div class="shop-card"><div class="shop-emoji">💳</div><div class="shop-name">Wise / Revolut 卡</div><div class="shop-where">台灣申辦（需 2 週）</div><div class="shop-desc">英鎊、歐元自動換算，手續費超低，長途旅行必備</div><span class="shop-price">免費申辦</span></div>
+    <div class="shop-card"><div class="shop-emoji">🔌</div><div class="shop-name">歐洲萬用轉接頭</div><div class="shop-where">台灣 3C 店</div><div class="shop-desc">英國 G 型三腳、歐洲 C 型圓腳，需兩種轉接頭或買萬用款</div><span class="shop-price">NT$50–200</span></div>
+    <div class="shop-card"><div class="shop-emoji">💊</div><div class="shop-name">常備藥品</div><div class="shop-where">台灣藥局</div><div class="shop-desc">腸胃藥（歐洲飲食油膩）、退燒感冒藥、OK繃，出門必帶</div><span class="shop-price">自備</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧳</div><div class="shop-name">行李秤 + 防盜腰包</div><div class="shop-where">台灣網路 / 實體店</div><div class="shop-desc">歐洲扒手多，防盜腰包必備。行李秤控制回程購物不超重</div><span class="shop-price">NT$200–500</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D1 7/27 台灣出發 ═══ -->
+<div class="dpanel" id="p1">
+  <div class="day-hd slate"><div class="dh-flex"><div class="dh-num">01</div><div>
+    <div class="dh-date">JUL 27 (SUN) 2026 · 出發日</div>
+    <div class="dh-title">台北 出發 → 香港轉機 → 倫敦</div>
+    <div class="dh-city">✈ 國泰航空 CX</div><div class="dh-city">飛行日</div>
+  </div></div></div>
+  <div class="ib ib-b">✈ 國泰航空 19:30 桃園出發 → 香港轉機 → 7/28 06:20 抵達倫敦 Heathrow。全程約 16–17 小時（含轉機等候），建議在機上補眠，抵達後時差 7 小時。</div>
+  <div class="sec-lbl">Day 1 出發行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>出發前</td><td><span class="ev-name">🧳 最後行李確認 + 前往桃園機場</span><div class="ev-note">出發前 3 小時到機場，國泰航空辦理登機手續</div></td><td>桃園 TPE T1</td><td class="cost z">—</td></tr>
+      <tr class="bl"><td>19:30</td><td><span class="ev-name">✈ 國泰航空 CX 桃園 → 香港</span><div class="ev-note">約 1.5 小時飛行，香港 HKG 轉機，確認轉機閘口</div></td><td>TPE → HKG</td><td class="cost z">—</td></tr>
+      <tr class="bl"><td>深夜</td><td><span class="ev-name">✈ 香港 → 倫敦 Heathrow</span><div class="ev-note">約 12–13 小時長途飛行，建議在機上補眠，倫敦時間明早 06:20 抵達</div></td><td>HKG → LHR</td><td class="cost z">—</td></tr>
+    </tbody>
+  </table>
+  <div class="ib ib-g">💡 機上補眠技巧：起飛後調好倫敦時區，對準當地作息補眠。隔天 7/28 要去劍橋，建議機上至少睡 6 小時。帶頸枕、眼罩、耳塞，避免看刺激電影。</div>
+  <div class="sec-lbl">Day 1 · 抵達後（7/28）晚餐推薦</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">INDIAN · 倫敦最夯印式【必訂位】</div><div class="rc-name">Dishoom King's Cross</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">£20–35/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">TimeOut、CNN Travel 長期推薦的倫敦人氣餐廳，孟買復古風格裝潢，黑豆咖哩和 Bacon Naan Roll 是招牌。提前 2–3 週訂位。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Dishoom+King%27s+Cross+London" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Dishoom+倫敦" target="_blank">Dcard</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=Dishoom+倫敦" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Dishoom%20%E5%80%AB%E6%95%A6%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E5%AE%A2%20%E5%8F%B0%E7%81%A3" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">STEAK · 平價牛排【備案】</div><div class="rc-name">Flat Iron Covent Garden</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">£15–20/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">倫敦最划算的牛排館，主餐只要 £12–15，包含沙拉吧無限取用。抵達倫敦第一餐若沒訂到 Dishoom 的理想備案。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Flat+Iron+Covent+Garden+London" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Flat+Iron+倫敦" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=Flat%20Iron%20London%20%E7%89%9B%E6%8E%92%20%E5%80%AB%E6%95%A6%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 倫敦抵達日</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🎭</div><div class="shop-name">Oyster Card 地鐵卡</div><div class="shop-where">地鐵站服務台</div><div class="shop-desc">倫敦地鐵通行證，搭地鐵、公車必備，含 £5 押金可退</div><span class="shop-price">充值即用</span></div>
+    <div class="shop-card"><div class="shop-emoji">💊</div><div class="shop-name">Boots 英國藥妝</div><div class="shop-where">Boots 藥局（遍布全倫敦）</div><div class="shop-desc">No.7 護膚系列、Soltan 防曬、維他命 C 發泡錠，台灣買不到的英國限定品</div><span class="shop-price">£5–30</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Boots%20%E5%80%AB%E6%95%A6%20%E8%97%A5%E5%A6%9D%20No7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6%20%E5%BF%85%E8%B2%B7" target="_blank">Boots 必買攻略</a></div>
+    <div class="shop-card"><div class="shop-emoji">☕</div><div class="shop-name">Twinings 英國茶葉</div><div class="shop-where">Twinings 旗艦店 / 超市</div><div class="shop-desc">Twinings Strand 旗艦店是本店（1706年創立），茶禮盒種類最齊全</div><span class="shop-price">£5–25</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D2 7/28 抵達+劍橋 ═══ -->
+<div class="dpanel" id="p2">
+  <div class="day-hd amber"><div class="dh-flex"><div class="dh-num">02</div><div>
+    <div class="dh-date">JUL 28 (MON) 2026 · 06:20 抵達倫敦 · 劍橋固定行程</div>
+    <div class="dh-title">倫敦 06:20 抵達 → 休息 → 下午劍橋</div>
+    <div class="dh-city">🇬🇧 London</div><div class="dh-city">🎓 Cambridge</div>
+  </div></div></div>
+  <div class="ib ib-r">⚠️ 06:20 抵達後需先入境、搭車進市區、辦理入住（或寄放行李），建議 <strong>下午 13:00 後</strong> 再出發去劍橋，縮短行程以確保體力。劍橋傍晚也很美，日落前返回即可。</div>
+  <div class="ib ib-a">🚂 倫敦 King's Cross → 劍橋 約 50 分鐘，班次頻繁，下午 13:00 出發，17:30–18:00 返回。</div>
+  <div class="sec-lbl">Day 2 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="bl"><td>06:20</td><td><span class="ev-name">✈ 抵達倫敦 Heathrow</span><div class="ev-note">入境、取行李、購買 Oyster Card，搭 Elizabeth Line 進市區約 15 分</div></td><td>LHR → 市區</td><td class="cost">£6–13</td></tr>
+      <tr class="hi"><td>08:30</td><td><span class="ev-name">入住 / 行李寄放飯店</span><div class="ev-note">辦理入住或寄放行李，短暫休息、盥洗、換衣，補充早餐</div></td><td>King's Cross 區</td><td class="cost z">—</td></tr>
+      <tr><td>13:00</td><td><span class="ev-name">🚂 King's Cross → 劍橋</span><div class="ev-note"><span class="pill p-tr">火車</span> 約 50 分，National Rail / Trainline 訂好票</div></td><td>King's Cross St.</td><td class="cost">£10–18 來回</td></tr>
+      <tr class="am"><td>14:00</td><td><span class="ev-name">☕ Fitzbillies 下午茶</span><div class="ev-note"><span class="pill p-food">必吃</span> 劍橋百年老店，Chelsea Bun 黏糕是招牌，排隊值得</div></td><td>劍橋市中心</td><td class="cost">£8–15</td></tr>
+      <tr class="hi"><td>14:45</td><td><span class="ev-name">🏛 King's College Chapel 參觀</span><div class="ev-note"><span class="pill p-wk">建議先訂票</span> 哥德式建築，管風琴音樂廳，15世紀石雕精美</div></td><td>King's Parade</td><td class="cost">£12</td></tr>
+      <tr><td>15:45</td><td><span class="ev-name">🚣 Cam River Punting 划船</span><div class="ev-note">沿康河撐篙是劍橋最經典體驗，有導覽及自駕兩種，提前網路訂省時</div></td><td>Cambridge River</td><td class="cost">£20–30</td></tr>
+      <tr class="am"><td>17:00</td><td><span class="ev-name">🍽 晚餐前輕食：Aromi 義式輕食</span><div class="ev-note"><span class="pill p-food">Reddit 推</span> 劍橋在地人氣義式咖啡館，focaccia 和 panini 超讚，輕盈適合逛街前</div></td><td>市中心</td><td class="cost">£8–12</td></tr>
+      <tr><td>17:45</td><td><span class="ev-name">🎓 Trinity College 外觀 + Market Square</span><div class="ev-note">牛頓蘋果樹傳說地；市集廣場有特色攤位可逛</div></td><td>Cambridge</td><td class="cost z">免費</td></tr>
+      <tr><td>18:30</td><td><span class="ev-name">🚂 返回倫敦</span></td><td>Cambridge Station</td><td class="cost z">含去程票</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-lbl">景點 & 餐廳</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">BAKERY · 百年老店</div><div class="rc-name">Fitzbillies</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">£8–15</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">1922 年創立，Chelsea Bun 甜麵包是劍橋最有名的食物之一，BBC 也介紹過。早上去最新鮮，下午常售完。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Fitzbillies+Cambridge" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=劍橋+一日遊" target="_blank">Dcard 劍橋</a><a class="blog-btn" href="https://www.google.com/search?q=%E5%8A%8D%E6%A9%8B%E4%B8%80%E6%97%A5%E9%81%8A%20Fitzbillies%20%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">PUNTING · 劍橋最經典體驗</div><div class="rc-name">Scudamore's Punting</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">£20–30/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">劍橋最老字號的撐篙公司，有 45 分鐘導覽團或自駕方案。夏季排隊長，建議網路預訂或早上 10 點前到。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://www.scudamores.com" target="_blank">官網訂票</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=劍橋+punting" target="_blank">PTT 心得</a><a class="blog-btn" href="https://www.google.com/search?q=%E5%8A%8D%E6%A9%8B%20punting%20%E5%88%92%E8%88%B9%20%E5%8F%B0%E7%81%A3%20%E6%97%85%E9%81%8A%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">CAFE · 義式輕食 Reddit 推薦</div><div class="rc-name">Aromi</div><div class="rc-meta"><span class="rc-r">4.4</span><span class="rc-p">£8–12</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">劍橋在地人最愛的義式咖啡館，focaccia 現烤香脆，咖啡水準高。Reddit r/Cambridge 討論常見推薦。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Aromi+Cambridge" target="_blank">Google Map</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 劍橋</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🎓</div><div class="shop-name">劍橋大學紀念品</div><div class="shop-where">校園周邊禮品店</div><div class="shop-desc">劍橋 LOGO 馬克杯、T恤、筆記本，送學術界朋友最適合</div><span class="shop-price">£5–25</span></div>
+    <div class="shop-card"><div class="shop-emoji">📚</div><div class="shop-name">劍橋書店絕版書</div><div class="shop-where">G. David Bookseller</div><div class="shop-desc">百年二手書店，學術書籍齊全，獨特英文書帶回台灣</div><span class="shop-price">£3–20</span></div>
+    <div class="shop-card"><div class="shop-emoji">🍮</div><div class="shop-name">Fitzbillies Chelsea Bun</div><div class="shop-where">Fitzbillies 外帶</div><div class="shop-desc">打包幾個帶回倫敦當隔日早餐，密封盒可撐 1–2 天</div><span class="shop-price">£3–5/個</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D3 7/29 倫敦博物館 ═══ -->
+<div class="dpanel" id="p3">
+  <div class="day-hd blue"><div class="dh-flex"><div class="dh-num">03</div><div>
+    <div class="dh-date">JUL 29 (TUE) 2026</div>
+    <div class="dh-title">大英博物館 · Covent Garden · Soho</div>
+    <div class="dh-city">🇬🇧 London</div>
+  </div></div></div>
+  <div class="sec-lbl">Day 3 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>09:00</td><td><span class="ev-name">🏛 British Museum 大英博物館</span><div class="ev-note"><span class="pill p-wk">步行</span> 免費入場，Rosetta Stone、Elgin Marbles 必看，建議早到避開人潮</div></td><td>Bloomsbury</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">🍝 午餐：Padella Soho</span><div class="ev-note"><span class="pill p-food">TimeOut 推</span> 新鮮手工義大利麵，Pici Cacio e Pepe 是招牌，排隊值得</div></td><td>Soho</td><td class="cost">£15–20</td></tr>
+      <tr><td>14:00</td><td><span class="ev-name">🎪 Covent Garden 科芬園</span><div class="ev-note"><span class="pill p-wk">步行</span> 街頭藝人表演、特色店鋪、Apple Market 工藝品</div></td><td>Covent Garden</td><td class="cost z">免費</td></tr>
+      <tr><td>15:30</td><td><span class="ev-name">🎨 Soho & Chinatown 漫逛</span><div class="ev-note">倫敦最多元的街區，唐人街吃個甜點或珍奶</div></td><td>Soho / Chinatown</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>19:30</td><td><span class="ev-name">🍺 晚餐：The Devonshire</span><div class="ev-note"><span class="pill p-food">2026 英國頂尖 Gastropub</span> BBC Good Food、Guardian 推薦，炸魚薯條 + 生啤酒超讚</div></td><td>Soho</td><td class="cost">£25–40</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-lbl">餐廳</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">PASTA · 手工義大利麵【TimeOut 推】</div><div class="rc-name">Padella Soho</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">£15–20</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">倫敦人氣手工義大利麵館，Pici Cacio e Pepe 是招牌，每日現做麵條。通常要排隊，開門前到或改 Borough 分店。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Padella+Soho+London" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Padella+倫敦" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=Padella%20%E5%80%AB%E6%95%A6%20%E7%BE%A9%E5%A4%A7%E5%88%A9%E9%BA%B5%20%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">GASTROPUB · 2026 年度最佳</div><div class="rc-name">The Devonshire</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">£25–40</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">BBC Good Food 和 Guardian 雙推薦 Gastropub，炸魚薯條、燉牛肉、生啤酒水準極高。Soho 核心地帶，晚餐好選擇。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=The+Devonshire+Soho+London" target="_blank">Google Map</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=倫敦+gastropub" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=The%20Devonshire%20Soho%20London%20%E5%80%AB%E6%95%A6%20%E9%A4%90%E5%BB%B3%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 倫敦 Covent Garden & Soho</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">Liberty 百貨小物</div><div class="shop-where">Liberty London · Great Marlborough St</div><div class="shop-desc">英國最美百貨，Liberty 印花文具、香皂、香氛蠟燭，限定設計款台灣買不到</div><span class="shop-price">£10–50</span></div>
+    <div class="shop-card"><div class="shop-emoji">🫖</div><div class="shop-name">Fortnum & Mason 茶葉</div><div class="shop-where">Fortnum & Mason · Piccadilly</div><div class="shop-desc">英國皇室御用茶，精美禮盒是最高檔伴手禮，Queen Anne 混合茶最受歡迎</div><span class="shop-price">£12–60</span></div>
+    <div class="shop-card"><div class="shop-emoji">🎪</div><div class="shop-name">Apple Market 手工藝品</div><div class="shop-where">Covent Garden Apple Market</div><div class="shop-desc">在地手工藝術家作品，珠寶、插畫、皮革，獨一無二的旅行紀念</div><span class="shop-price">£10–50</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D4 7/30 倫敦下午茶 ═══ -->
+<div class="dpanel" id="p4">
+  <div class="day-hd blue"><div class="dh-flex"><div class="dh-num">04</div><div>
+    <div class="dh-date">JUL 30 (WED) 2026</div>
+    <div class="dh-title">Westminster · 下午茶 · South Bank</div>
+    <div class="dh-city">🇬🇧 London</div>
+  </div></div></div>
+  <div class="ib ib-a">🫖 今日重點 — 英式下午茶是倫敦必體驗，建議選 The Ritz 或 Fortnum & Mason，需 4–6 週前訂位，有著裝規定（Smart Casual）。</div>
+  <div class="sec-lbl">Day 4 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>09:30</td><td><span class="ev-name">🏛 Westminster 西敏寺 + 大笨鐘</span><div class="ev-note">外觀拍照免費；進入 Westminster Abbey 需購票，約 £27</div></td><td>Westminster</td><td class="cost">£0–27</td></tr>
+      <tr><td>11:00</td><td><span class="ev-name">🌳 St James's Park + Buckingham Palace</span><div class="ev-note"><span class="pill p-wk">步行</span> 皇家公園漫步，護衛換班 11:00 AM（週日、假日 10:00）</div></td><td>St James's Park</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>15:00</td><td><span class="ev-name">🫖 英式下午茶</span><div class="ev-note"><span class="pill p-food">必體驗</span> 提前 4–6 週訂位。The Ritz £75/人；Fortnum & Mason £75/人；Rosewood £65/人</div></td><td>各下午茶餐廳</td><td class="cost">£65–80/人</td></tr>
+      <tr><td>17:30</td><td><span class="ev-name">🎡 South Bank 南岸散步</span><div class="ev-note">London Eye 外觀拍照；Tate Modern 現代藝術（免費）；Thames 河岸散步</div></td><td>South Bank</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🍜 晚餐：Kricket Soho（輕食）</span><div class="ev-note">下午茶後不會太餓，推薦 Kricket 的印度小盤料理輕食，份量可控</div></td><td>Soho</td><td class="cost">£20–30</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-lbl">下午茶選擇比較</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">AFTERNOON TEA · 英國最頂級</div><div class="rc-name">The Ritz London</div><div class="rc-meta"><span class="rc-r">4.8</span><span class="rc-p">£75/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">全球最有名的英式下午茶，金碧輝煌的茶室，需著正式服裝（男士需著西裝領帶）。必須提前 6–8 週訂位，是此生必體驗的頂級下午茶。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://www.theritzlondon.com/dine/afternoon-tea" target="_blank">官網訂位</a><a class="rec-btn" href="https://www.dcard.tw/search?query=The+Ritz+下午茶" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=The%20Ritz%20%E5%80%AB%E6%95%A6%20%E4%B8%8B%E5%8D%88%E8%8C%B6%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">AFTERNOON TEA · 皇室御用茶品</div><div class="rc-name">Fortnum & Mason Diamond Jubilee</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">£75/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">英國皇室御用食品店頂樓的下午茶，精緻司康和茶點搭配頂級茶葉。著裝要求略低於 Ritz，Smart Casual 即可，4–6 週前訂位。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://www.fortnumandmason.com/restaurants/the-diamond-jubilee-tea-salon" target="_blank">官網訂位</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=Fortnum+Mason+下午茶" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Fortnum%20Mason%20%E5%80%AB%E6%95%A6%20%E4%B8%8B%E5%8D%88%E8%8C%B6%20%E9%83%A8%E8%90%BD%E5%AE%A2%20%E5%BF%83%E5%BE%97" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">AFTERNOON TEA · 質感高CP佳</div><div class="rc-name">Rosewood London</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">£65/人</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">CN Traveller 年度最佳下午茶之一，比 Ritz 較容易訂到位，著裝要求 Smart Casual，司康和三層點心盤水準極高。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Rosewood+London+Afternoon+Tea" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=倫敦+下午茶+推薦" target="_blank">Dcard 推薦</a><a class="blog-btn" href="https://www.google.com/search?q=Rosewood%20London%20%E4%B8%8B%E5%8D%88%E8%8C%B6%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 下午茶周邊</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🫖</div><div class="shop-name">Fortnum & Mason 禮盒</div><div class="shop-where">Fortnum & Mason · Piccadilly</div><div class="shop-desc">皇室御用食品禮盒：茶葉組合、果醬禮盒、餅乾禮盒。藍綠色包裝超美，送禮首選</div><span class="shop-price">£15–80</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Fortnum%20Mason%20%E5%80%AB%E6%95%A6%20%E5%BF%85%E8%B2%B7%20%E7%A6%AE%E7%9B%92%20%E5%8F%B0%E7%81%A3%20%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客必買清單</a></div>
+    <div class="shop-card"><div class="shop-emoji">🍪</div><div class="shop-name">Biscuiteers 餅乾禮盒</div><div class="shop-where">Notting Hill / 網路</div><div class="shop-desc">手繪糖霜餅乾藝術品，口味扎實，精美鐵盒包裝是最討喜的英國伴手禮</div><span class="shop-price">£25–50</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">Crabtree & Evelyn 香皂</div><div class="shop-where">倫敦各大商場</div><div class="shop-desc">英國老牌香皂護膚品，下午茶後順路採購，香氛系列最受台灣旅客喜愛</div><span class="shop-price">£8–30</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D5 7/31 Tower & Borough ═══ -->
+<div class="dpanel" id="p5">
+  <div class="day-hd blue"><div class="dh-flex"><div class="dh-num">05</div><div>
+    <div class="dh-date">JUL 31 (THU) 2026</div>
+    <div class="dh-title">Tower of London · Borough Market · Tate Modern</div>
+    <div class="dh-city">🇬🇧 London</div>
+  </div></div></div>
+  <div class="sec-lbl">Day 5 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>09:00</td><td><span class="ev-name">🏰 Tower of London</span><div class="ev-note">英國皇冠寶石展示、中世紀牢獄歷史，導覽 Beefeater 講解精彩，建議線上訂票</div></td><td>Tower Hill 站</td><td class="cost">£34</td></tr>
+      <tr><td>11:30</td><td><span class="ev-name">📸 Tower Bridge 拍照</span><div class="ev-note">外觀拍照免費，進入參觀£12，可上玻璃橋面俯瞰泰晤士河</div></td><td>Tower Bridge</td><td class="cost">£0–12</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">🥩 Borough Market 午餐</span><div class="ev-note"><span class="pill p-food">必去</span> 倫敦最大美食市集，英式肉派、炸魚薯條、牛排三明治、起司攤，邊走邊吃</div></td><td>Borough Market</td><td class="cost">£10–20</td></tr>
+      <tr><td>14:30</td><td><span class="ev-name">🎨 Tate Modern 泰特現代藝術館</span><div class="ev-note"><span class="pill p-wk">免費</span> 全球最大現代藝術館之一，常設展免費，有特展另購票</div></td><td>South Bank</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>19:30</td><td><span class="ev-name">🍜 晚餐：Dishoom（若 D1 沒去）或在地 Pub</span><div class="ev-note">倫敦最後一晚，可選自己最想體驗的倫敦美食</div></td><td>市中心</td><td class="cost">£20–35</td></tr>
+    </tbody>
+  </table>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">MARKET · 倫敦最大美食市集</div><div class="rc-name">Borough Market</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">£10–20</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">13 世紀歷史的倫敦最老美食市集，Monmouth Coffee、Neal's Yard 起司、Kappacasein 烤起司三明治必吃。週一至六開市。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Borough+Market+London" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Borough+Market+倫敦" target="_blank">Dcard</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=Borough+Market" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Borough%20Market%20%E5%80%AB%E6%95%A6%20%E7%BE%8E%E9%A3%9F%E5%B8%82%E5%A0%B4%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">MUSEUM · 免費現代藝術</div><div class="rc-name">Tate Modern</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">免費入場</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">由發電廠改建而成，泰晤士河南岸地標，Turbine Hall 常設大型裝置藝術，免費欣賞世界級現代藝術。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Tate+Modern+London" target="_blank">Google Map</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · Borough Market & 倫敦最後採購</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🧀</div><div class="shop-name">Neal's Yard 熟成起司</div><div class="shop-where">Borough Market 起司攤</div><div class="shop-desc">英國頂級熟成起司，Comté、Cheddar、Stilton，真空包裝可帶回</div><span class="shop-price">£5–20</span></div>
+    <div class="shop-card"><div class="shop-emoji">☕</div><div class="shop-name">Monmouth Coffee 咖啡豆</div><div class="shop-where">Borough Market</div><div class="shop-desc">倫敦精品咖啡先驅，手沖單品咖啡豆，台灣買不到的英國精品烘焙</div><span class="shop-price">£10–18/250g</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Monmouth%20Coffee%20Borough%20Market%20%E5%80%AB%E6%95%A6%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">💊</div><div class="shop-name">Boots 最後掃貨</div><div class="shop-where">Boots 藥局</div><div class="shop-desc">離開英國前最後機會！No.7 精華、Soltan 防曬、薑糖止嘔片，補足備貨</div><span class="shop-price">£3–30</span></div>
+    <div class="shop-card"><div class="shop-emoji">🎭</div><div class="shop-name">倫敦主題紀念品</div><div class="shop-where">South Bank 紀念品店</div><div class="shop-desc">紅色巴士、皇家衛兵磁鐵、Big Ben 雪球，送朋友同事的標準英國伴手禮</div><span class="shop-price">£3–15</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D6 8/1 倫敦自由採購日 ═══ -->
+<div class="dpanel" id="p6">
+  <div class="day-hd blue"><div class="dh-flex"><div class="dh-num">06</div><div>
+    <div class="dh-date">AUG 1 (SAT) 2026 · 倫敦最後一天</div>
+    <div class="dh-title">倫敦 自由採購日 · 明天飛盧布亞納</div>
+    <div class="dh-city">🇬🇧 London</div>
+  </div></div></div>
+  <div class="ib ib-b">🛍 今天是倫敦最後一天，明天（8/2）飛盧布亞納。把握今天採購 Boots、Fortnum & Mason、Harrods、Portobello 等倫敦限定好物。</div>
+  <div class="sec-lbl">Day 6 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>09:00</td><td><span class="ev-name">🎪 Portobello Market 週六大市集</span><div class="ev-note"><span class="pill p-wk">地鐵</span> 週六是 Portobello 最熱鬧的日子！古董、二手服飾、英國特色小物、街頭食物</div></td><td>Notting Hill</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>11:30</td><td><span class="ev-name">🏬 Harrods 百貨 食品館最後採購</span><div class="ev-note">Harrods 紀念品熊、巧克力禮盒、茶葉；提好袋子明天帶走</div></td><td>Knightsbridge</td><td class="cost z">自由</td></tr>
+      <tr><td>14:00</td><td><span class="ev-name">🛍 Boots / Fortnum & Mason 掃貨</span><div class="ev-note">No.7 精華、Soltan 防曬、皇室茶葉禮盒——離開英國前最後機會！</div></td><td>Piccadilly</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🍺 倫敦最後晚餐：The Devonshire 或在地 Pub</span><div class="ev-note">在地 Gastropub 喝一杯生啤酒，道別倫敦，明天就出發了</div></td><td>Soho</td><td class="cost">£20–35</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · Harrods & Notting Hill 最後衝刺</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🏬</div><div class="shop-name">Harrods 紀念品熊</div><div class="shop-where">Harrods 百貨</div><div class="shop-desc">Harrods 標誌性泰迪熊，每年有限定款，是英國最有辨識度的伴手禮</div><span class="shop-price">£15–100</span></div>
+    <div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">Harrods 巧克力禮盒</div><div class="shop-where">Harrods 食品館</div><div class="shop-desc">頂級英國巧克力，綠色 Harrods 袋是身份象徵，送禮必買款</div><span class="shop-price">£12–45</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧥</div><div class="shop-name">Barbour / Superdry 英國品牌</div><div class="shop-where">Oxford Street / Selfridges</div><div class="shop-desc">英國本地品牌，Barbour 蠟棉外套、Superdry 夾克，英國購買省 10–20%</div><span class="shop-price">£80–300</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D7 8/2 倫敦→盧布亞納 ═══ -->
+<div class="dpanel" id="p7">
+  <div class="day-hd slate"><div class="dh-flex"><div class="dh-num">07</div><div>
+    <div class="dh-date">AUG 2 (SUN) 2026 · 移動日</div>
+    <div class="dh-title">倫敦 → 飛盧布亞納 · 初抵斯洛維尼亞</div>
+    <div class="dh-city">🇬🇧→🇸🇮 Ljubljana</div>
+  </div></div></div>
+  <div class="ib ib-b">✈ 倫敦 Heathrow → 盧布亞納 LJU，飛行約 2.5 小時，建議上午班機，下午抵達後即可輕鬆逛舊城。機場→市區搭巴士約 30 分（€4）。</div>
+  <div class="sec-lbl">Day 7 移動行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>早上</td><td><span class="ev-name">退房倫敦飯店 · 前往 Heathrow</span><div class="ev-note">行李確認，搭 Piccadilly Line 或 Elizabeth Line 到 Heathrow</div></td><td>LHR</td><td class="cost">£6–13</td></tr>
+      <tr class="bl"><td>上午</td><td><span class="ev-name">✈ 倫敦 LHR → 盧布亞納 LJU</span><div class="ev-note">飛行約 2.5 小時，抵達時區與英國相同（BST = CEST）</div></td><td>LHR → LJU</td><td class="cost z">依機票</td></tr>
+      <tr class="hi"><td>下午</td><td><span class="ev-name">抵達盧布亞納 · 入住舊城區飯店</span><div class="ev-note">機場搭巴士 30 分（€4）或計程車 20 分（€25）進市區</div></td><td>Ljubljana</td><td class="cost">€4–25</td></tr>
+      <tr><td>傍晚</td><td><span class="ev-name">🌉 Prešeren Square + Triple Bridge + 河岸初探</span><div class="ev-note">盧布亞納舊城步行可達，龍橋、三重橋、Ljubljanica 河岸，傍晚光線最美</div></td><td>舊城區</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>晚餐</td><td><span class="ev-name">🌭 Klobasarna 香腸 或 河岸輕食</span><div class="ev-note">斯洛維尼亞傳統香腸配芥末，簡單道地，移動日晚上輕鬆吃即可</div></td><td>舊城區</td><td class="cost">€8–15</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 盧布亞納市集</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🍯</div><div class="shop-name">斯洛維尼亞蜂蜜</div><div class="shop-where">Central Market 中央市場</div><div class="shop-desc">斯洛維尼亞養蜂傳統超過 300 年，森林蜂蜜、百花蜂蜜種類豐富，品質極佳</div><span class="shop-price">€8–20</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=%E7%9B%A7%E5%B8%83%E4%BA%9E%E7%B4%8D%20%E6%96%AF%E6%B4%9B%E7%B6%AD%E5%B0%BC%E4%BA%9E%20%E8%9C%82%E8%9C%9C%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客必買</a></div>
+    <div class="shop-card"><div class="shop-emoji">🎃</div><div class="shop-name">南瓜籽油</div><div class="shop-where">市場 / 超市</div><div class="shop-desc">斯洛維尼亞特產，深綠色濃郁油脂，淋在沙拉或湯上，台灣幾乎買不到</div><span class="shop-price">€8–15</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=%E6%96%AF%E6%B4%9B%E7%B6%AD%E5%B0%BC%E4%BA%9E%20%E5%8D%97%E7%93%9C%E7%B1%BD%E6%B2%B9%20%E5%BF%85%E8%B2%B7%20%E4%BC%B4%E6%89%8B%E7%A6%AE%20%E5%8F%B0%E7%81%A3" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">🐉</div><div class="shop-name">Dragon 龍形紀念品</div><div class="shop-where">舊城區紀念品店</div><div class="shop-desc">盧布亞納的城市象徵是龍，龍形陶瓷杯、磁鐵、鑰匙圈，獨特有紀念意義</div><span class="shop-price">€3–20</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧂</div><div class="shop-name">Piran 海鹽</div><div class="shop-where">市場 / 特產店</div><div class="shop-desc">斯洛維尼亞亞得里亞海沿岸的天然海鹽，帶花香的 Fleur de Sel 特別珍貴</div><span class="shop-price">€5–15</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D8 8/3 盧布亞納探索 ═══ -->
+<div class="dpanel" id="p8">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num">08</div><div>
+    <div class="dh-date">AUG 3 (MON) 2026</div>
+    <div class="dh-title">盧布亞納 舊城 + 中央市場 + 城堡</div>
+    <div class="dh-city">🇸🇮 Ljubljana</div>
+  </div></div></div>
+  <div class="sec-lbl">Day 8 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>09:00</td><td><span class="ev-name">🛒 Central Market 中央市場</span><div class="ev-note">週一市集，蜂蜜、南瓜籽油、在地農產，最佳採購伴手禮地點</div></td><td>Pogačarjev trg</td><td class="cost z">免費</td></tr>
+      <tr><td>10:30</td><td><span class="ev-name">🐉 Dragon Bridge + Prešeren Square 拍照</span><div class="ev-note">龍橋、三重橋，盧布亞納最具代表性的地標</div></td><td>舊城區</td><td class="cost z">免費</td></tr>
+      <tr class="hi"><td>11:30</td><td><span class="ev-name">🏰 Ljubljana Castle 城堡</span><div class="ev-note">搭纜車或步行上山，俯瞰整個舊城，城堡內有博物館、塔樓展望台</div></td><td>城堡山</td><td class="cost">€13（含纜車）</td></tr>
+      <tr class="am"><td>13:00</td><td><span class="ev-name">🍽 午餐：Gostilna na Gradu</span><div class="ev-note"><span class="pill p-food">Michelin Bib Gourmand</span> ⭐ 城堡內，斯洛維尼亞傳統料理，務必提前訂位</div></td><td>Ljubljana Castle</td><td class="cost">€25–40</td></tr>
+      <tr><td>15:00</td><td><span class="ev-name">☕ Tivoli Park 公園 + 河岸咖啡</span><div class="ev-note">Čokl / Caffetino 河岸座位，悠閒度過下午</div></td><td>Tivoli / 河岸</td><td class="cost">€4–8</td></tr>
+      <tr class="am"><td>19:00</td><td><span class="ev-name">🍷 晚餐：TaBar 或 Špajza</span><div class="ev-note">創意斯洛維尼亞菜或老屋餐廳，兩者皆需提前訂位</div></td><td>舊城區</td><td class="cost">€20–35</td></tr>
+    </tbody>
+  </table>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">RESTAURANT · Michelin Bib Gourmand</div><div class="rc-name">Gostilna na Gradu 城堡餐廳</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">€25–40</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">坐落於盧布亞納城堡內，Michelin Bib Gourmand 口碑，以在地食材詮釋斯洛維尼亞傳統料理，城堡景觀加持。務必提前 1–2 週訂位。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Gostilna+na+gradu+Ljubljana" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=盧布亞納+餐廳" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=%E7%9B%A7%E5%B8%83%E4%BA%9E%E7%B4%8D%20Gostilna%20na%20Gradu%20%E9%A4%90%E5%BB%B3%20%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 盧布亞納城堡周邊</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🍷</div><div class="shop-name">斯洛維尼亞葡萄酒</div><div class="shop-where">城堡酒窖 / 市區酒鋪</div><div class="shop-desc">Primorska 產區白酒國際得獎，台灣幾乎買不到，帶回 1–2 瓶（托運）</div><span class="shop-price">€8–25</span></div>
+    <div class="shop-card"><div class="shop-emoji">🎨</div><div class="shop-name">城堡限定紀念品</div><div class="shop-where">Ljubljana Castle 紀念品店</div><div class="shop-desc">城堡限定明信片、陶瓷龍擺件、手工木雕，在地工藝師作品</div><span class="shop-price">€5–30</span></div>
+    <div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">Čokoladnica 手工巧克力</div><div class="shop-where">舊城區巧克力店</div><div class="shop-desc">斯洛維尼亞手工巧克力，薰衣草、蜂蜜、南瓜口味，精美包裝適合送禮</div><span class="shop-price">€5–18</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D9 8/4 研討會 Day1 ═══ -->
+<div class="dpanel" id="p9">
+  <div class="day-hd purple"><div class="dh-flex"><div class="dh-num">09</div><div>
+    <div class="dh-date">AUG 4 (TUE) 2026</div>
+    <div class="dh-title">ICITL 研討會 第一天</div>
+    <div class="dh-city">🎓 ICITL Conference · Ljubljana</div>
+  </div></div></div>
+  <div class="ib ib-p">🎓 研討會全天，餐食通常由主辦方安排。確認場地位置、議程表、名片備妥。傍晚若有空可散步舊城。</div>
+  <div class="sec-lbl">Day 9 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr class="pu"><td>全天</td><td><span class="ev-name">🎓 ICITL 研討會 Day 1</span><div class="ev-note"><span class="pill p-conf">CONFERENCE</span> 聆聽各國學者報告，展覽攤位、Keynote Speech</div></td><td class="cost z">主辦提供</td></tr>
+      <tr><td>早餐</td><td><span class="ev-name">飯店早餐 / 附近咖啡廳</span></td><td class="cost z">自理</td></tr>
+      <tr class="am"><td>傍晚後</td><td><span class="ev-name">🌉 舊城散步 + 晚餐</span><div class="ev-note">Špajza 或 TaBar 作為晚餐，需提前訂位；輕食選擇可走 Burek 或 Pizza</div></td><td class="cost">€15–30</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 研討會空檔</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">📖</div><div class="shop-name">研討會學術書籍</div><div class="shop-where">研討會書展攤位</div><div class="shop-desc">ICITL 研討會現場常有學術出版社書展，購買議題相關英文書籍最划算</div><span class="shop-price">€15–40</span></div>
+    <div class="shop-card"><div class="shop-emoji">🐉</div><div class="shop-name">盧布亞納伴手禮補買</div><div class="shop-where">舊城區小店</div><div class="shop-desc">若昨天沒買完：蜂蜜、南瓜油、龍形紀念品，今晚散步時補購</div><span class="shop-price">€3–20</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D10 8/5 論文發表 ═══ -->
+<div class="dpanel" id="p10">
+  <div class="day-hd purple"><div class="dh-flex"><div class="dh-num">10</div><div>
+    <div class="dh-date">AUG 5 (WED) 2026 · 重要日</div>
+    <div class="dh-title">ICITL 論文發表日 🎉</div>
+    <div class="dh-city">🎓 ICITL Conference · Ljubljana</div>
+  </div></div></div>
+  <div class="ib ib-p">🎉 論文發表日！早上確認簡報設備、備份 USB，發表後可以放鬆慶祝。晚餐選一間好餐廳好好犒賞自己！</div>
+  <div class="sec-lbl">Day 10 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr class="pu"><td>上午</td><td><span class="ev-name">🎓 ICITL 研討會 Day 2 + 論文發表</span><div class="ev-note"><span class="pill p-conf">PRESENTATION</span> 確認簡報設備正常，USB 備份；發表後接受問答</div></td><td class="cost z">主辦提供</td></tr>
+      <tr class="hi"><td>發表後</td><td><span class="ev-name">🥂 慶祝晚餐：Cubo 或 Gostilna na Gradu</span><div class="ev-note"><span class="pill p-food">慶功宴</span> Cubo 是盧布亞納最高端餐廳之一，提前訂位，好好犒賞論文發表完成</div></td><td class="cost">€35–55</td></tr>
+      <tr><td>飯後</td><td><span class="ev-name">明日移動準備：確認 FlixBus 巴士訂票</span><div class="ev-note">盧布亞納→威尼斯，確認明天出發時間、巴士站位置</div></td><td class="cost z">—</td></tr>
+    </tbody>
+  </table>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">RESTAURANT · 盧布亞納高端</div><div class="rc-name">Cubo Restaurant</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">€35–55</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">盧布亞納最精緻的創意料理餐廳，使用斯洛維尼亞本地食材，現代歐陸料理呈現，完美適合論文發表後的慶功晚宴。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Cubo+restaurant+Ljubljana" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=盧布亞納+美食" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=%E7%9B%A7%E5%B8%83%E4%BA%9E%E7%B4%8D%20Cubo%20%E9%A4%90%E5%BB%B3%20%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 離開斯洛維尼亞前最後購物</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🍯</div><div class="shop-name">蜂蜜大量採購</div><div class="shop-where">超市 Mercator / Spar</div><div class="shop-desc">超市購買比市場便宜，可多買幾瓶帶走，送禮自用兩相宜</div><span class="shop-price">€6–15</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧂</div><div class="shop-name">Piran 海鹽禮盒補買</div><div class="shop-where">特產店 / 機場</div><div class="shop-desc">盧布亞納機場免稅區也有賣，來不及買的最後補救機會</div><span class="shop-price">€5–15</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D11 8/6 盧布亞納→威尼斯 ═══ -->
+<div class="dpanel" id="p11">
+  <div class="day-hd rose"><div class="dh-flex"><div class="dh-num">11</div><div>
+    <div class="dh-date">AUG 6 (WED) 2026 · 移動日</div>
+    <div class="dh-title">盧布亞納 → 威尼斯 · 水城初抵達</div>
+    <div class="dh-city">🇸🇮→🇮🇹 Venezia</div>
+  </div></div></div>
+  <div class="ib ib-r">🚌 盧布亞納→威尼斯無直達火車，搭 FlixBus / Arriva 巴士約 4–5 小時。8月旺季一定要提前 3–4 週訂票！晚上抵達後輕鬆適應水城節奏。</div>
+  <div class="ib ib-a">⚠️ 威尼斯入城注意：2026年起旺季（8月含）日間入城需線上登記並支付 <strong>€5 入城費（Contributo di Accesso）</strong>，請提前在 cda.ve.it 登記，避免在入口被攔。</div>
+  <div class="sec-lbl">Day 11 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>早上</td><td><span class="ev-name">退房、前往巴士站</span><div class="ev-note">確認 FlixBus 上車地點（通常在 Ljubljana Bus Station）</div></td><td>Ljubljana Bus Station</td><td class="cost z">—</td></tr>
+      <tr class="bl"><td>上午</td><td><span class="ev-name">🚌 FlixBus 盧布亞納→威尼斯</span><div class="ev-note">約 4–5 小時，抵達威尼斯 Mestre 或 Venezia Santa Lucia</div></td><td>Bus</td><td class="cost">€15–30</td></tr>
+      <tr class="hi"><td>抵達</td><td><span class="ev-name">入住 Cannaregio / Santa Lucia 區飯店</span><div class="ev-note">行李可寄放飯店，步行或搭 Vaporetto（水上巴士）探索</div></td><td>威尼斯本島</td><td class="cost z">—</td></tr>
+      <tr><td>傍晚</td><td><span class="ev-name">🚢 Vaporetto 水上巴士 初體驗</span><div class="ev-note">搭1號線沿大運河欣賞威尼斯全景，黃金宮、Rialto 橋、Santa Maria della Salute</div></td><td>Grand Canal</td><td class="cost">€9.5/趟</td></tr>
+      <tr class="am"><td>晚餐</td><td><span class="ev-name">🍷 Cicchetti 小酒館：Vino Vero / Al Timon</span><div class="ev-note"><span class="pill p-food">Cannaregio 推薦</span> 威尼斯式 tapas，小盤下酒菜搭配 Spritz，不用訂位，站著吃</div></td><td>Cannaregio</td><td class="cost">€15–25</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 威尼斯抵達 · 先別急著買</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🎭</div><div class="shop-name">威尼斯面具（明天再買）</div><div class="shop-where">Dorsoduro 工坊</div><div class="shop-desc">今天剛抵達先逛，別在觀光區高價買，明天到 Dorsoduro 找手工製面具工坊品質好且便宜</div><span class="shop-price">€20–150</span></div>
+    <div class="shop-card"><div class="shop-emoji">🎫</div><div class="shop-name">購買 Vaporetto 通票</div><div class="shop-where">ACTV 售票亭</div><div class="shop-desc">48 小時 €36 或 72 小時 €45 無限搭乘，2 天在島上遊覽非常划算</div><span class="shop-price">€36–45</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D12 8/7 威尼斯全天 ═══ -->
+<div class="dpanel" id="p12">
+  <div class="day-hd rose"><div class="dh-flex"><div class="dh-num">12</div><div>
+    <div class="dh-date">AUG 7 (THU) 2026</div>
+    <div class="dh-title">威尼斯 全天 · Rialto · St Mark's · Dorsoduro</div>
+    <div class="dh-city">🇮🇹 Venezia</div>
+  </div></div></div>
+  <div class="ib ib-r">🌅 威尼斯 8 月人潮極多，建議早上 07:30 前出門到聖馬可廣場拍照，10 點後遊客爆滿。下午到 Dorsoduro 和 Cannaregio 遠離人潮。</div>
+  <div class="sec-lbl">Day 12 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>07:30</td><td><span class="ev-name">📸 聖馬可廣場早晨（人少！）</span><div class="ev-note">早起搶先一步，空曠廣場完美拍照，10 點後人山人海</div></td><td>Piazza San Marco</td><td class="cost z">免費</td></tr>
+      <tr class="hi"><td>08:30</td><td><span class="ev-name">🏛 St Mark's Basilica 聖馬可大教堂</span><div class="ev-note">拜占庭風格鑲嵌壁畫壯觀，免費入場但排隊長；登頂另購票 €7，可俯瞰廣場</div></td><td>St Mark's</td><td class="cost">€0–7</td></tr>
+      <tr class="am"><td>10:00</td><td><span class="ev-name">🏰 Doge's Palace 總督府</span><div class="ev-note"><span class="pill p-wk">提前訂票</span> 威尼斯最重要歷史建築，議會大廳壁畫、嘆息橋，需提前線上訂票</div></td><td>Piazza San Marco 旁</td><td class="cost">€30</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">🥂 Rialto Market + 午餐</span><div class="ev-note"><span class="pill p-food">必去</span> Rialto 橋旁早市（週一至六上午），新鮮海鮮、蔬果；周邊小酒館吃 cicchetti</div></td><td>Rialto</td><td class="cost">€15–25</td></tr>
+      <tr><td>14:00</td><td><span class="ev-name">🎨 Dorsoduro 區漫步</span><div class="ev-note">藝術氣息最濃的區域，Peggy Guggenheim Collection、當地人聚集的廣場</div></td><td>Dorsoduro</td><td class="cost">€0–16</td></tr>
+      <tr><td>16:00</td><td><span class="ev-name">🚢 Murano 玻璃島（可選）</span><div class="ev-note">搭 Vaporetto 4.1 線約 15 分，可看玻璃工匠現場吹製表演，是否購買視預算決定</div></td><td>Murano Island</td><td class="cost z">Vaporetto 含票</td></tr>
+      <tr class="am"><td>19:30</td><td><span class="ev-name">🦐 晚餐 Bacari 路線</span><div class="ev-note"><span class="pill p-food">All'Arco / Cantina Do Mori</span> Eating Europe 推薦，Sarde in Saor（酸甜沙丁魚）、Baccalà mantecato 必點</div></td><td>San Polo</td><td class="cost">€20–30</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-lbl">餐廳 & 景點</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">BACARO · 威尼斯式小酒館</div><div class="rc-name">All'Arco</div><div class="rc-meta"><span class="rc-r">4.6</span><span class="rc-p">€20–30</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">Rialto 市場旁的百年 Bacaro，Sarde in Saor 酸甜沙丁魚是威尼斯傳統料理，站著吃配 Ombra（小杯白酒），在地人也愛。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=All'Arco+Venice" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=威尼斯+Bacaro" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=%E5%A8%81%E5%B0%BC%E6%96%AF%20Bacaro%20%E5%B0%8F%E9%85%92%E9%A4%A8%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">BACARO · 最古老酒館</div><div class="rc-name">Cantina Do Mori</div><div class="rc-meta"><span class="rc-r">4.4</span><span class="rc-p">€15–25</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">1462 年創立，威尼斯最古老的 Bacaro 之一。Baccalà mantecato 鱈魚泥、Mozzarella 搭配傳統 Cichetti，歷史感滿點。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Cantina+Do+Mori+Venice" target="_blank">Google Map</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=威尼斯+小酒館" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Cantina%20Do%20Mori%20%E5%A8%81%E5%B0%BC%E6%96%AF%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E5%BF%83%E5%BE%97" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 威尼斯</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🎭</div><div class="shop-name">威尼斯手工面具</div><div class="shop-where">Dorsoduro 工坊 / Ca' Macana</div><div class="shop-desc">避開聖馬可廣場高價觀光品，到 Dorsoduro 的 Ca' Macana 工坊找手工製作真品</div><span class="shop-price">€25–150</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=%E5%A8%81%E5%B0%BC%E6%96%AF%20%E9%9D%A2%E5%85%B7%20%E5%93%AA%E8%A3%A1%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6%20Dorsoduro" target="_blank">部落客買面具攻略</a></div>
+    <div class="shop-card"><div class="shop-emoji">🔵</div><div class="shop-name">Murano 手工玻璃</div><div class="shop-where">Murano 島工坊</div><div class="shop-desc">直接在 Murano 島工坊購買，比本島便宜 30–50%，小件耳環、胸針帶回不怕摔</div><span class="shop-price">€15–200</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Murano%20%E7%8E%BB%E7%92%83%20%E5%A8%81%E5%B0%BC%E6%96%AF%20%E5%BF%85%E8%B2%B7%20%E6%8E%A8%E8%96%A6%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">🍪</div><div class="shop-name">Baicoli / Zaeti 威尼斯餅乾</div><div class="shop-where">超市 / 傳統糕餅店</div><div class="shop-desc">威尼斯傳統船形餅乾（Baicoli）和玉米葡萄乾餅乾（Zaeti），輕便好攜帶</div><span class="shop-price">€4–10</span></div>
+    <div class="shop-card"><div class="shop-emoji">🛁</div><div class="shop-name">Burano 蕾絲製品</div><div class="shop-where">Burano 島（可選）</div><div class="shop-desc">威尼斯蕾絲工藝世界聞名，手帕、桌布、餐墊，若有時間搭船去 Burano 島</div><span class="shop-price">€20–80</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D13 8/8 威尼斯→佛羅倫斯 ═══ -->
+<div class="dpanel" id="p13">
+  <div class="day-hd amber"><div class="dh-flex"><div class="dh-num">13</div><div>
+    <div class="dh-date">AUG 8 (FRI) 2026 · 移動日</div>
+    <div class="dh-title">威尼斯早晨 → 高鐵 → 佛羅倫斯</div>
+    <div class="dh-city">🇮🇹 Venezia → Firenze</div>
+  </div></div></div>
+  <div class="ib ib-a">🚄 威尼斯→佛羅倫斯 Frecciarossa 高鐵約 2 小時，建議早上 09:00–10:00 班次，下午抵達可逛 Duomo 周邊。</div>
+  <div class="sec-lbl">Day 13 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>07:30</td><td><span class="ev-name">🌅 威尼斯晨間最後漫步</span><div class="ev-note">退房前最後一次感受水城早晨，搭 Vaporetto 看大運河清晨</div></td><td>Grand Canal</td><td class="cost z">—</td></tr>
+      <tr class="bl"><td>09:30</td><td><span class="ev-name">🚄 高鐵 Venezia Santa Lucia → Firenze SMN</span><div class="ev-note"><span class="pill p-tr">Frecciarossa</span> 約 2 小時，提前在 Trenitalia 訂早鳥票 €19–39</div></td><td>Trenitalia</td><td class="cost">€19–39</td></tr>
+      <tr class="hi"><td>11:30</td><td><span class="ev-name">入住佛羅倫斯飯店</span><div class="ev-note">Duomo / Santa Croce 周邊，寄放行李後出發</div></td><td>Firenze</td><td class="cost z">—</td></tr>
+      <tr><td>13:00</td><td><span class="ev-name">🍝 午餐：Mercato Centrale 中央市場</span><div class="ev-note"><span class="pill p-food">必去</span> 佛羅倫斯最大室內美食市場，頂樓美食街，Truffles 松露料理、Lampredotto 牛肚三明治</div></td><td>San Lorenzo</td><td class="cost">€10–18</td></tr>
+      <tr class="am"><td>15:00</td><td><span class="ev-name">⛪ Duomo 大教堂外觀 + 廣場</span><div class="ev-note">百花大教堂壯觀外觀免費拍照；登頂需購票（€30，Brunelleschi 圓頂），建議提前訂</div></td><td>Piazza del Duomo</td><td class="cost">€0–30</td></tr>
+      <tr><td>16:30</td><td><span class="ev-name">🏛 Piazza della Signoria + Ponte Vecchio</span><div class="ev-note"><span class="pill p-wk">步行</span> 領主廣場大衛雕像複製品、舊橋珠寶店，傍晚光線最美</div></td><td>市中心</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🥩 晚餐：Trattoria Marione 或 Trattoria Casalinga</span><div class="ev-note"><span class="pill p-food">傳統托斯卡尼</span> Ribollita 蔬菜湯、Pappardelle 野豬肉寬麵、Bistecca alla Fiorentina</div></td><td>Oltrarno / 市中心</td><td class="cost">€20–35</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 佛羅倫斯抵達日</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🧄</div><div class="shop-name">托斯卡尼橄欖油</div><div class="shop-where">Mercato Centrale / 超市</div><div class="shop-desc">佛羅倫斯周邊托斯卡尼橄欖油 DOP 認證，Extra Virgin 品質極佳，帶回台灣做菜</div><span class="shop-price">€8–25</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=%E6%89%98%E6%96%AF%E5%8D%A1%E5%B0%BC%20%E6%A9%84%E6%AC%96%E6%B2%B9%20%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">🍷</div><div class="shop-name">Chianti Classico 紅酒</div><div class="shop-where">Enoteca / 超市</div><div class="shop-desc">托斯卡尼最具代表性紅酒，黑公雞（Gallo Nero）標誌 DOCG 認證，帶 1–2 瓶回台</div><span class="shop-price">€12–40</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Chianti%20%E7%B4%85%E9%85%92%20%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20%E5%8F%B0%E7%81%A3%20%E5%BF%85%E8%B2%B7%20%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">🍪</div><div class="shop-name">Cantucci 義大利杏仁餅</div><div class="shop-where">各麵包店 / 市場</div><div class="shop-desc">托斯卡尼傳統硬餅乾，搭配 Vin Santo 甜酒食用是道地方式，帶一袋回台</div><span class="shop-price">€5–12</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D14 8/9 Uffizi ═══ -->
+<div class="dpanel" id="p14">
+  <div class="day-hd amber"><div class="dh-flex"><div class="dh-num">14</div><div>
+    <div class="dh-date">AUG 9 (SAT) 2026</div>
+    <div class="dh-title">Uffizi 烏菲茲美術館 · Santa Croce · Piazzale Michelangelo</div>
+    <div class="dh-city">🇮🇹 Firenze</div>
+  </div></div></div>
+  <div class="ticket-warn">⚠️ <strong>Uffizi 門票務必提前 6–8 週在官網預訂（uffizi.it）</strong>，8月現場幾乎不售票。預訂時選好入場時間（建議 09:00 開門場次）。</div>
+  <div class="sec-lbl">Day 14 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="wa"><td>09:00</td><td><span class="ev-name">🎨 Uffizi Gallery 烏菲茲美術館</span><div class="ev-note"><span class="pill p-wk">必提前訂票</span> 波提切利《維納斯的誕生》、達文西《天使報喜》，建議停留 2.5–3 小時</div></td><td>Piazzale degli Uffizi</td><td class="cost">€20+預訂費</td></tr>
+      <tr class="am"><td>12:00</td><td><span class="ev-name">🥩 午餐：Buca Lapi 或 Trattoria Dall'Oste</span><div class="ev-note"><span class="pill p-food">佛羅倫斯牛排</span> Bistecca alla Fiorentina 是此城最有名的料理，大骨牛排 1 公斤起，大推</div></td><td>市中心</td><td class="cost">€30–55</td></tr>
+      <tr><td>14:30</td><td><span class="ev-name">⛪ Santa Croce 聖十字大教堂</span><div class="ev-note">但丁、伽利略、米開朗基羅的陵墓所在地，義大利文化殿堂</div></td><td>Piazza Santa Croce</td><td class="cost">€8</td></tr>
+      <tr class="hi"><td>17:00</td><td><span class="ev-name">🌅 Piazzale Michelangelo 夕陽觀景台</span><div class="ev-note">佛羅倫斯最美日落觀景點，俯瞰整個佛羅倫斯，步行上山約 20 分</div></td><td>Oltrarno 山丘</td><td class="cost z">免費</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🍷 晚餐：Regina Bistecca 或 Trattoria Casalinga</span><div class="ev-note">Regina 專攻 Bistecca 牛排；Casalinga 更在地親民，Ribollita 托斯卡尼雜菜湯必點</div></td><td>市中心</td><td class="cost">€25–50</td></tr>
+    </tbody>
+  </table>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">MUSEUM · 必參觀文藝復興聖地</div><div class="rc-name">Uffizi Gallery 烏菲茲美術館</div><div class="rc-meta"><span class="rc-r">4.8</span><span class="rc-p">€20+手續費</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">全球最重要的文藝復興藝術博物館，波提切利《春》《維納斯的誕生》、達文西、拉斐爾精品。務必提前訂票，建議停留 3 小時。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://www.uffizi.it" target="_blank">官網訂票</a><a class="rec-btn" href="https://www.dcard.tw/search?query=Uffizi+烏菲茲" target="_blank">Dcard</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=Uffizi+佛羅倫斯" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Uffizi%20%E7%83%8F%E8%8F%B2%E8%8C%B2%20%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20%E5%BF%85%E7%9C%8B%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%94%BB%E7%95%A5" target="_blank">部落客導覽</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">STEAK · 百年老店佛羅倫斯牛排</div><div class="rc-name">Buca Lapi</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">€35–55</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">1880 年創立的百年餐廳，地下室酒窖風格，Bistecca alla Fiorentina 是招牌，最低 800g 起點，需提前訂位。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Buca+Lapi+Florence" target="_blank">Google Map</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=Buca+Lapi+佛羅倫斯" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Buca%20Lapi%20%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20%E7%89%9B%E6%8E%92%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 佛羅倫斯文藝復興之城</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">👜</div><div class="shop-name">San Lorenzo 皮件市場</div><div class="shop-where">San Lorenzo 市場</div><div class="shop-desc">佛羅倫斯最大皮件市場，皮夾、皮帶、皮包，需懂得殺價，品質參差不齊需挑選</div><span class="shop-price">€20–150</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20San%20Lorenzo%20%E7%9A%AE%E4%BB%B6%20%E5%B8%82%E5%A0%B4%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%94%BB%E7%95%A5" target="_blank">部落客購買攻略</a></div>
+    <div class="shop-card"><div class="shop-emoji">📜</div><div class="shop-name">Florentine 手工紙</div><div class="shop-where">Giulio Giannini e Figlio</div><div class="shop-desc">大理石紋路的佛羅倫斯傳統手工紙，筆記本、信封、包裝紙，獨一無二的文藝禮品</div><span class="shop-price">€8–35</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">Santa Maria Novella 香氛</div><div class="shop-where">Santa Maria Novella 藥妝</div><div class="shop-desc">1612年創立的世界最古老藥妝店，玫瑰水、香皂、香水，修道院秘方製作</div><span class="shop-price">€15–80</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Santa%20Maria%20Novella%20%E4%BD%9B%E7%BE%85%E5%80%AB%E6%96%AF%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客必買</a></div>
+    <div class="shop-card"><div class="shop-emoji">🔱</div><div class="shop-name">David 大衛雕像周邊</div><div class="shop-where">Accademia 周邊</div><div class="shop-desc">大衛雕像造型的各式紀念品，磁鐵、明信片、小型複製品，明天參觀 Accademia 後再買</div><span class="shop-price">€3–25</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D15 8/10 Accademia→米蘭 ═══ -->
+<div class="dpanel" id="p15">
+  <div class="day-hd amber"><div class="dh-flex"><div class="dh-num">15</div><div>
+    <div class="dh-date">AUG 10 (MON) 2026 · 移動日</div>
+    <div class="dh-title">Accademia 大衛像 上午 → 下午高鐵 → 米蘭</div>
+    <div class="dh-city">🇮🇹 Firenze → Milano</div>
+  </div></div></div>
+  <div class="ticket-warn">⚠️ <strong>Accademia 大衛像門票必須提前 6–8 週在官網預訂（galleriaaccademiafirenze.it）</strong>，8月現場無票可買。</div>
+  <div class="sec-lbl">Day 15 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="wa"><td>09:00</td><td><span class="ev-name">🗿 Accademia 學院美術館（大衛像）</span><div class="ev-note"><span class="pill p-wk">必提前訂票</span> 米開朗基羅原版大衛雕像，5.2 公尺高，震撼感受無法言喻，建議停留 1.5 小時</div></td><td>Via Ricasoli</td><td class="cost">€20+手續費</td></tr>
+      <tr class="am"><td>11:00</td><td><span class="ev-name">☕ Oltrarno 歐特拉諾區探索</span><div class="ev-note"><span class="pill p-wk">Arno 河南岸</span> 在地人的佛羅倫斯，特色咖啡廳、手工藝作坊、比北岸少很多觀光客</div></td><td>Oltrarno</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>12:30</td><td><span class="ev-name">🍽 午餐：Trattoria Dall'Oste</span><div class="ev-note"><span class="pill p-food">在地必吃</span> 家庭式托斯卡尼餐廳，燉肉、Ribollita、Bistecca，價格親民份量大</div></td><td>市中心</td><td class="cost">€15–25</td></tr>
+      <tr><td>12:30</td><td><span class="ev-name">🧳 行李整理退房 + 午餐</span><div class="ev-note">退房佛羅倫斯飯店，Mercato Centrale 快速吃完午餐，14:00 前往車站</div></td><td>市中心</td><td class="cost">€10–15</td></tr>
+      <tr class="bl"><td>14:30</td><td><span class="ev-name">🚄 高鐵 Firenze SMN → Milano Centrale</span><div class="ev-note"><span class="pill p-tr">Frecciarossa</span> 約 1 小時 45 分，提前在 Trenitalia 訂好票</div></td><td>Trenitalia</td><td class="cost">€19–49</td></tr>
+      <tr class="hi"><td>16:30</td><td><span class="ev-name">入住米蘭飯店</span><div class="ev-note">Centrale / Navigli 區，行李放好後探索 Duomo 廣場</div></td><td>Milano</td><td class="cost z">—</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🍝 晚餐：Trippa Milano 或 Antica Trattoria</span><div class="ev-note">抵達米蘭第一晚，好好享用米蘭傳統料理</div></td><td>米蘭市區</td><td class="cost">€25–45</td></tr>
+    </tbody>
+  </table>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 佛羅倫斯最後採購</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🖋</div><div class="shop-name">Pineider 義大利文具</div><div class="shop-where">Pineider · Piazza della Signoria</div><div class="shop-desc">1774 年創立的義大利頂級文具品牌，鋼筆、皮革記事本，拿破崙、拜倫都是客戶</div><span class="shop-price">€20–200</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">Santa Maria Novella 最後補買</div><div class="shop-where">Santa Maria Novella</div><div class="shop-desc">若昨天沒買夠，今天是離開佛羅倫斯前最後機會，香水禮盒包裝超美</div><span class="shop-price">€15–100</span></div>
+    <div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">Amedei 頂級義大利巧克力</div><div class="shop-where">精品食品店</div><div class="shop-desc">托斯卡尼出產的世界頂級黑巧克力，Chuao 款屢獲國際大獎，帶一盒是送禮極品</div><span class="shop-price">€15–45</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧥</div><div class="shop-name">Oltrarno 手工皮革工坊</div><div class="shop-where">Oltrarno 小巷工坊</div><div class="shop-desc">在地師傅手工縫製皮件，比 San Lorenzo 市場品質好太多，皮夾、名片夾值得投資</div><span class="shop-price">€35–120</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ D16 8/11 米蘭全天 ═══ -->
+<div class="dpanel" id="p16">
+  <div class="day-hd red"><div class="dh-flex"><div class="dh-num">16</div><div>
+    <div class="dh-date">AUG 11 (TUE) 2026 · 米蘭完整一天</div>
+    <div class="dh-title">米蘭 完整遊覽 · Duomo · Galleria · 購物</div>
+    <div class="dh-city">🇮🇹 Milano</div>
+  </div></div></div>
+  <div class="ib ib-r">⭐ 今天是米蘭完整一天，明天 12:45 就出發回台，把握今天把 Duomo、Galleria、採購一口氣完成！</div>
+  <div class="sec-lbl">Day 16 行程</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="am"><td>09:00</td><td><span class="ev-name">☕ 米蘭咖啡吧 Espresso 晨間第一杯</span><div class="ev-note">義大利人站吧台喝，€1.5 一杯，正宗米蘭晨間體驗</div></td><td>Centrale 周邊</td><td class="cost">€1.5</td></tr>
+      <tr class="am"><td>10:00</td><td><span class="ev-name">🥩 Mercato Centrale Milano 早午餐</span><div class="ev-note">米蘭版中央市場，Pizza、Pasta、Arancini，輕鬆吃完後出發</div></td><td>Via Vittor Pisani</td><td class="cost">€10–18</td></tr>
+      <tr class="hi"><td>11:30</td><td><span class="ev-name">⛪ Duomo di Milano 米蘭大教堂</span><div class="ev-note">外觀免費；進入 €5；登頂屋頂 €13–16，俯瞰整個米蘭全景，明天就走值得上去</div></td><td>Piazza del Duomo</td><td class="cost">€5–16</td></tr>
+      <tr><td>13:30</td><td><span class="ev-name">🏛 Galleria Vittorio Emanuele II + 採購</span><div class="ev-note">義大利最美廊道，Prada、Gucci 旗艦店；Logan Square 腳踩公牛圖案轉圈求好運</div></td><td>Galleria</td><td class="cost z">免費</td></tr>
+      <tr><td>15:00</td><td><span class="ev-name">🛍 Corso Buenos Aires / Navigli 採購</span><div class="ev-note">平價購物大道；或搭地鐵到 Navigli 運河區逛設計小店</div></td><td>Buenos Aires / Navigli</td><td class="cost z">自由</td></tr>
+      <tr class="am"><td>20:00</td><td><span class="ev-name">🍝 告別晚餐：Trippa Milano 或 Antica Trattoria</span><div class="ev-note"><span class="pill p-food">最後一頓義大利料理</span> 明天 12:45 就飛走，好好吃一頓！行李也收好</div></td><td>市中心</td><td class="cost">€25–45</td></tr>
+    </tbody>
+  </table>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">TRATTORIA · 米蘭牛雜料理</div><div class="rc-name">Trippa Milano</div><div class="rc-meta"><span class="rc-r">4.7</span><span class="rc-p">€25–40</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">米蘭最受歡迎的當代意式小館，以傳統「庶民料理」牛雜（Trippa）為核心，創意詮釋米蘭傳統。需提前訂位，外國旅客必推。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Trippa+Milano" target="_blank">Google Map</a><a class="rec-btn" href="https://www.dcard.tw/search?query=米蘭+餐廳+推薦" target="_blank">Dcard</a><a class="blog-btn" href="https://www.google.com/search?q=Trippa%20Milano%20%E7%B1%B3%E8%98%AD%20%E9%A4%90%E5%BB%B3%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">TRATTORIA · 百年米蘭老店</div><div class="rc-name">Antica Trattoria della Pesa</div><div class="rc-meta"><span class="rc-r">4.5</span><span class="rc-p">€30–45</span></div></div>
+    <div class="rc-bd"><p class="rc-desc">1880 年創立的米蘭百年餐廳，Ossobuco（燉小牛腿）、Risotto alla Milanese（番紅花燉飯）是米蘭靈魂料理。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://maps.google.com/?q=Antica+Trattoria+della+Pesa+Milano" target="_blank">Google Map</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=米蘭+傳統料理" target="_blank">PTT</a><a class="blog-btn" href="https://www.google.com/search?q=Antica%20Trattoria%20della%20Pesa%20%E7%B1%B3%E8%98%AD%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div></div></div>
+  </div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 必買 · 米蘭時尚之都</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">👜</div><div class="shop-name">Galleria 奢品旗艦店</div><div class="shop-where">Galleria Vittorio Emanuele II</div><div class="shop-desc">Prada 本店、Louis Vuitton、Gucci 在這條廊道，若有預算這是義大利最正宗的購買地點</div><span class="shop-price">依品牌</span></div>
+    <div class="shop-card"><div class="shop-emoji">🛍</div><div class="shop-name">Corso Buenos Aires 平價購物</div><div class="shop-where">Corso Buenos Aires 大道</div><div class="shop-desc">米蘭最長購物街，Zara、H&M、Mango、Bershka，義大利版當季款式比台灣早</div><span class="shop-price">€20–100</span></div>
+    <div class="shop-card"><div class="shop-emoji">🎁</div><div class="shop-name">Panettone 米蘭聖誕蛋糕</div><div class="shop-where">超市 / 傳統糕點店</div><div class="shop-desc">米蘭起源的傳統發酵麵包，Motta、Vergani 老品牌，帶圓筒禮盒回台最有米蘭感</div><span class="shop-price">€8–25</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Panettone%20%E7%B1%B3%E8%98%AD%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E4%BC%B4%E6%89%8B%E7%A6%AE%20%E6%8E%A8%E8%96%A6" target="_blank">部落客推薦</a></div>
+    <div class="shop-card"><div class="shop-emoji">☕</div><div class="shop-name">Lavazza / Illy 義大利咖啡</div><div class="shop-where">超市 / 咖啡館</div><div class="shop-desc">義大利咖啡豆在台灣貴很多，趁現在多買幾包，Lavazza Oro 金裝是最受歡迎款</div><span class="shop-price">€5–15/250g</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Lavazza%20Illy%20%E7%BE%A9%E5%A4%A7%E5%88%A9%20%E5%92%96%E5%95%A1%E8%B1%86%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2" target="_blank">部落客推薦</a></div>
+  </div></div>
+</div>
+
+<!-- ═══ D17 8/12 返台 ═══ -->
+<div class="dpanel" id="p17">
+  <div class="day-hd red"><div class="dh-flex"><div class="dh-num">17</div><div>
+    <div class="dh-date">AUG 12 (WED) 2026 · 返台</div>
+    <div class="dh-title">米蘭 → Malpensa 機場 → 香港轉機 → 台北</div>
+    <div class="dh-city">🇮🇹→🇹🇼 返家</div>
+  </div></div></div>
+  <div class="ib ib-r">✈ 國泰航空 CX 12:45 起飛，需 10:00 前抵達 MXP 機場（安檢+手續需 2.5 小時）。Malpensa Express 從 Centrale 出發約 50 分，<strong>建議 09:00 前搭車</strong>，09:50 抵達機場。香港轉機後抵台灣約 8/13 早上。</div>
+  <div class="sec-lbl">Day 17 返台時間表</div>
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr><td>07:00</td><td><span class="ev-name">☕ 米蘭咖啡吧最後一杯 Espresso</span><div class="ev-note">義大利人站著喝濃縮咖啡，吧台喝比外帶便宜，用 €1.5 喝一杯完美 Espresso 告別義大利</div></td><td>Centrale 周邊咖啡吧</td><td class="cost">€1.5</td></tr>
+      <tr><td>08:00</td><td><span class="ev-name">🧳 退房 + 行李最後確認</span><div class="ev-note">歐洲行程採購多，務必用行李秤量好，超重費用極高</div></td><td>飯店</td><td class="cost z">—</td></tr>
+      <tr class="bl"><td>09:00</td><td><span class="ev-name">🚂 Malpensa Express → MXP 機場</span><div class="ev-note">Centrale 出發，約 50 分到 MXP T1，09:50 抵達，留足夠時間辦理登機手續</div></td><td>Malpensa Express</td><td class="cost">€13</td></tr>
+      <tr><td>機場</td><td><span class="ev-name">辦理登機 · VAT 退稅</span><div class="ev-note">歐盟退稅（Global Blue / Planet Tax Free）在出境前辦理，海關蓋章後退款，單筆 €155 以上才能退稅</div></td><td>MXP 機場</td><td class="cost pw">退 12–15%</td></tr>
+      <tr class="am"><td>免稅區</td><td><span class="ev-name">🛍 機場最後採購</span><div class="ev-note">Ferrero Rocher 大盒裝、橄欖油小瓶旅行裝、Lavazza 咖啡、義大利巧克力禮盒</div></td><td>MXP 免稅區</td><td class="cost z">自由</td></tr>
+      <tr class="bl"><td>12:45</td><td><span class="ev-name">✈ 國泰航空 CX 米蘭 MXP 起飛</span><div class="ev-note">飛香港（約 11 小時）→ 香港轉機 → 桃園，抵台約 8/13 早上 9 點多</div></td><td>MXP → HKG → TPE</td><td class="cost z">🇹🇼 回家！</td></tr>
+    </tbody>
+  </table>
+  <div class="ib ib-g">💡 VAT 退稅提醒：在義大利、斯洛維尼亞單張發票消費 €155 以上可申請退稅（Global Blue），出境前在機場海關蓋章，可退回約 12–15%。記得保留收據！</div>
+  <div class="shop-sec"><div class="sec-lbl">🛍 機場免稅區最後採購</div>
+  <div class="shop-grid">
+    <div class="shop-card"><div class="shop-emoji">🍫</div><div class="shop-name">Ferrero Rocher 大禮盒</div><div class="shop-where">MXP 機場免稅</div><div class="shop-desc">義大利本地 Ferrero 禮盒比台灣便宜 20–30%，48粒裝是最熱門伴手禮</div><span class="shop-price">€12–25</span><br><a class="blog-btn" style="margin-top:6px;display:inline-flex" href="https://www.google.com/search?q=Ferrero%20Rocher%20%E7%BE%A9%E5%A4%A7%E5%88%A9%20%E6%A9%9F%E5%A0%B4%20%E5%BF%85%E8%B2%B7%20%E5%8F%B0%E7%81%A3%E9%83%A8%E8%90%BD%E5%AE%A2%20%E4%BC%B4%E6%89%8B%E7%A6%AE" target="_blank">部落客必買</a></div>
+    <div class="shop-card"><div class="shop-emoji">☕</div><div class="shop-name">Lavazza 限定禮盒</div><div class="shop-where">機場免稅</div><div class="shop-desc">Lavazza 義大利本地版禮盒包裝比台灣好看，送禮自用兩相宜</div><span class="shop-price">€10–20</span></div>
+    <div class="shop-card"><div class="shop-emoji">🧴</div><div class="shop-name">護膚品最後補買</div><div class="shop-where">機場免稅美妝區</div><div class="shop-desc">Kiehl's、Acqua di Parma、Molton Brown，機場免稅比市區便宜，最後補貨機會</div><span class="shop-price">€20–80</span></div>
+  </div></div>
+</div>
+
+<!-- ═══ 附錄 ═══ -->
+<div class="dpanel" id="p18">
+  <div class="day-hd teal"><div class="dh-flex"><div class="dh-num" style="font-size:24px">📊</div><div>
+    <div class="dh-date">APPENDIX · 附錄</div>
+    <div class="dh-title">交通總覽 · 費用預估 · 注意事項</div>
+  </div></div></div>
+
+  <div class="sec-lbl">🚄 城市間交通總覽</div>
+  <table class="itable">
+    <thead><tr><th>路段</th><th>交通方式</th><th>時間</th><th>費用</th><th>建議</th></tr></thead>
+    <tbody>
+      <tr class="bl"><td>台北 → 倫敦</td><td><span class="ev-name">長途飛機</span></td><td>13–14 小時</td><td class="cost z">依機票</td><td>時差 7 小時</td></tr>
+      <tr><td>倫敦 → 劍橋</td><td><span class="ev-name">National Rail 火車</span></td><td>50 分鐘</td><td class="cost">£10–18 來回</td><td>King's Cross 出發</td></tr>
+      <tr class="hi"><td>倫敦 → 盧布亞納</td><td><span class="ev-name">飛機（LHR→LJU）</span></td><td>2.5 小時</td><td class="cost z">依機票</td><td>下午班機最佳</td></tr>
+      <tr class="am"><td>盧布亞納 → 威尼斯</td><td><span class="ev-name">FlixBus / Arriva 巴士</span><div class="ev-note">⚠️ 提前 3–4 週訂票</div></td><td>4–5 小時</td><td class="cost">€15–30</td><td>旺季必提前訂</td></tr>
+      <tr class="hi"><td>威尼斯 → 佛羅倫斯</td><td><span class="ev-name">Frecciarossa 高鐵</span></td><td>2 小時</td><td class="cost">€19–39</td><td>Trenitalia 早鳥</td></tr>
+      <tr class="hi"><td>佛羅倫斯 → 米蘭（8/10）</td><td><span class="ev-name">Frecciarossa 高鐵</span></td><td>1 小時 45 分</td><td class="cost">€19–49</td><td>早上出發最佳</td></tr>
+      <tr><td>米蘭市區 → MXP 機場</td><td><span class="ev-name">Malpensa Express</span></td><td>50 分鐘</td><td class="cost">€13</td><td>Centrale 出發</td></tr>
+      <tr class="bl"><td>米蘭 → 台北</td><td><span class="ev-name">長途飛機</span></td><td>12–13 小時</td><td class="cost z">依機票</td><td>起飛前 3 小時到機場</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">💰 費用預估（每人）</div>
+  <table class="itable">
+    <thead><tr><th>項目</th><th>說明</th><th>預估金額（€/£）</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>住宿</td><td>倫敦 5 晚 + 盧布 5 晚 + 威尼斯 2 晚 + 佛羅倫斯 3 晚 + 米蘭 1 晚</td><td class="cost">£200 + €600–900</td></tr>
+      <tr><td>城市間交通</td><td>倫敦→劍橋、盧布→威尼斯、威尼斯→佛羅倫斯、佛羅倫斯→米蘭、MXP Express</td><td class="cost">€100–150</td></tr>
+      <tr><td>市內交通</td><td>Oyster Card 倫敦、Vaporetto 威尼斯、各城地鐵</td><td class="cost">£50 + €80</td></tr>
+      <tr class="am"><td>門票</td><td>Uffizi、Accademia、Tower of London、Doge's Palace、下午茶等</td><td class="cost">£34 + €120–160</td></tr>
+      <tr class="am"><td>餐飲</td><td>午晚餐各城平均，包含下午茶</td><td class="cost">£20/天 + €40/天</td></tr>
+      <tr class="hi"><td>購物</td><td>伴手禮、藥妝、食材、紀念品</td><td class="cost">視預算而定</td></tr>
+      <tr class="wa"><td>⚠️ 威尼斯入城費</td><td>每人每天 €5（8月旺季）</td><td class="cost">€10–15</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-lbl">⚠️ 重要注意事項</div>
+  <div class="rg">
+    <div class="rc"><div class="rc-hd"><div class="rc-type">義大利 · 佛羅倫斯</div><div class="rc-name">必提前訂票景點</div></div>
+    <div class="rc-bd"><p class="rc-desc">Uffizi、Accademia 8月現場無票，提前 6–8 週訂購。Duomo 登頂也建議提前訂。可使用 uffizi.it 和 galleriaaccademiafirenze.it 官網。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://www.uffizi.it/en/ticketing" target="_blank">Uffizi 訂票</a><a class="map-btn" href="https://www.galleriaaccademiafirenze.it/en/tickets" target="_blank">Accademia 訂票</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">威尼斯 · 特別規定</div><div class="rc-name">入城費 & 注意事項</div></div>
+    <div class="rc-bd"><p class="rc-desc">8月旺季日間入城需在 cda.ve.it 登記並支付 €5。另威尼斯禁止拖拉行李箱在石板橋上（規定在放寬，但仍有部分路段限制），建議行李輕量化。</p>
+    <div class="rec-wrap"><a class="map-btn" href="https://cda.ve.it" target="_blank">入城費登記</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">歐盟 · 退稅規定</div><div class="rc-name">VAT Tax Refund</div></div>
+    <div class="rc-bd"><p class="rc-desc">義大利、斯洛維尼亞同為歐盟，單張發票消費 €155 以上可申請 VAT 退稅（Global Blue / Planet Tax Free），出境前機場海關蓋章，退回約 12–15%。</p>
+    <div class="rec-wrap"><a class="rec-btn" href="https://www.dcard.tw/search?query=歐洲+退稅+教學" target="_blank">Dcard 退稅教學</a><a class="rec-btn" href="https://www.ptt.cc/bbs/travel/search?q=歐洲+VAT+退稅" target="_blank">PTT 退稅</a></div></div></div>
+    <div class="rc"><div class="rc-hd"><div class="rc-type">英國 · 脫歐後注意</div><div class="rc-name">英國 vs 歐盟分開規劃</div></div>
+    <div class="rc-bd"><p class="rc-desc">英國脫歐後：英國已取消對外國旅客的 VAT 退稅（2021年起）；網路 SIM 卡需含英國方案（不含在申根漫遊）；貨幣英鎊 GBP ≠ 歐元 EUR。</p></div></div>
+  </div>
+</div>
+
+</div><!-- .main -->
+
+<script>
+function sd(i){
+  document.querySelectorAll('.dnbtn').forEach((b,j)=>b.classList.toggle('on',i===j));
+  document.querySelectorAll('.dpanel').forEach((p,j)=>p.classList.toggle('on',i===j));
+  window.scrollTo({top:document.querySelector('.nav-wrap').offsetTop-4,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
