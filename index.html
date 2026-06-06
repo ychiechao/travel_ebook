@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="旅遊電子書館 — 自動從 GitHub 讀取所有電子書">
+<title>旅遊電子書館</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0d0f18;
+  --surface:#161926;
+  --surface2:#1e2235;
+  --border:#2a2f48;
+  --text:#eef0f8;
+  --muted:#8890b0;
+  --soft:#545878;
+  --accent:#4e7cff;
+  --accent2:#8b5cf6;
+  --sans:'Noto Sans TC',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(78,124,255,.08) 0%,transparent 50%),
+                   radial-gradient(ellipse at 80% 100%,rgba(139,92,246,.06) 0%,transparent 50%);
+}
+
+/* ── HERO ── */
+.hero{
+  text-align:center;padding:72px 24px 52px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% -20%,rgba(78,124,255,.15) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-plane{font-size:48px;margin-bottom:16px;display:block;
+  animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(5deg)}}
+.hero h1{
+  font-size:clamp(28px,6vw,56px);font-weight:900;line-height:1.1;
+  background:linear-gradient(135deg,#ffffff 0%,#a8c4ff 40%,#c4a8ff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;letter-spacing:-.02em;
+}
+.hero-en{font-family:var(--mono);font-size:12px;letter-spacing:.25em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:20px}
+.hero-desc{font-size:14px;color:var(--muted);max-width:400px;margin:0 auto}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  padding:14px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--surface);font-size:12px;font-family:var(--mono);color:var(--muted);
+}
+.stat-val{color:var(--text);font-weight:600}
+.stat-sep{color:var(--border)}
+.gh-link{color:var(--accent);text-decoration:none;transition:.15s}
+.gh-link:hover{color:#7aaaff}
+.refresh-btn{
+  background:var(--surface2);border:1px solid var(--border);color:var(--muted);
+  border-radius:6px;padding:3px 10px;font-family:var(--mono);font-size:11px;
+  cursor:pointer;transition:.15s;margin-left:8px;
+}
+.refresh-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── MAIN GRID ── */
+.grid-wrap{max-width:1160px;margin:0 auto;padding:40px 20px 80px}
+.section-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:24px;display:flex;align-items:center;gap:12px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+
+/* ── CARD ── */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s;
+  cursor:pointer;display:flex;flex-direction:column;
+  opacity:0;transform:translateY(28px);
+  animation:cardIn .45s ease forwards;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(78,124,255,.2);
+  border-color:rgba(78,124,255,.4);
+}
+@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+
+.card-header{
+  padding:24px;min-height:130px;display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.card-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 110% 120%,rgba(255,255,255,.08) 0%,transparent 60%);
+}
+.card-emoji{font-size:38px;margin-bottom:8px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));line-height:1}
+.card-jp{
+  font-family:var(--mono);font-size:10px;letter-spacing:.15em;
+  color:rgba(255,255,255,.6);text-transform:uppercase;
+}
+.card-folder{
+  position:absolute;top:14px;right:14px;
+  background:rgba(0,0,0,.3);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;padding:2px 8px;
+  font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.5);
+}
+
+.card-body{padding:20px 20px 0;flex:1;display:flex;flex-direction:column;gap:8px}
+.card-title{
+  font-size:18px;font-weight:700;line-height:1.3;color:var(--text);
+}
+.card-subtitle{font-size:12px;color:var(--muted);line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-date{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(78,124,255,.12);border:1px solid rgba(78,124,255,.2);
+  border-radius:6px;padding:3px 9px;font-family:var(--mono);font-size:10px;color:#7aaaff;
+  width:fit-content;
+}
+
+.card-footer{padding:16px 20px 20px;margin-top:auto}
+.open-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:11px 0;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;font-size:13px;font-weight:600;text-decoration:none;
+  transition:.2s;letter-spacing:.02em;
+}
+.open-btn:hover{filter:brightness(1.15);letter-spacing:.04em}
+.open-btn svg{width:14px;height:14px;transition:transform .2s}
+.card:hover .open-btn svg{transform:translateX(4px)}
+
+/* ── SKELETON ── */
+.skel-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  animation:shimmer 1.6s ease-in-out infinite;
+}
+@keyframes shimmer{
+  0%,100%{opacity:.5}50%{opacity:1}
+}
+.skel-hd{height:130px;background:var(--surface2)}
+.skel-body{padding:20px}
+.skel-line{height:14px;border-radius:6px;background:var(--surface2);margin-bottom:10px}
+.skel-line.w60{width:60%}.skel-line.w80{width:80%}.skel-line.w40{width:40%}
+.skel-btn{height:40px;border-radius:10px;background:var(--surface2);margin-top:16px}
+
+/* ── ERROR STATE ── */
+.error-box{
+  grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);
+}
+.error-box h3{color:var(--text);margin-bottom:12px;font-size:18px}
+.error-box code{font-family:var(--mono);font-size:12px;color:#ff7a7a;
+  background:rgba(255,100,100,.1);padding:2px 8px;border-radius:4px}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:28px 20px;border-top:1px solid var(--border);
+  font-size:11px;font-family:var(--mono);color:var(--soft);
+}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .hero{padding:48px 16px 36px}
+  .hero h1{font-size:28px}
+  .grid{grid-template-columns:1fr}
+  .grid-wrap{padding:28px 14px 60px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="hero-plane">✈️</span>
+  <h1>旅遊電子書館</h1>
+  <div class="hero-en">Travel Ebook Collection</div>
+  <p class="hero-desc">自動從 GitHub 讀取，每本電子書都是一段旅程的完整記錄</p>
+</header>
+
+<div class="stats-bar">
+  <span>共 <span class="stat-val" id="count">…</span> 本電子書</span>
+  <span class="stat-sep">·</span>
+  <a href="https://github.com/ychiechao/travel_ebook" target="_blank" class="gh-link">ychiechao / travel_ebook</a>
+  <button class="refresh-btn" onclick="refresh()">↻ 重新讀取</button>
+</div>
+
+<div class="grid-wrap">
+  <div class="section-label">EBOOK COLLECTION</div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <a href="https://github.com/ychiechao/travel_ebook" target="_blank">GitHub</a>
+  &nbsp;·&nbsp; 資料來源：GitHub API &nbsp;·&nbsp;
+  <span id="load-time"></span>
+</footer>
+
+<script>
+/* ════════════════════════════════════
+   CONFIG
+════════════════════════════════════ */
+const REPO   = 'ychiechao/travel_ebook';
+const BRANCH = 'main';
+const API    = `https://api.github.com/repos/${REPO}/contents/`;
+const RAW    = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+const SKIP   = new Set(['dist','.git','node_modules','.github','.vscode']);
+const CACHE_KEY = 'travelebooks_v2';
+const CACHE_TTL = 5 * 60 * 1000; // 5 min
+
+/* ════════════════════════════════════
+   GRADIENT PALETTE (per-card cycling)
+════════════════════════════════════ */
+const GRADIENTS = [
+  ['#0a2040','#0a4860'],   // navy
+  ['#2a0a40','#601060'],   // violet
+  ['#0a3418','#0a5830'],   // forest
+  ['#381008','#703818'],   // amber
+  ['#0a2a40','#1040a0'],   // indigo
+  ['#380a0a','#703030'],   // coral
+  ['#083030','#0a5050'],   // teal
+  ['#241008','#503818'],   // brown
+];
+
+/* ════════════════════════════════════
+   DESTINATION EMOJI DETECTION
+════════════════════════════════════ */
+function getEmoji(text) {
+  const t = (text || '').toLowerCase();
+  if (/東京|tokyo|日本|japan/.test(t))             return '🗼';
+  if (/四國|shikoku|香川|kagawa|松山|高松/.test(t)) return '🌊';
+  if (/沖繩|okinawa/.test(t))                      return '🌺';
+  if (/北海道|hokkaido/.test(t))                   return '❄️';
+  if (/大阪|osaka|京都|kyoto|神戶|kobe/.test(t))   return '⛩️';
+  if (/韓國|korea|首爾|seoul/.test(t))             return '🇰🇷';
+  if (/釜山|busan/.test(t))                        return '🏖️';
+  if (/歐洲|europe|巴黎|paris|倫敦|london/.test(t)) return '🗺️';
+  if (/義大利|italy|羅馬|rome/.test(t))             return '🏛️';
+  if (/美國|usa|america|紐約|new york/.test(t))     return '🗽';
+  return '✈️';
+}
+
+/* ════════════════════════════════════
+   METADATA EXTRACTION FROM HTML
+════════════════════════════════════ */
+function extractMeta(html, folder) {
+  const clean = s => (s || '').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
+  const get = pat => { const m = html.match(pat); return m ? clean(m[1]) : ''; };
+
+  const title  = get(/<title>([\s\S]*?)<\/title>/i);
+  const heroJp = get(/class="hero-jp"[^>]*>([\s\S]*?)<\/div>/i);
+  const h1     = get(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const h2     = get(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+
+  // Date badge: look for 📅 followed by date range
+  const dateM  = html.match(/📅\s*([\d.–\-\/]+[\d])/);
+  const date   = dateM ? '📅 ' + dateM[1] : '';
+
+  // Person from folder name: first segment before underscore
+  const parts  = folder.split(/[_-]/);
+  const person = parts.length > 1
+    ? parts[0].charAt(0).toUpperCase() + parts[0].slice(1)
+    : folder;
+
+  const allText = title + ' ' + h1 + ' ' + heroJp + ' ' + folder;
+  const emoji   = getEmoji(allText);
+
+  // Display name: use h1 if available, else title, else folder
+  const displayName = h1 || title.split('｜')[0] || folder;
+
+  return { title, heroJp, h1, displayName, h2, date, emoji, person };
+}
+
+/* ════════════════════════════════════
+   CACHE
+════════════════════════════════════ */
+function getCache() {
+  try {
+    const raw = sessionStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    const { data, ts } = JSON.parse(raw);
+    return (Date.now() - ts < CACHE_TTL) ? data : null;
+  } catch { return null; }
+}
+function setCache(data) {
+  try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() })); } catch {}
+}
+
+/* ════════════════════════════════════
+   RENDER HELPERS
+════════════════════════════════════ */
+function renderSkeletons(n = 6) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = Array(n).fill(0).map(() => `
+    <div class="skel-card">
+      <div class="skel-hd"></div>
+      <div class="skel-body">
+        <div class="skel-line w80"></div>
+        <div class="skel-line w60"></div>
+        <div class="skel-line w40"></div>
+        <div class="skel-btn"></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderCards(ebooks) {
+  const grid = document.getElementById('grid');
+  document.getElementById('count').textContent = ebooks.length;
+
+  if (!ebooks.length) {
+    grid.innerHTML = `<div class="error-box"><h3>找不到電子書</h3><p>請確認 GitHub 倉庫中有包含 index.html 的資料夾。</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = ebooks.map((eb, i) => {
+    const [c1, c2] = GRADIENTS[i % GRADIENTS.length];
+    const url = './' + encodeURIComponent(eb.folder) + '/';
+    const delay = (i * 0.07).toFixed(2);
+    return `
+    <div class="card" style="animation-delay:${delay}s" onclick="window.open('${url}','_blank')">
+      <div class="card-header" style="background:linear-gradient(135deg,${c1} 0%,${c2} 100%)">
+        <span class="card-folder">${eb.folder}</span>
+        <div class="card-emoji">${eb.emoji}</div>
+        <div class="card-jp">${eb.heroJp || eb.person}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${eb.displayName || eb.folder}</div>
+        ${eb.h2 ? `<div class="card-subtitle">${eb.h2}</div>` : ''}
+        ${eb.date ? `<span class="card-date">${eb.date}</span>` : ''}
+      </div>
+      <div class="card-footer">
+        <a href="${url}" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+          開啟電子書
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderError(err) {
+  document.getElementById('grid').innerHTML = `
+    <div class="error-box">
+      <h3>⚠️ 讀取失敗</h3>
+      <p style="margin-bottom:12px">${err.message || '網路錯誤'}</p>
+      <p>可能是 GitHub API 速率限制（每小時 60 次），稍後再試或
+        <a href="https://github.com/ychiechao/travel_ebook" target="_blank" style="color:var(--accent)">直接前往 GitHub</a>。
+      </p>
+    </div>`;
+  document.getElementById('count').textContent = '?';
+}
+
+/* ════════════════════════════════════
+   FETCH PIPELINE
+════════════════════════════════════ */
+async function fetchEbook(dirName) {
+  const url = RAW + dirName + '/index.html';
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const html = await res.text();
+  if (html.length < 1500) return null; // skip redirect pages
+  return { folder: dirName, ...extractMeta(html, dirName) };
+}
+
+async function loadEbooks() {
+  const t0 = Date.now();
+
+  // Check cache
+  const cached = getCache();
+  if (cached) {
+    renderCards(cached);
+    document.getElementById('load-time').textContent = '來自快取';
+    return;
+  }
+
+  renderSkeletons();
+
+  try {
+    // 1. GitHub API: list root contents
+    const apiRes = await fetch(API, {
+      headers: { Accept: 'application/vnd.github.v3+json' }
+    });
+    if (!apiRes.ok) {
+      const info = await apiRes.json().catch(() => ({}));
+      throw new Error(info.message || `GitHub API ${apiRes.status}`);
+    }
+    const items = await apiRes.json();
+
+    // 2. Filter dirs, skip system folders
+    const dirs = items
+      .filter(i => i.type === 'dir' && !i.name.startsWith('.') && !SKIP.has(i.name.toLowerCase()))
+      .map(i => i.name);
+
+    // 3. Fetch all ebook HTMLs in parallel
+    const results = await Promise.allSettled(dirs.map(fetchEbook));
+    const ebooks = results
+      .filter(r => r.status === 'fulfilled' && r.value)
+      .map(r => r.value);
+
+    // 4. Sort: newest dates first (fallback: alphabetical by folder)
+    ebooks.sort((a, b) => {
+      const da = a.date || '', db = b.date || '';
+      if (da && db) return db.localeCompare(da);
+      return a.folder.localeCompare(b.folder);
+    });
+
+    setCache(ebooks);
+    renderCards(ebooks);
+    document.getElementById('load-time').textContent =
+      `載入耗時 ${((Date.now() - t0) / 1000).toFixed(1)}s`;
+
+  } catch (err) {
+    renderError(err);
+  }
+}
+
+function refresh() {
+  sessionStorage.removeItem(CACHE_KEY);
+  document.getElementById('load-time').textContent = '';
+  loadEbooks();
+}
+
+loadEbooks();
+</script>
+</body>
+</html>
