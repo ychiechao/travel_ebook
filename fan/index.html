@@ -233,6 +233,17 @@ a{color:inherit;text-decoration:none}
 .btn-kkday{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#ff6600,#e05000);color:#fff;border-radius:6px;padding:4px 11px;font-size:10px;font-weight:700;margin-top:7px;box-shadow:0 1px 4px rgba(255,102,0,.25);transition:all .2s}
 .btn-kkday:hover{background:linear-gradient(135deg,#e05000,#c04000);box-shadow:0 2px 8px rgba(255,102,0,.35)}
 
+
+/* GUIDE EXPAND ROW (full-width colspan) */
+.guide-expand-row>td{padding:0 14px 16px;border-bottom:3px solid #ccc8f8}
+.guide-card-inner{background:linear-gradient(135deg,#faf8ff 0%,#f2eeff 100%);border-left:4px solid #5a40b0;border-radius:8px;padding:16px 18px;font-size:12.5px;line-height:1.78;color:var(--text);box-shadow:0 2px 12px rgba(90,64,176,.1);animation:gslide .25s ease}
+.guide-card-inner h5{font-size:14px;font-weight:700;color:#5a40b0;margin-bottom:10px;padding-bottom:7px;border-bottom:1px dashed #ccc8f8}
+.guide-card-inner p{margin-bottom:9px;color:#3a3830;line-height:1.78}
+.guide-card-inner p:last-child{margin-bottom:0;font-style:italic;color:#7a7068}
+.guide-card-inner strong{color:#3a2880}
+.guide-card-inner .gd-tag{display:inline-block;background:#eeecfb;color:#5a40b0;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;margin:0 3px 10px 0}
+@keyframes gclose{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+
 /* GUIDE BUTTON & CARD */
 .guide-btn{display:inline-flex;align-items:center;gap:3px;background:#f0ecfb;color:#5a40b0;border:1px solid #ccc8f8;border-radius:6px;padding:2px 9px;font-size:10px;font-weight:700;cursor:pointer;margin-left:7px;font-family:var(--sans);transition:all .2s;vertical-align:middle;line-height:1.6}
 .guide-btn:hover{background:#e4dff8;box-shadow:0 1px 4px rgba(90,64,176,.15)}
@@ -307,7 +318,7 @@ a{color:inherit;text-decoration:none}
     <button class="dnbtn" onclick="sd(5)"><span class="dnum">D5</span>6/17 吉卜力</button>
     <button class="dnbtn" onclick="sd(6)"><span class="dnum">D6</span>6/18 澀谷</button>
     <button class="dnbtn" onclick="sd(7)"><span class="dnum">D7</span>6/19 TeamLab</button>
-    <button class="dnbtn" onclick="sd(8)"><span class="dnum">D8</span>6/20-21 回家</button>
+    <button class="dnbtn" onclick="sd(8)"><span class="dnum">D8</span>6/20 購物日</button>
     <button class="dnbtn" onclick="sd(9)"><span class="dnum">📋</span>附錄</button>
   </div>
 </div>
@@ -1413,51 +1424,245 @@ a{color:inherit;text-decoration:none}
     <div class="dh-flex">
       <div class="dh-num">8</div>
       <div>
-        <div class="dh-date">SAT JUN 20 – SUN JUN 21, 2026 · 返程日</div>
-        <div class="dh-title">🏠 整理行李 → ✈ 成田返台</div>
+        <div class="dh-date">SAT JUN 20, 2026 · 購物決戰日 ｜ SUN JUN 21 · 返程</div>
+        <div class="dh-title">🛍 Uniqlo 銀座旗艦 → 三井 Outlet 多摩 → ✈ 成田返台</div>
         <div class="dh-badges">
-          <span class="dh-city">🧳 打包行李</span>
-          <span class="dh-city">✈ JX801 14:10成田</span>
-          <span class="dh-city">🏠 回到台灣</span>
+          <span class="dh-city">👗 Uniqlo / GU / MUJI</span>
+          <span class="dh-city">🏬 三井アウトレット 多摩</span>
+          <span class="dh-city">✈ JX801 6/21 14:10</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="ib ib-g"><div class="ib-icon">✈</div><div>
-    <strong>JX801</strong> 2026/06/21（日）成田T2 14:10出發 → 桃園T1 16:50抵達（3h40m）<br>
-    建議：出發前3小時到機場（11:10前），注意行李重量限制
+  <div class="ib ib-t"><div class="ib-icon">🛍</div><div>
+    <strong>全日購物規劃：</strong>上午攻旗艦店（Uniqlo銀座 + GU + MUJI），下午搭巴士→ 木更津 Outlet（日本最大330店）。兩路線可互換，也可只選一個全天深耕。晚上回押上打包行李，明天早上從容出發成田。
   </div></div>
+
+  <!-- ===================== 6/20 購物日 ===================== -->
+  <div class="sec-title">☀️ 6/20（六）購物路線</div>
+
+  <table class="itable">
+    <thead><tr><th>時間</th><th>內容</th><th>地點 / 電話</th><th>費用</th></tr></thead>
+    <tbody>
+      <tr class="bl">
+        <td>8:30–9:00</td>
+        <td><span class="ev-name">🚇 押上 → 銀座</span>
+        <div class="ev-note">押上站→都営浅草線→東銀座站下車（約20分），5號出口直達銀座商圈</div></td>
+        <td>押上站出發</td>
+        <td class="cost">¥200</td>
+      </tr>
+      <tr class="gr">
+        <td>9:00–11:30</td>
+        <td><span class="ev-name">👗 Uniqlo 銀座店（全球旗艦）</span>
+        <button class="guide-btn" onclick="tg(this)">📖 導覽</button>
+        <div class="ev-note">東京最齊全的Uniqlo，共12層樓，含<strong>Uniqlo U・UT・LifeWear・Lab</strong>等限定線。早上開門人少，建議先買完再去GU。
+        女裝重點：AIRism、Souffle Yarn針織、Smart Ankle Pants、Satin Drape Shirt</div>
+        <div class="guide-card">
+          <h5>👗 Uniqlo 銀座旗艦 — 全球最大的理由</h5>
+          <span class="gd-tag">📏 12樓</span><span class="gd-tag">🌏 全球最大旗艦</span><span class="gd-tag">💳 免稅 ¥5,000起</span>
+          <p>銀座旗艦店是Uniqlo的門面，集合了在台灣或一般門市買不到的<strong>限定線</strong>：Uniqlo U（極簡法式設計線）、Uniqlo Lab（實驗設計款）、UT藝術家聯名系列，只有旗艦店才有全系列陳列。逛一圈真的需要2-3小時。</p>
+          <p><strong>Workgirl 重點採購：</strong>① AIRism吸濕排汗系列（夏天在東京的救命稻草）② Smart Ankle Pants（修身九分褲，日本版版型更修腿）③ Souffle Yarn針織開衫（輕若無物，台灣沒有同等質感同等價位的選擇）④ 無縫AIRism Bra（款式比台灣多3倍）</p>
+          <p>💡 免稅起跳¥5,000（稅前），同一天多筆可合算，買滿直接找服務台辦理，護照要帶好。服務台在某幾層有設置，開店前就可以詢問。</p>
+          <p>🤫 <em>11F或12F通常最少人，反而有一些隱藏的限定款陳設。不要只逛1-3F就走，往上爬才有彩蛋。</em></p>
+        </div></td>
+        <td>東京都中央区銀座6-9-5
+        <div class="tel-row"><a href="tel:0120714390" class="tel-link">📞 0120-714-390</a><a href="https://www.google.com/maps/search/?q=Uniqlo+銀座店+中央区銀座6-9-5" target="_blank" class="gmap-mini">📍 地圖</a></div></td>
+        <td class="cost">依購買<br><span style="font-size:10px;color:var(--teal)">免稅¥5,000+</span></td>
+      </tr>
+      <tr class="gr">
+        <td>11:30–12:30</td>
+        <td><span class="ev-name">🧡 GU 銀座（潮流副牌）</span>
+        <div class="ev-note">Uniqlo步行約3分鐘，GU是Uniqlo集團的平價潮流副牌，版型更年輕、色彩更大膽。
+        重點：<strong>Balloon Jeans、Rib Knit、海軍條紋T、格紋長裙</strong>，價格約Uniqlo 6-7折<br>
+        🔶 逛完GU步行3分鐘可接 <strong>Workman Colors</strong>（銀座5-7-10 EXIT MELSA 5F），11:00開）</div></td>
+        <td>銀座周邊 GU 店
+        <div class="tel-row"><a href="https://www.google.com/maps/search/?q=GU+銀座+東京" target="_blank" class="gmap-mini">📍 地圖</a></div></td>
+        <td class="cost">¥990起</td>
+      </tr>
+      <tr class="co">
+        <td>11:00–12:00</td>
+        <td><span class="ev-name">🔶 Workman Colors 銀座一號店</span>
+        <button class="guide-btn" onclick="tg(this)">📖 導覽</button>
+        <span class="pill p-info">開門 11:00</span>
+        <div class="ev-note">從GU步行約3分鐘，銀座5-7-10 EXIT MELSA 5F。<strong>ワークマンの設計新支線</strong>，完全告別工作服形象，主打時髦通勤穿搭、機能型戶外休閒。
+        重點：<strong>機能系連身裙、抗UV長袖、防水短褲、Color Pants</strong>，所有商品均<strong>¥980–3,900</strong>，C/P值驚人。</div>
+        <div class="guide-card">
+          <h5>🔶 Workman Colors 銀座一號店 — 你以為是工作服，結果驚豔全場</h5>
+          <span class="gd-tag">📅 2023年9月開業</span><span class="gd-tag">📍 銀座EXIT MELSA 5F</span><span class="gd-tag">⏰ 11:00–20:00</span><span class="gd-tag">💴 全品¥980–3,900</span>
+          <p>ワークマン這個名字在日本的聯想是「建築工人的工作服」，價格低廉、耐用至極。但2023年他們在銀座——對，是那個充滿精品名店的銀座——開了一家完全不賣工作服的店，叫做<strong>Workman Colors</strong>，直接嗆聲：「我要靠設計贏。」</p>
+          <p>店內分四大風格線：<br>
+          ✦ <strong>life is</strong> — 日常休閒、色彩柔和的通勤穿搭<br>
+          ✦ <strong>WORKMAN-Ship</strong> — 原色+黑色撞色，個性感強<br>
+          ✦ <strong>tough</strong> — 都會感帥氣女裝，防潑水+時髦設計<br>
+          ✦ <strong>Share,Share,Share</strong> — 男女共穿、情侶款概念</p>
+          <p><strong>為什麼值得特別繞過來逛？</strong>① 抗UV機能T恤¥980起，夏天東京外出的絕對剛需 ② 防水連身裙，外型時髦、淋雨不怕 ③ Color Pants系列配色大膽，在台灣絕對找不到同等價位 ④ 全部日本製/機能布料，卻是平民價格。</p>
+          <p>🤫 <em>這是台灣觀光客幾乎還沒有大量發現的店，現在去正是時候。再過幾年可能就會出現在每個台灣旅遊部落客的必逛清單上。先行一步的快感，買起來！</em></p>
+        </div></td>
+        <td>東京都中央区銀座5-7-10<br>EXIT MELSA 5F
+        <div class="tel-row"><a href="tel:0335717878" class="tel-link">📞 03-3571-7878</a><a href="https://www.google.com/maps/search/?q=Workman+Colors+銀座+イグジットメルサ+5-7-10" target="_blank" class="gmap-mini">📍 地圖</a></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:4px">⏰ 11:00–20:00</div></td>
+        <td class="cost">¥980起<br><span style="font-size:10px;color:var(--teal)">全品¥3,900以下</span></td>
+      </tr>
+      <tr class="am">
+        <td>12:30–13:30</td>
+        <td><span class="ev-name">🍱 午餐 + MUJI 銀座</span>
+        <div class="ev-note">GINZA SIX B2美食廣場用餐，飯後逛<strong>MUJI Ginza</strong>（世界旗艦，地下2F~5F）：服飾、文具、食品、香薰、生活雜貨應有盡有，限定品只在銀座有</div></td>
+        <td>GINZA SIX / MUJI 銀座
+        <div class="tel-row"><a href="https://www.google.com/maps/search/?q=無印良品+銀座+MUJI+Ginza" target="_blank" class="gmap-mini">📍 MUJI地圖</a></div></td>
+        <td class="cost">午餐¥1,000~<br>MUJI 依購買</td>
+      </tr>
+      <tr class="co">
+        <td>14:00–17:30</td>
+        <td><span class="ev-name">🏬 三井アウトレットパーク 木更津</span>
+        <button class="guide-btn" onclick="tg(this)">📖 導覽</button>
+        <span class="pill p-info">Outlet 折扣區</span>
+        <div class="ev-note">銀座→銀座→東京駅（地鐵10分）→高速バスT東京八重洲地下B（約50分）→直達木更津outlet。
+        Outlet Uniqlo / GU / Adidas / Nike / Polo Ralph Lauren / Coach / PUMA 等 <strong>330+品牌（日本最大！），折扣 30–70%</strong></div>
+        <a href="https://mitsui-shopping-park.com/mop/kisarazu/" target="_blank" class="btn-kkday" style="background:linear-gradient(135deg,#1860a8,#0a4a90)">🏬 官網確認營業時間</a>
+        <div class="guide-card">
+          <h5>🏬 三井アウトレットパーク 木更津 — 日本最大！330店舗</h5>
+          <span class="gd-tag">📍 千葉県木更津市</span><span class="gd-tag">🚌 東京駅高速バス50分</span><span class="gd-tag">🏷 330+品牌・日本最大</span><span class="gd-tag">⏰ 10:00–20:00</span>
+          <p><strong>2025年6月第4期增床完工</strong>，一舉成為日本最多店舖的outlet（330家），超越全國所有競爭對手。腹地是一層樓的開放式設計，分「アーバン」「グリーン」「オーシャン」三大區，走在裡面真的有在度假的錯覺——直到信用卡帳單來的那天。</p>
+          <p><strong>台灣人必逛精華：</strong><br>
+          ✦ <strong>NIKE Factory Store</strong> — 第4期完工的<strong>日本最大NIKE outlet</strong>（1,260㎡），Jordan Brand也在裡面<br>
+          ✦ <strong>lululemon outlet</strong> — 關東首次outlet出店，瑜珈褲控的聖地<br>
+          ✦ <strong>MAISON KITSUNÉ</strong> — 巴黎潮牌outlet關東首店，狐狸logo帽T在這裡<br>
+          ✦ <strong>Polo Ralph Lauren / LACOSTE</strong> — 剛擴店，選擇更多<br>
+          ✦ <strong>Coach / Kate Spade / Furla</strong> — 日本outlet比台灣專櫃便宜30-50%<br>
+          ✦ <strong>The North Face / Helly Hansen</strong> — 剛移店重開，日本最大outlet店<br>
+          ✦ <strong>Le Creuset / Staub</strong> — 鑄鐵鍋outlet，廚具控心臟請先做好準備</p>
+          <p>🍔 累了就去吃<strong>SHAKE SHACK 木更津店</strong>（第4期新開），戶外座位配海景，比東京市區多了一份度假感。</p>
+          <p>🤫 <em>有一條巴士路線直接從outlet開往成田機場！如果行程允許，明天直接從這裡上車去機場也可以省去一段路——不過請先確認時刻表，班次有限。</em></p>
+        </div></td>
+        <td>東京都千葉県木更津市金田東3-1-1
+        <div class="tel-row"><a href="tel:0426770700" class="tel-link">📞 0438-38-6100</a><a href="https://www.google.com/maps/search/?q=三井アウトレットパーク+木更津+金田東3-1-1" target="_blank" class="gmap-mini">📍 地圖</a></div></td>
+        <td class="cost">入場免費<br>依購買</td>
+      </tr>
+      <tr class="bl">
+        <td>18:00–19:00</td>
+        <td><span class="ev-name">🚇 Outlet → 押上（收拾行李）</span>
+        <div class="ev-note">木更津outlet→高速バス→東京駅（約55分）→都営浅草線→押上（約15分、計70分）。回到民宿開始整理行李，確認托運行李重量，明天10:30前需出發成田。</div></td>
+        <td>木更津outlet バス停</td>
+        <td class="cost">¥1,400</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Outlet 替代方案 -->
+  <div class="ib ib-p"><div class="ib-icon">🗺</div><div>
+    <strong>💡 備案：不想搭長途巴士？</strong><br>
+    ① <strong>留在銀座・有樂町徹底掃貨</strong> — 銀座ロフト、Bic Camera、H&amp;M、ZARA、松本清藥妝，逛到腿軟也出不了銀座<br>
+    ② <strong>三井アウトレット 多摩南大沢</strong>（東京都八王子市）— 新宿→京王線急行→南大沢（約42分），190+品牌，適合不想太遠的選項
+  </div></div>
+
+  <!-- 購物小卡 -->
+  <div class="sec-title">🛍 D8 購物 Checklist</div>
+  <div class="shop-grid">
+    <div class="shop-card">
+      <div class="shop-emoji">👗</div>
+      <div class="shop-name">Uniqlo 銀座旗艦</div>
+      <div class="shop-where">銀座6-9-5｜全球最大</div>
+      <div class="shop-desc">Workgirl必買：AIRism / Smart Pants / Souffle針織 / Satin Shirt。限定線：Uniqlo U、Lab</div>
+      <span class="shop-price">AIRism ¥1,500｜Pants ¥2,990</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">🧡</div>
+      <div class="shop-name">GU 銀座</div>
+      <div class="shop-where">銀座周邊｜Uniqlo副牌</div>
+      <div class="shop-desc">Balloon Jeans / Rib Knit上衣 / 格紋裙。版型比Uniqlo更年輕，價格更低。</div>
+      <span class="shop-price">Jeans ¥2,490｜上衣 ¥990</span>
+    </div>
+    <div class="shop-card" style="border-left:3px solid #c05028">
+      <div class="shop-emoji">🛍</div>
+      <div class="shop-name">銀座ロフト（旗艦店）</div>
+      <div class="shop-where">銀座2-4-6 銀座ベルビア館1-6F｜11:00開</div>
+      <div class="shop-desc">約55,000種商品！文具/コスメ/生活雑貨/日本全国ご当地お菓子。台灣Loft沒有的限定款&amp;Loft Fab客製化禮品服務（5F）。銀座駅C9出口徒步3分。</div>
+      <span class="shop-price">¥110起｜免稅¥5,000+</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">⬜</div>
+      <div class="shop-name">MUJI 銀座旗艦</div>
+      <div class="shop-where">GINZA SIX 地下~5F</div>
+      <div class="shop-desc">世界最大MUJI，服飾/文具/食品/香薰，限定銀座商品，台灣買不到款式必看</div>
+      <span class="shop-price">¥200起</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">👟</div>
+      <div class="shop-name">NIKE Factory Store（Outlet）</div>
+      <div class="shop-where">三井Outlet 木更津｜日本最大1,260㎡</div>
+      <div class="shop-desc">第4期新館日本最大NIKE outlet，Jordan Brand同館，鞋/服飾/配件齊全，Ultraboost / Air Max大量入荷</div>
+      <span class="shop-price">Outlet -30~50%</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">👜</div>
+      <div class="shop-name">Coach / Kate Spade / Furla（Outlet）</div>
+      <div class="shop-where">三井Outlet 木更津</div>
+      <div class="shop-desc">日本Outlet比台灣專櫃便宜30-50%，經典款 / 季末新款，女包首選</div>
+      <span class="shop-price">Outlet 低於台灣30%</span>
+    </div>
+    <div class="shop-card" style="border-left:3px solid #e05000">
+      <div class="shop-emoji">🔶</div>
+      <div class="shop-name">Workman Colors 銀座一號店</div>
+      <div class="shop-where">銀座5-7-10 EXIT MELSA 5F｜11:00開</div>
+      <div class="shop-desc">ワークマン設計新支線！抗UV機能T¥980、防水連身裙、Color Pants。台灣人幾乎還沒發現的CP值炸裂隱藏版。</div>
+      <span class="shop-price">全品 ¥980–3,900</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">🧘</div>
+      <div class="shop-name">lululemon（Outlet）</div>
+      <div class="shop-where">三井Outlet 木更津｜關東Outlet首店</div>
+      <div class="shop-desc">瑜珈褲/運動服精品，第4期剛開，關東Outlet首次出店。Align Pant / Define Jacket 折扣入手，比台灣省超多</div>
+      <span class="shop-price">Outlet -20~40%</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">🦊</div>
+      <div class="shop-name">MAISON KITSUNÉ（Outlet）</div>
+      <div class="shop-where">三井Outlet 木更津｜關東Outlet首店</div>
+      <div class="shop-desc">巴黎法式潮牌，關東Outlet首次出店！狐狸Logo帽T/托特/Café Kitsuné聯名品，比正規店便宜且款式齊</div>
+      <span class="shop-price">Outlet -20~35%</span>
+    </div>
+    <div class="shop-card">
+      <div class="shop-emoji">🍳</div>
+      <div class="shop-name">Le Creuset / Staub（Outlet）</div>
+      <div class="shop-where">三井Outlet 木更津</div>
+      <div class="shop-desc">鑄鐵鍋Outlet！日本限定色不定期出現，廚具愛好者來之前先量好行李重量</div>
+      <span class="shop-price">Outlet -20~40%</span>
+    </div>
+  </div>
+
+  <!-- ===================== 6/21 返程 ===================== -->
+  <div class="sec-title">✈ 6/21（日）返台</div>
 
   <table class="itable">
     <thead><tr><th>時間</th><th>內容</th><th>地點 / 電話</th><th>費用</th></tr></thead>
     <tbody>
       <tr class="hi">
-        <td>6/20 全天</td>
-        <td><span class="ev-name">🧳 整理行李 + 押上自由時光</span>
-        <div class="ev-note">最後一天！整理行李、補買忘記的東西。可逛晴空塔商店街補買伴手禮，或在附近咖啡廳放鬆。</div></td>
-        <td>押上・晴空塔周邊</td>
+        <td>6/20 晚上</td>
+        <td><span class="ev-name">🧳 整理行李 + Check-out 準備</span>
+        <div class="ev-note">確認行李重量（通常20-23kg/人）、液體托運、退稅文件、護照 + JX801 ERSG3C</div></td>
+        <td>Fitinn Oshiage Room 202</td>
         <td class="cost">—</td>
       </tr>
       <tr class="bl">
-        <td>6/21 10:30–11:10</td>
-        <td><span class="ev-name">🚆 押上→成田機場</span>
-        <div class="ev-note">押上站→京成Access特急（SKY ACCESS線）→成田機場T2站（約50-60分），請於班機起飛前3小時到達機場（建議10:30出發）</div></td>
-        <td>押上站 出發</td>
+        <td>6/21 10:30</td>
+        <td><span class="ev-name">🚆 押上 → 成田T2</span>
+        <div class="ev-note">押上站→京成Access特急（SKY ACCESS線）直達成田機場T2（約55分），14:10班機建議10:30前出發</div></td>
+        <td>押上站</td>
         <td class="cost">¥1,290</td>
       </tr>
       <tr class="bl">
-        <td>6/21 11:10–13:30</td>
-        <td><span class="ev-name">🛂 成田辦理登機 + 候機</span>
-        <div class="ev-note">抵達成田T2後辦理登機手續，通過安檢，前往候機室。可利用免稅店購物（辦完登機手續後）</div></td>
-        <td>成田國際機場 第2航廈
-        <div class="tel-row"><a href="tel:0476348000" class="tel-link">📞 0476-34-8000</a><a href="https://www.google.com/maps/search/?q=成田国際空港+第2ターミナル" target="_blank" class="gmap-mini">📍 地圖</a></div></td>
+        <td>11:30–13:30</td>
+        <td><span class="ev-name">🛂 成田 Check-in + 安檢</span>
+        <div class="ev-note">辦理登機（星宇JX801）、行李托運、通關安檢。可利用免稅店最後補貨，有SHISEIDO/花王/固力果等品牌</div></td>
+        <td>成田T2
+        <div class="tel-row"><a href="tel:0476348000" class="tel-link">📞 0476-34-8000</a></div></td>
         <td class="cost">—</td>
       </tr>
-      <tr class="bl">
-        <td>6/21 14:10–16:50</td>
-        <td><span class="ev-name">✈ JX801 成田→桃園</span><span class="pill p-ok">回家！</span>
-        <div class="ev-note">成田T2 14:10起飛 → 桃園T1 16:50抵達（飛行3h40m）訂位代號：ERSG3C</div></td>
+      <tr class="co">
+        <td>14:10–16:50</td>
+        <td><span class="ev-name">✈ JX801 成田 → 桃園</span><span class="pill p-ok">回家！</span>
+        <div class="ev-note">成田T2 14:10 → 桃園T1 16:50（3h40m）訂位代號：ERSG3C ｜ 實際營運：星宇航空</div></td>
         <td>成田T2 → 桃園T1</td>
         <td class="cost">已含</td>
       </tr>
@@ -1465,7 +1670,7 @@ a{color:inherit;text-decoration:none}
   </table>
 
   <div class="ib ib-a"><div class="ib-icon">🎒</div><div>
-    <strong>打包提醒：</strong>① 液體需放托運 ② 刀具/噴霧需托運 ③ 行李重量確認（通常20-23kg/人）④ 藥妝、保健食品注意攜入台灣限制 ⑤ 確認護照、JX801電子票、ERSG3C訂位
+    <strong>打包提醒：</strong>① 液體（乳液/防曬/洗髮精）放<strong>托運</strong>不能放手提 ② 刀具/剪刀/噴霧一律托運 ③ 確認行李重量（帶秤！）④ 藥妝、保健食品確認台灣攜入規定 ⑤ 收據集中放，退稅在機場可補辦
   </div></div>
 </div><!-- /p8 -->
 
@@ -1662,12 +1867,32 @@ a{color:inherit;text-decoration:none}
 <script>
 
 function tg(btn){
+  var tr=btn.closest('tr');
   var td=btn.closest('td');
   var card=td.querySelector('.guide-card');
   if(!card) return;
-  var isOpen=card.classList.toggle('open');
-  btn.classList.toggle('open',isOpen);
-  btn.innerHTML=isOpen?'📖 收起':'📖 導覽';
+  /* If expand-row already open → remove it (toggle off) */
+  var next=tr.nextElementSibling;
+  if(next&&next.classList.contains('guide-expand-row')){
+    next.style.animation='gclose .2s ease forwards';
+    setTimeout(function(){next.remove();},180);
+    btn.classList.remove('open');
+    btn.innerHTML='📖 導覽';
+    return;
+  }
+  /* Build full-width row spanning all columns */
+  var expTr=document.createElement('tr');
+  expTr.className='guide-expand-row';
+  var expTd=document.createElement('td');
+  expTd.colSpan=tr.cells.length;
+  var inner=document.createElement('div');
+  inner.className='guide-card-inner';
+  inner.innerHTML=card.innerHTML;
+  expTd.appendChild(inner);
+  expTr.appendChild(expTd);
+  tr.after(expTr);
+  btn.classList.add('open');
+  btn.innerHTML='📖 收起';
 }
 
 function sd(i){
