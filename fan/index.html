@@ -1922,6 +1922,30 @@ function autoDay(){
   document.querySelectorAll('.dnbtn').forEach((b,j)=>b.classList.toggle('on',j===idx));
 }
 window.addEventListener('DOMContentLoaded',autoDay);
+/* ── 智慧地圖連結：iOS→Apple Maps，其他→Google Maps ── */
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a.gmap-mini, a.btn-map');
+  if(!a) return;
+  e.preventDefault();
+  var href = a.getAttribute('href') || '';
+  // 取出 q= 參數值
+  var q = '';
+  try {
+    q = new URL(href).searchParams.get('q') || '';
+  } catch(_) {
+    var m = href.match(/[?&]q=([^&]+)/);
+    q = m ? m[1] : '';
+  }
+  // 重新正確 encode（避免中日文造成問題）
+  var enc = encodeURIComponent(decodeURIComponent(q.replace(/\+/g,' ')));
+  // iOS → Apple Maps（永遠可用），其他 → Google Maps
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+  var dest = isIOS
+    ? 'https://maps.apple.com/?q=' + enc
+    : 'https://maps.google.com/maps?q=' + enc;
+  window.open(dest, '_blank');
+});
+
 </script>
 </body>
 </html>
