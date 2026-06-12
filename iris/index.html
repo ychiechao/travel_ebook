@@ -104,6 +104,7 @@ a{color:inherit}
 .itable tbody tr.bf{background:#fffae8}
 .itable td{padding:9px 12px;vertical-align:top}
 .itable td:first-child{font:400 11px/1.4 var(--mono);color:var(--muted);white-space:nowrap}
+.event-cards{display:none}
 .ev-name{font-weight:600;color:var(--text)}
 .ev-note{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.45}
 .place-name{display:block;font-weight:600;color:var(--text);line-height:1.4}
@@ -137,6 +138,8 @@ a{color:inherit}
 .map-btn.primary:hover{background:#14538d}
 .map-btn.kkday-btn{color:#fff;background:linear-gradient(135deg,#ff7600,#e45500);border-color:#e45500;box-shadow:0 2px 8px rgba(228,85,0,.18)}
 .map-btn.kkday-btn:hover{background:linear-gradient(135deg,#ea6500,#c94700)}
+.map-btn.tabelog-btn{color:#8a1747;background:#fce8f1;border-color:#efbad0}
+.map-btn.tabelog-btn:hover{background:#f8d8e6}
 .attraction-card.guide-open{grid-column:1/-1;transform:none;box-shadow:0 10px 30px rgba(16,63,114,.12);border-color:#b9d4e9}
 .guide-btn{width:100%;margin-top:9px;border:1px solid rgba(29,103,177,.22);border-radius:7px;padding:7px 10px;background:linear-gradient(135deg,#f4f9ff,#eaf5ff);color:var(--blue);font:700 11px/1.3 var(--sans);cursor:pointer;text-align:left;transition:background .15s,color .15s,border-color .15s}
 .guide-btn::before{content:'+';display:inline-grid;place-items:center;width:17px;height:17px;margin-right:6px;border-radius:999px;background:#fff;border:1px solid rgba(29,103,177,.2);font:700 12px/1 var(--mono);vertical-align:-1px}
@@ -202,21 +205,24 @@ a{color:inherit}
   .route-wrap{padding:14px 13px}
   .route-wrap svg{display:none}
   .route-list{display:block}
-  .table-scroll{overflow:visible;margin:0;padding:0}
-  .itable{display:block;width:100%;border:0;background:transparent;margin-bottom:22px;font-size:12px}
-  .itable thead{display:none}
-  .itable tbody{display:block}
-  .itable tbody tr{display:block;border:1px solid var(--border);border-radius:8px;background:var(--card);box-shadow:0 5px 16px rgba(16,63,114,.06);margin-bottom:10px;overflow:hidden}
-  .itable tbody tr.hi{background:var(--lt-teal)}
-  .itable tbody tr.pu{background:var(--lt-purple)}
-  .itable tbody tr.wa{background:var(--lt-red)}
-  .itable tbody tr.am{background:var(--lt-amb)}
-  .itable tbody tr.bf{background:#fffae8}
-  .itable td{display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px;border-bottom:1px solid rgba(216,229,240,.72);padding:9px 11px;text-align:left;white-space:normal}
-  .itable td:last-child{border-bottom:0}
-  .itable td::before{content:attr(data-label);font:700 10px/1.45 var(--mono);color:var(--muted);letter-spacing:.03em}
-  .itable td:first-child{font:600 12px/1.45 var(--mono);white-space:normal;color:var(--blue)}
-  .cost{text-align:left;white-space:normal}
+  .table-scroll{display:none}
+  .event-cards{display:grid;grid-template-columns:1fr;gap:11px;margin-bottom:24px}
+  .m-event-card{border:1px solid var(--border);border-radius:10px;background:var(--card);box-shadow:0 6px 18px rgba(16,63,114,.07);padding:13px 13px 12px;overflow:hidden}
+  .m-event-card.hi{background:linear-gradient(135deg,#f3fffb,var(--lt-teal));border-color:#b9dfd2}
+  .m-event-card.pu{background:linear-gradient(135deg,#fbfaff,var(--lt-purple));border-color:#d4d0ef}
+  .m-event-card.wa{background:linear-gradient(135deg,#fffafa,var(--lt-red));border-color:#eccaca}
+  .m-event-card.am{background:linear-gradient(135deg,#fffdf8,var(--lt-amb));border-color:#ead8ae}
+  .m-event-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .m-event-time{display:inline-flex;align-items:center;min-height:27px;padding:5px 9px;border-radius:999px;background:var(--navy);color:#fff;font:700 11px/1.25 var(--mono)}
+  .m-event-cost{font:700 10.5px/1.3 var(--mono);color:var(--teal);text-align:right}
+  .m-event-cost.z{color:#9098a2}
+  .m-event-title{font-size:15px;line-height:1.4;color:var(--navy);margin:0 0 6px}
+  .m-event-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px}
+  .m-event-note{font-size:12px;line-height:1.68;color:#4f5e70;margin:0}
+  .m-event-place{display:grid;grid-template-columns:42px minmax(0,1fr);gap:8px;align-items:start;margin-top:10px;padding-top:9px;border-top:1px dashed rgba(102,112,133,.28)}
+  .m-event-label{font:700 10px/1.5 var(--mono);color:var(--muted)}
+  .m-event-place .place-name{font-size:12px}
+  .m-event-place .place-map{margin-top:6px;min-height:32px;padding:7px 10px}
   .pass-row{grid-template-columns:1.5fr 1fr 1.2fr}
   .pass-row .pc:nth-child(3){display:none}
   .dh-num{font-size:28px}
@@ -477,6 +483,48 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">11:00–12:30</div>
+      <div class="m-event-cost ">車票另計</div>
+    </div>
+    <h3 class="m-event-title">關西機場前往南海新今宮站</h3>
+    <div class="m-event-tags"><span class="pill p-tr">少轉乘</span></div>
+    <p class="m-event-note">完成入境與領行李後搭 Rapi:t；實際班次以當日南海時刻為準。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">關西機場 → 新今宮</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=Nankai%20Shin-Imamiya%20Station" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">12:30–13:00</div>
+      <div class="m-event-cost z">—</div>
+    </div>
+    <h3 class="m-event-title">步行至民宿、寄放行李</h3>
+    <div class="m-event-tags"><span class="pill p-wk">步行</span></div>
+    <p class="m-event-note">依實際出口與行李速度預留約 5–10 分鐘；若尚未能入住，先寄放行李。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">3-3-36 Ebisunishi</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=3-3-36%20Ebisunishi%20Naniwa%20Osaka" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">下午</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">午餐、入住與通天閣周邊散步</h3>
+    <div class="m-event-tags"><span class="pill p-wk">彈性</span></div>
+    <p class="m-event-note">依航班與體力彈性安排，不把第一天下午塞滿。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">新世界・通天閣</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=Tsutenkaku%20Osaka" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">18:20–21:00</div>
+      <div class="m-event-cost ">依訂位</div>
+    </div>
+    <h3 class="m-event-title">前往蟹道樂道頓堀東店晚餐</h3>
+    <div class="m-event-tags"><span class="pill p-co">19:00 已排定</span></div>
+    <p class="m-event-note">動物園前搭堺筋線至日本橋後步行；多人同行或下雨可直接搭計程車。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">かに道楽 道頓堀東店</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%81%AB%E9%81%93%E6%A5%BD%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -523,7 +571,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">已排定晚餐</div>
@@ -532,7 +580,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">本日主餐。出發前再次確認東店、19:00、訂位姓名與人數。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://douraku.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%81%AB%E9%81%93%E6%A5%BD%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E8%9F%B9%E9%81%93%E6%A8%82%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E8%9F%B9%E9%81%93%E6%A8%82%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://douraku.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%81%AB%E9%81%93%E6%A5%BD%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E3%81%8B%E3%81%AB%E9%81%93%E6%A5%BD%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E8%9F%B9%E9%81%93%E6%A8%82%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E8%9F%B9%E9%81%93%E6%A8%82%20%E9%81%93%E9%A0%93%E5%A0%80%E6%9D%B1%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -544,13 +592,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">民宿附近的串炸名店；若排隊太長就改吃周邊定食，不影響入住休息。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B2%E3%81%8B%E3%81%A4%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B7%8F%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%85%83%E7%A5%96%E4%B8%B2%E3%81%8B%E3%81%A4%20%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B8%BD%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%85%83%E7%A5%96%E4%B8%B2%E3%81%8B%E3%81%A4%20%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B8%BD%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%B2%E3%81%8B%E3%81%A4%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B7%8F%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E4%B8%B2%E3%81%8B%E3%81%A4%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B7%8F%E6%9C%AC%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%85%83%E7%A5%96%E4%B8%B2%E3%81%8B%E3%81%A4%20%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B8%BD%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%85%83%E7%A5%96%E4%B8%B2%E3%81%8B%E3%81%A4%20%E3%81%A0%E3%82%8B%E3%81%BE%20%E6%96%B0%E4%B8%96%E7%95%8C%E7%B8%BD%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">大阪伴手禮</div>
@@ -682,6 +730,48 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">09:30–10:15</div>
+      <div class="m-event-cost ">地鐵</div>
+    </div>
+    <h3 class="m-event-title">動物園前前往大阪城公園</h3>
+    <div class="m-event-tags"><span class="pill p-tr">轉乘 1 次</span></div>
+    <p class="m-event-note">堺筋線至堺筋本町，轉中央線至谷町四丁目，步行進入公園。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">動物園前 → 谷町四丁目</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">10:15–12:30</div>
+      <div class="m-event-cost ">門票另計</div>
+    </div>
+    <h3 class="m-event-title">大阪城公園與天守閣</h3>
+    <div class="m-event-tags"><span class="pill p-co">代表景點</span></div>
+    <p class="m-event-note">視體力與排隊狀況決定是否登閣；少走路版本以園區車接近天守閣。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">大阪城天守閣</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%98%AA%E5%9F%8E%E5%A4%A9%E5%AE%88%E9%96%A3" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">13:00–14:15</div>
+      <div class="m-event-cost ">約 ¥2,200 起</div>
+    </div>
+    <h3 class="m-event-title">計程車前往難波八阪神社</h3>
+    <div class="m-event-tags"><span class="pill p-tr">少走路</span></div>
+    <p class="m-event-note">車程約 15–20 分鐘，遇市區壅塞需多留緩衝。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">難波八阪神社</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9B%A3%E6%B3%A2%E5%85%AB%E9%98%AA%E7%A5%9E%E7%A4%BE" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">14:30–18:30</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">百貨、電器街與通天閣</h3>
+    <div class="m-event-tags"><span class="pill p-wk">購物</span></div>
+    <p class="m-event-note">難波高島屋或大丸心齋橋擇一，再由日本橋電器街一路向南回到住宿區。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">難波・日本橋・新世界</span></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -748,7 +838,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">難波小吃</div>
@@ -757,7 +847,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">適合百貨與電器街之間快速補充體力，尖峰時段可能排隊。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://takoyaki-wanaka.com/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://takoyaki-wanaka.com/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E3%81%9F%E3%81%93%E7%84%BC%E9%81%93%E6%A5%BD%20%E3%82%8F%E3%81%AA%E3%81%8B%20%E5%8D%83%E6%97%A5%E5%89%8D%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -769,13 +859,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">大阪蛋包飯老店，若選大丸心齋橋路線可作午晚餐備選。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.hokkyokusei.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E6%96%8E%E6%A9%8B%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E9%BD%8B%E6%A9%8B%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E9%BD%8B%E6%A9%8B%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.hokkyokusei.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E6%96%8E%E6%A9%8B%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E6%96%8E%E6%A9%8B%E6%9C%AC%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E9%BD%8B%E6%A9%8B%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%8C%97%E6%A5%B5%E6%98%9F%20%E5%BF%83%E9%BD%8B%E6%A9%8B%E6%9C%AC%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">電器・藥妝</div>
@@ -914,6 +1004,58 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">07:00–09:45</div>
+      <div class="m-event-cost ">包車另計</div>
+    </div>
+    <h3 class="m-event-title">民宿門口出發前往伊根</h3>
+    <div class="m-event-tags"><span class="pill p-tr">包車</span></div>
+    <p class="m-event-note">途中安排一次休息；實際時間受阪神高速與京都縱貫道車流影響。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">大阪 → 伊根</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">09:45–11:15</div>
+      <div class="m-event-cost ">船票另計</div>
+    </div>
+    <h3 class="m-event-title">伊根灣遊覽船與舟屋景觀</h3>
+    <div class="m-event-tags"><span class="pill p-co">約 25 分鐘遊船</span></div>
+    <p class="m-event-note">以遊船和短距離拍照為主；上下船注意浪花與濕滑地面。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">伊根湾めぐり遊覧船</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BC%8A%E6%A0%B9%E6%B9%BE%E3%82%81%E3%81%90%E3%82%8A%E9%81%8A%E8%A6%A7%E8%88%B9" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">11:15–12:15</div>
+      <div class="m-event-cost ">¥1,500–3,500</div>
+    </div>
+    <h3 class="m-event-title">伊根海鮮午餐</h3>
+    <div class="m-event-tags"><span class="pill p-wk">預約優先</span></div>
+    <p class="m-event-note">事先訂位最穩；若餐廳客滿，以短時間海鮮定食或便當替代。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">伊根浦公園周邊</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">12:15–15:00</div>
+      <div class="m-event-cost ">票券另計</div>
+    </div>
+    <h3 class="m-event-title">前往天橋立 View Land</h3>
+    <div class="m-event-tags"><span class="pill p-tr">少走路</span></div>
+    <p class="m-event-note">搭單軌電車或吊椅上山看飛龍觀，不安排徒步橫越 3.6 公里沙洲。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">天橋立ビューランド</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E6%A9%8B%E7%AB%8B%E3%83%93%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">15:00–18:30</div>
+      <div class="m-event-cost ">高速費另計</div>
+    </div>
+    <h3 class="m-event-title">返回大阪</h3>
+    <div class="m-event-tags"><span class="pill p-tr">塞車緩衝</span></div>
+    <p class="m-event-note">若只訂 10 小時包車，這段很可能進入超時；不要再追加沿途景點。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">天橋立 → 大阪</span></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -980,7 +1122,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">伊根午餐</div>
@@ -989,7 +1131,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">地點符合包車動線，熱門日期務必先確認營業與訂位方式。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E4%BC%8A%E6%A0%B9" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E4%BC%8A%E6%A0%B9" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E4%BC%8A%E6%A0%B9%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E8%88%9F%E5%B1%8B%E9%A3%9F%E5%A0%82%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -1001,13 +1143,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">若伊根午餐提早結束，可在天橋立安排甜點或輕食；不要為排隊延誤回程。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E3%81%AF%E3%81%97%E3%81%A0%E3%81%A6%E8%8C%B6%E5%B1%8B%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">伊根限定</div>
@@ -1151,6 +1293,48 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">09:30–10:20</div>
+      <div class="m-event-cost ">JR 車資</div>
+    </div>
+    <h3 class="m-event-title">JR 新今宮直達 JR 奈良</h3>
+    <div class="m-event-tags"><span class="pill p-tr">免換車</span></div>
+    <p class="m-event-note">搭大和路快速約 35–40 分鐘；上車前確認列車目的地。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">新今宮 → 奈良</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">10:20–10:40</div>
+      <div class="m-event-cost ">約 ¥1,500 起</div>
+    </div>
+    <h3 class="m-event-title">計程車前往東大寺大門</h3>
+    <div class="m-event-tags"><span class="pill p-tr">少走路</span></div>
+    <p class="m-event-note">比從 JR 奈良站步行省力，車流大時車程可能延長。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">JR 奈良站 → 東大寺</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">10:40–14:30</div>
+      <div class="m-event-cost ">門票另計</div>
+    </div>
+    <h3 class="m-event-title">東大寺、奈良公園與午餐</h3>
+    <div class="m-event-tags"><span class="pill p-co">奈良經典</span></div>
+    <p class="m-event-note">以大佛殿與公園小鹿為主，不追加春日大社長距離步行。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">東大寺・奈良公園</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E5%A4%A7%E5%AF%BA" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">15:00–20:00</div>
+      <div class="m-event-cost ">入館費另計</div>
+    </div>
+    <h3 class="m-event-title">返回大阪空庭溫泉</h3>
+    <div class="m-event-tags"><span class="pill p-wk">放鬆</span></div>
+    <p class="m-event-note">JR 奈良至新今宮，再轉大阪環狀線至弁天町；泡湯並在館內用晚餐。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">空庭温泉 OSAKA BAY TOWER</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A9%BA%E5%BA%AD%E6%B8%A9%E6%B3%89%20OSAKA%20BAY%20TOWER" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -1217,7 +1401,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">奈良午餐</div>
@@ -1226,7 +1410,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">柿葉壽司適合快速用餐或外帶；依散步位置選奈良店或車站販售點。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://hiraso.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://hiraso.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E6%9F%BF%E3%81%AE%E8%91%89%E3%81%9A%E3%81%97%20%E5%B9%B3%E5%AE%97%20%E5%A5%88%E8%89%AF%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -1238,13 +1422,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">現做麻糬柔軟但可能排隊，若離動線太遠就不特別繞路。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E5%A5%88%E8%89%AF" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E5%A5%88%E8%89%AF" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E5%A5%88%E8%89%AF%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E4%B8%AD%E8%B0%B7%E5%A0%82%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">奈良名物</div>
@@ -1376,6 +1560,48 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">11:30–12:50</div>
+      <div class="m-event-cost ">鐵路車資</div>
+    </div>
+    <h3 class="m-event-title">大阪前往神戶三宮</h3>
+    <div class="m-event-tags"><span class="pill p-tr">直通班次優先</span></div>
+    <p class="m-event-note">動物園前至日本橋，轉近鐵日本橋搭直通神戶三宮的快速急行；預留找月台時間。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">近鐵日本橋 → 神戶三宮</span></div></div>
+  </article>
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">13:00–14:40</div>
+      <div class="m-event-cost ">依訂位</div>
+    </div>
+    <h3 class="m-event-title">Mouriya 三宮店牛排午餐</h3>
+    <div class="m-event-tags"><span class="pill p-co">已訂位</span></div>
+    <p class="m-event-note">已排定腿肉 150g、臀肉 150g、A5 肋眼 150g、A5 沙朗 130g。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">モーリヤ三宮店</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A2%E3%83%BC%E3%83%AA%E3%83%A4%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">15:00–16:45</div>
+      <div class="m-event-cost ">約 ¥1,000 起</div>
+    </div>
+    <h3 class="m-event-title">計程車上北野異人館街</h3>
+    <div class="m-event-tags"><span class="pill p-tr">少走路</span></div>
+    <p class="m-event-note">在北野星巴克附近下車，避開從三宮一路爬坡。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">北野異人館街</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E6%88%B8%E5%8C%97%E9%87%8E%E7%95%B0%E4%BA%BA%E9%A4%A8%E8%A1%97" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">17:00–20:00</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">神戶 Harborland MOSAIC</h3>
+    <div class="m-event-tags"><span class="pill p-wk">夜景</span></div>
+    <p class="m-event-note">計程車下山後安排晚餐、逛街與夜景；7 月日落較晚，停留至 19:30 後較有氣氛。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">神戸ハーバーランド umie MOSAIC</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E6%88%B8%E3%83%8F%E3%83%BC%E3%83%90%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89%20umie%20MOSAIC" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -1442,7 +1668,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">已訂午餐</div>
@@ -1451,7 +1677,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">本日核心餐廳。不要遲到，並保留每位成員的牛排部位與克數紀錄。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.mouriya.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A2%E3%83%BC%E3%83%AA%E3%83%A4%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20Mouriya%20%E4%B8%89%E5%AE%AE%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=Mouriya%20%E4%B8%89%E5%AE%AE%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.mouriya.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A2%E3%83%BC%E3%83%AA%E3%83%A4%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E3%83%A2%E3%83%BC%E3%83%AA%E3%83%A4%E4%B8%89%E5%AE%AE%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20Mouriya%20%E4%B8%89%E5%AE%AE%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=Mouriya%20%E4%B8%89%E5%AE%AE%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -1463,13 +1689,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">可在港灣休息或購買甜點；冷藏商品不宜太早大量採買。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.frantz.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E6%88%B8%E3%83%95%E3%83%A9%E3%83%B3%E3%83%84%20umie%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20Kobe%20Frantz%20umie%20MOSAIC%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=Kobe%20Frantz%20umie%20MOSAIC%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.frantz.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E6%88%B8%E3%83%95%E3%83%A9%E3%83%B3%E3%83%84%20umie%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E7%A5%9E%E6%88%B8%E3%83%95%E3%83%A9%E3%83%B3%E3%83%84%20umie%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20Kobe%20Frantz%20umie%20MOSAIC%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=Kobe%20Frantz%20umie%20MOSAIC%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">神戶甜點</div>
@@ -1607,6 +1833,58 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">08:20–09:30</div>
+      <div class="m-event-cost ">鐵路車資</div>
+    </div>
+    <h3 class="m-event-title">動物園前前往萬博紀念公園</h3>
+    <div class="m-event-tags"><span class="pill p-tr">轉乘 1 次</span></div>
+    <p class="m-event-note">御堂筋線至千里中央，再轉大阪單軌電車。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">動物園前 → 萬博紀念公園</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">09:30–12:00</div>
+      <div class="m-event-cost ">入園費另計</div>
+    </div>
+    <h3 class="m-event-title">萬博紀念公園與太陽之塔</h3>
+    <div class="m-event-tags"><span class="pill p-co">岡本太郎</span></div>
+    <p class="m-event-note">以太陽之塔正面、背面與周邊花園為主；是否進入塔內依預約。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">万博記念公園</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%87%E5%8D%9A%E8%A8%98%E5%BF%B5%E5%85%AC%E5%9C%92%20%E5%A4%AA%E9%99%BD%E3%81%AE%E5%A1%94" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">12:00–13:00</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">EXPOCITY 午餐</h3>
+    <div class="m-event-tags"><span class="pill p-wk">週末人潮</span></div>
+    <p class="m-event-note">週末餐廳候位可能較長，優先選能快速入座的店家。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">LaLaport EXPOCITY</span></div></div>
+  </article>
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">13:00–15:30</div>
+      <div class="m-event-cost ">門票另計</div>
+    </div>
+    <h3 class="m-event-title">NIFREL 藝術水族館</h3>
+    <div class="m-event-tags"><span class="pill p-wk">室內</span></div>
+    <p class="m-event-note">依預約時段入場；館內以感性展示為主，適合慢慢看。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">NIFREL</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=NIFREL" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">15:30–17:30</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">LaLaport EXPOCITY 採買</h3>
+    <div class="m-event-tags"><span class="pill p-wk">購物</span></div>
+    <p class="m-event-note">安排室內休息與購物，傍晚再返回大阪市區。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">LaLaport EXPOCITY</span></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -1673,7 +1951,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">特色午餐</div>
@@ -1682,7 +1960,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">日本少見的 KFC 餐廳型態，週末候位可能很久；先看現場號碼再決定。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=KFC%20Restaurant%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20KFC%20Restaurant%20LaLaport%20EXPOCITY%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=KFC%20Restaurant%20LaLaport%20EXPOCITY%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=KFC%20Restaurant%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20KFC%20Restaurant%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20KFC%20Restaurant%20LaLaport%20EXPOCITY%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=KFC%20Restaurant%20LaLaport%20EXPOCITY%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -1694,13 +1972,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">多人飲食偏好不同時最省事，吃完即可按 NIFREL 時段入場。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=EXPO%20KITCHEN%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20EXPO%20KITCHEN%20%E7%BE%8E%E9%A3%9F%E5%8D%80%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=EXPO%20KITCHEN%20%E7%BE%8E%E9%A3%9F%E5%8D%80%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=EXPO%20KITCHEN%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20EXPO%20KITCHEN%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20EXPO%20KITCHEN%20%E7%BE%8E%E9%A3%9F%E5%8D%80%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=EXPO%20KITCHEN%20%E7%BE%8E%E9%A3%9F%E5%8D%80%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">設計紀念品</div>
@@ -1838,6 +2116,58 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">10:00–10:20</div>
+      <div class="m-event-cost ">依寄放</div>
+    </div>
+    <h3 class="m-event-title">退房、寄放大型行李</h3>
+    <div class="m-event-tags"><span class="pill p-tr">行李分流</span></div>
+    <p class="m-event-note">只帶參拜小包前往大鳥大社，降低阪和線移動負擔。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">Seiryu 通天閣</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">10:20–11:00</div>
+      <div class="m-event-cost ">JR 車資</div>
+    </div>
+    <h3 class="m-event-title">JR 新今宮前往鳳站</h3>
+    <div class="m-event-tags"><span class="pill p-tr">JR</span></div>
+    <p class="m-event-note">搭阪和線方向列車，約 20–25 分鐘；確認列車有停鳳站。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">新今宮 → 鳳</span></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">11:00–12:15</div>
+      <div class="m-event-cost ">免費參拜</div>
+    </div>
+    <h3 class="m-event-title">大鳥大社參拜</h3>
+    <div class="m-event-tags"><span class="pill p-co">和泉國一宮</span></div>
+    <p class="m-event-note">由鳳站西出口步行前往，參拜後回車站。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">大鳥大社</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%B3%A5%E5%A4%A7%E7%A4%BE" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">12:15–15:00</div>
+      <div class="m-event-cost ">南海車資</div>
+    </div>
+    <h3 class="m-event-title">返回新今宮取行李、前往臨空城</h3>
+    <div class="m-event-tags"><span class="pill p-tr">南海直達</span></div>
+    <p class="m-event-note">取行李與午餐後，南海新今宮搭機場急行至臨空城站。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">新今宮 → 臨空城</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">15:00 後</div>
+      <div class="m-event-cost ">已訂住宿</div>
+    </div>
+    <h3 class="m-event-title">入住 OMO Kansai Airport</h3>
+    <div class="m-event-tags"><span class="pill p-wk">換住宿</span></div>
+    <p class="m-event-note">傍晚只熟悉飯店、Outlet 與翌日動線，不安排大量採買。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">OMO Kansai Airport</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=OMO%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%20by%20%E6%98%9F%E9%87%8E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -1884,7 +2214,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">臨空城晚餐</div>
@@ -1893,7 +2223,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">入住後不想走太遠時的實用選擇；週日晚餐可能候位。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.daiki-suisan.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.daiki-suisan.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -1905,13 +2235,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">若移動日疲累，直接在飯店或周邊商場用餐，不必為名店再搭車。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=OMO%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%20%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20OMO%20Dining%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=OMO%20Dining%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=OMO%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%20%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20OMO%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%20%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20OMO%20Dining%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=OMO%20Dining%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">神社授與品</div>
@@ -2043,6 +2373,48 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">上午</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">Outlet 開門後先逛目標品牌</h3>
+    <div class="m-event-tags"><span class="pill p-co">目標採買</span></div>
+    <p class="m-event-note">先確認 ScoLar 與 marimekko 當日位置、折扣與退稅方式。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">Rinku Premium Outlets</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=Rinku%20Premium%20Outlets" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">12:00–13:30</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">午餐與飯店放置戰利品</h3>
+    <div class="m-event-tags"><span class="pill p-wk">少負重</span></div>
+    <p class="m-event-note">利用住宿近的優勢減輕手提重量，下午再回 Outlet。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">臨空城</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">下午</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">第二輪採買與海邊休息</h3>
+    <div class="m-event-tags"><span class="pill p-wk">自由安排</span></div>
+    <p class="m-event-note">補逛鞋包、生活雜貨與甜點；天氣舒服再去臨空公園。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">Rinku Premium Outlets・臨空公園</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">晚上</div>
+      <div class="m-event-cost z">—</div>
+    </div>
+    <h3 class="m-event-title">行李秤重與回程準備</h3>
+    <div class="m-event-tags"><span class="pill p-tr">打包</span></div>
+    <p class="m-event-note">確認退稅品、液體、易碎品、托運重量與隔日機場接駁。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">OMO Kansai Airport</span></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -2089,7 +2461,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">Outlet 午餐</div>
@@ -2098,7 +2470,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">份量足、適合快速補充體力；尖峰時段可外帶或改美食區。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=KUA%20AINA%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20KUA%60AINA%20Rinku%20Premium%20Outlets%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=KUA%60AINA%20Rinku%20Premium%20Outlets%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=KUA%20AINA%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20KUA%20AINA%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20KUA%60AINA%20Rinku%20Premium%20Outlets%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=KUA%60AINA%20Rinku%20Premium%20Outlets%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -2110,13 +2482,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">前一晚沒吃到可放在本日；多人用餐先抽號碼牌。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.daiki-suisan.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.daiki-suisan.co.jp/" target="_blank" rel="noopener noreferrer">官方網站</a><a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A3%E5%9B%9E%E8%BB%A2%E5%AF%BF%E5%8F%B8%20%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AB%E5%BA%97%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E5%A4%A7%E8%B5%B7%E6%B0%B4%E7%94%A2%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20Rinku%20Seacle%20%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">指定品牌</div>
@@ -2244,6 +2616,38 @@ a{color:inherit}
     </tbody>
   </table>
 </div>
+<div class="event-cards" aria-label="行程時間表">
+  <article class="m-event-card pu">
+    <div class="m-event-top">
+      <div class="m-event-time">08:00–08:30</div>
+      <div class="m-event-cost ">依接駁方式</div>
+    </div>
+    <h3 class="m-event-title">OMO 退房前往關西機場</h3>
+    <div class="m-event-tags"><span class="pill p-tr">預留 3 小時</span></div>
+    <p class="m-event-note">優先搭符合航班的飯店接駁；備案為臨空城站搭電車一站。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">OMO Kansai Airport → KIX</span></div></div>
+  </article>
+  <article class="m-event-card ">
+    <div class="m-event-top">
+      <div class="m-event-time">08:30–10:30</div>
+      <div class="m-event-cost ">依消費</div>
+    </div>
+    <h3 class="m-event-title">報到、托運、安檢與最後採買</h3>
+    <div class="m-event-tags"><span class="pill p-tr">先報到</span></div>
+    <p class="m-event-note">先完成所有出境程序，再決定是否購買免稅品或吃早餐。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">關西國際機場</span><a class="place-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kansai%20International%20Airport" target="_blank" rel="noreferrer">Google 地圖</a></div></div>
+  </article>
+  <article class="m-event-card hi">
+    <div class="m-event-top">
+      <div class="m-event-time">11:15</div>
+      <div class="m-event-cost ">已購機票</div>
+    </div>
+    <h3 class="m-event-title">航班起飛返回高雄</h3>
+    <div class="m-event-tags"><span class="pill p-co">返台</span></div>
+    <p class="m-event-note">登機門可能較遠，依機場螢幕時間提早前往。</p>
+    <div class="m-event-place"><span class="m-event-label">地點</span><div><span class="place-name">關西機場 → 高雄</span></div></div>
+  </article>
+</div>
   
   
   <div class="sec-lbl">景點小卡</div>
@@ -2270,7 +2674,7 @@ a{color:inherit}
   </article>
 </section>
 <div class="sec-lbl">推薦餐廳小卡</div>
-<section class="rg ">
+<section class="rg restaurant-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">機場早餐</div>
@@ -2279,7 +2683,7 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">依當天開店與航廈位置選擇，不為特定店家跨區奔走。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E3%81%86%E3%81%A9%E3%82%93%20%E6%9C%9D%E9%A3%9F" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E5%BC%8F%E6%97%A9%E9%A4%90%E8%88%87%E7%83%8F%E9%BE%8D%E9%BA%B5%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E5%BC%8F%E6%97%A9%E9%A4%90%E8%88%87%E7%83%8F%E9%BE%8D%E9%BA%B5%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E3%81%86%E3%81%A9%E3%82%93%20%E6%9C%9D%E9%A3%9F" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20%E9%96%A2%E8%A5%BF%E5%9B%BD%E9%9A%9B%E7%A9%BA%E6%B8%AF%20%E3%81%86%E3%81%A9%E3%82%93%20%E6%9C%9D%E9%A3%9F%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E5%BC%8F%E6%97%A9%E9%A4%90%E8%88%87%E7%83%8F%E9%BE%8D%E9%BA%B5%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E5%BC%8F%E6%97%A9%E9%A4%90%E8%88%87%E7%83%8F%E9%BE%8D%E9%BA%B5%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
@@ -2291,13 +2695,13 @@ a{color:inherit}
     </div>
     <div class="rc-bd">
       <p class="rc-desc">若店舖營業且排隊不長可現吃；肉類產品能否攜帶入境需遵守台灣規定。</p>
-      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=551%E8%93%AC%E8%8E%B1%20%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20551%20HORAI%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=551%20HORAI%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
+      <div class="rc-actions"><a class="map-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=551%E8%93%AC%E8%8E%B1%20%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener noreferrer">Google 地圖</a><a class="map-btn tabelog-btn" href="https://www.google.com/search?q=site%3Atabelog.com%20551%E8%93%AC%E8%8E%B1%20%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF%20%E9%A3%9F%E3%81%B9%E3%83%AD%E3%82%B0" target="_blank" rel="noopener noreferrer">食べログ</a><a class="map-btn" href="https://www.google.com/search?q=site%3Aptt.cc%20551%20HORAI%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E5%BA%97%20%E6%8E%A8%E8%96%A6" target="_blank" rel="noopener noreferrer">PTT 推薦</a><a class="map-btn" href="https://www.google.com/search?q=551%20HORAI%20%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E5%BA%97%20%E6%8E%A8%E8%96%A6%20%E9%83%A8%E8%90%BD%E6%A0%BC" target="_blank" rel="noopener noreferrer">部落格推薦</a></div>
       
     </div>
   </article>
 </section>
 <div class="sec-lbl">必買小卡</div>
-<section class="rg ">
+<section class="rg shopping-grid">
   <article class="rc">
     <div class="rc-hd">
       <div class="rc-type">免稅甜點</div>
